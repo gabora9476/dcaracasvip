@@ -1,0 +1,3291 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>D Caracas VIP | Directorio Exclusivo</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23C0082C'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-size='65' font-family='serif' font-weight='900' fill='%23FFD700'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+/* ===== CSS VARIABLES & RESET ===== */
+:root {
+  --red: #C0082C;
+  --red-dark: #8C0020;
+  --red-light: #E8103A;
+  --gold: #FFD700;
+  --gold-dark: #D4A800;
+  --pink: #FF2D6B;
+  --purple: #8B2FC9;
+
+  --bg: #0A0A12;
+  --bg2: #12121E;
+  --bg3: #1A1A2E;
+  --card: #16162A;
+  --card2: #1E1E35;
+  --border: rgba(255,255,255,0.08);
+  --text: #F0EEF8;
+  --text2: #9892B4;
+  --text3: #6A638A;
+
+  --shadow: 0 4px 24px rgba(0,0,0,0.5);
+  --shadow-red: 0 0 30px rgba(192,8,44,0.3);
+  --radius: 12px;
+  --radius-lg: 18px;
+  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+[data-theme="light"] {
+  --bg: #F0EBF4;
+  --bg2: #E8E1EE;
+  --bg3: #DDD5E8;
+  --card: #FFFFFF;
+  --card2: #F5F0FA;
+  --border: rgba(0,0,0,0.08);
+  --text: #1A0A2E;
+  --text2: #4A3A6A;
+  --text3: #8A7AAA;
+  --shadow: 0 4px 24px rgba(100,50,120,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:14px;line-height:1.5}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:inherit;font-size:inherit}
+input,select,textarea{font-family:inherit;font-size:inherit}
+a{text-decoration:none;color:inherit}
+.hidden{display:none!important}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
+
+/* ===== AGE GATE ===== */
+#age-gate{position:fixed;inset:0;background:linear-gradient(135deg,#0A0A12 0%,#1A0A2E 50%,#0A0A12 100%);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
+.age-gate-logo{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;text-shadow:0 0 40px rgba(255,215,0,0.4);letter-spacing:-2px;margin-bottom:8px;color:#fff}
+.age-gate-logo .d-letter{color:var(--gold)}
+.age-gate-sub{color:var(--text2);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:40px}
+.age-gate-warning{background:rgba(192,8,44,0.1);border:1px solid rgba(192,8,44,0.3);border-radius:var(--radius);padding:20px;max-width:420px;margin-bottom:32px}
+.age-gate-warning h2{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);margin-bottom:8px}
+.age-gate-warning p{color:var(--text2);font-size:13px;line-height:1.7}
+.age-btn-group{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn-age-yes{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;padding:14px 32px;border-radius:50px;font-weight:600;font-size:15px;transition:var(--transition);box-shadow:0 0 20px rgba(192,8,44,0.4)}
+.btn-age-yes:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(192,8,44,0.6)}
+.btn-age-no{background:rgba(255,255,255,0.05);color:var(--text2);padding:14px 32px;border-radius:50px;font-weight:500;font-size:15px;border:1px solid var(--border);transition:var(--transition)}
+.btn-age-no:hover{background:rgba(255,255,255,0.1)}
+
+/* ===== NAVBAR ===== */
+#navbar{position:sticky;top:0;z-index:100;background:rgba(10,10,18,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 16px}
+[data-theme="light"] #navbar{background:rgba(240,235,244,0.95)}
+.nav-inner{display:flex;align-items:center;gap:12px;height:56px;max-width:1200px;margin:0 auto}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#fff;letter-spacing:-1px;flex:1}
+.nav-logo .d-letter{color:var(--gold)}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.nav-btn{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:var(--transition);background:var(--bg3)}
+.nav-btn:hover,.nav-btn.active{color:var(--red);background:rgba(192,8,44,0.1)}
+.btn-login-nav{background:linear-gradient(135deg,var(--red),var(--pink));color:#fff!important;border-radius:10px;padding:0 14px;height:38px;display:flex;align-items:center;gap:6px;font-weight:600;font-size:13px;transition:var(--transition)}
+.btn-login-nav:hover{opacity:0.9;transform:translateY(-1px)}
+
+/* ===== SEARCH BAR ===== */
+#search-section{padding:16px;background:var(--bg2);border-bottom:1px solid var(--border)}
+.search-box{display:flex;gap:8px;max-width:1200px;margin:0 auto 12px}
+.search-input-wrap{flex:1;position:relative}
+.search-input-wrap input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px 10px 40px;color:var(--text);outline:none;transition:var(--transition)}
+.search-input-wrap input:focus{border-color:var(--red)}
+.search-input-wrap .s-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none}
+.btn-filter-toggle{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:0 14px;color:var(--text2);display:flex;align-items:center;gap:6px;height:42px;font-weight:500;transition:var(--transition)}
+.btn-filter-toggle:hover,.btn-filter-toggle.active{border-color:var(--red);color:var(--red)}
+#filter-panel{display:none;max-width:1200px;margin:0 auto}
+#filter-panel.open{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;animation:fadeIn 0.2s ease}
+.filter-group label{display:block;font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.filter-select{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);outline:none;-webkit-appearance:none;font-size:13px}
+.filter-select:focus{border-color:var(--red)}
+.filter-actions{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end}
+.btn-clear-filters{background:var(--bg3);color:var(--text2);border-radius:8px;padding:8px 16px;font-size:13px;transition:var(--transition)}
+.btn-clear-filters:hover{color:var(--text)}
+.btn-apply-filters{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;transition:var(--transition)}
+.btn-apply-filters:hover{opacity:0.9}
+
+/* ===== CATALOG TABS ===== */
+.catalog-tabs{display:flex;gap:8px;padding:12px 16px 0;overflow-x:auto;scrollbar-width:none;max-width:1200px;margin:0 auto}
+.catalog-tabs::-webkit-scrollbar{display:none}
+.tab-btn{white-space:nowrap;padding:8px 16px;border-radius:50px;font-weight:500;font-size:13px;color:var(--text2);background:var(--card2);border:1px solid var(--border);transition:var(--transition);flex-shrink:0}
+.tab-btn.active,.tab-btn:hover{background:linear-gradient(135deg,var(--red),var(--pink));color:#fff;border-color:transparent}
+
+/* ===== CATALOG GRID ===== */
+#catalog{padding:16px;max-width:1200px;margin:0 auto}
+.catalog-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.catalog-header h2{font-family:'Playfair Display',serif;font-size:16px;color:var(--text2)}
+.catalog-header span{color:var(--red);font-weight:700}
+.profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:480px){.profile-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.profile-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+@media(min-width:1024px){.profile-grid{grid-template-columns:repeat(5,1fr)}}
+
+/* ===== PROFILE CARD ===== */
+.profile-card{background:var(--card);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:var(--transition);cursor:pointer;position:relative}
+.profile-card:hover{transform:translateY(-3px);border-color:rgba(192,8,44,0.3);box-shadow:var(--shadow-red)}
+.card-img-wrap{aspect-ratio:3/4;position:relative;overflow:hidden;background:var(--bg3)}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease}
+.profile-card:hover .card-img-wrap img{transform:scale(1.05)}
+.card-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--text3)}
+.card-badge{position:absolute;top:8px;left:8px;display:flex;flex-direction:column;gap:4px}
+.badge{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:6px;font-size:10px;font-weight:700;line-height:1}
+.badge-vip{background:linear-gradient(135deg,var(--gold),#FF8C00);color:#000}
+.badge-verified{background:linear-gradient(135deg,var(--red),var(--pink));color:#fff}
+.badge-basic{background:rgba(255,255,255,0.15);color:var(--text2)}
+.card-heart{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;color:#fff;backdrop-filter:blur(4px);transition:var(--transition)}
+.card-heart:hover{background:var(--red);color:#fff}
+.card-online{position:absolute;bottom:8px;left:8px;display:flex;align-items:center;gap:4px;background:rgba(0,0,0,0.5);padding:3px 8px;border-radius:50px;backdrop-filter:blur(4px)}
+.online-dot{width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 6px #22C55E;flex-shrink:0}
+.online-dot.offline{background:var(--text3);box-shadow:none}
+.online-text{font-size:10px;color:#fff;font-weight:500}
+.card-info{padding:10px}
+.card-name{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text)}
+.card-meta{display:flex;align-items:center;gap:6px;margin-top:3px;flex-wrap:wrap}
+.card-age{font-size:12px;color:var(--text2);font-weight:500}
+.card-city{display:flex;align-items:center;gap:2px;font-size:11px;color:var(--text3)}
+.card-price{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.price-tag{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold)}
+.card-rating{display:flex;align-items:center;gap:3px;font-size:12px;color:var(--gold)}
+.card-type{font-size:10px;color:var(--pink);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px}
+
+/* ===== PROFILE DETAIL ===== */
+#view-profile{display:none;position:fixed;inset:0;background:var(--bg);z-index:200;overflow-y:auto}
+.profile-detail-header{position:sticky;top:0;z-index:10;background:rgba(10,10,18,0.95);backdrop-filter:blur(16px);padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
+[data-theme="light"] .profile-detail-header{background:rgba(240,235,244,0.95)}
+.btn-back{width:36px;height:36px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;color:var(--text2);transition:var(--transition)}
+.btn-back:hover{color:var(--red)}
+.profile-name-hdr{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;flex:1}
+.profile-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.gallery-main{grid-column:1/-1;aspect-ratio:4/3;overflow:hidden;background:var(--bg3)}
+.gallery-main img{width:100%;height:100%;object-fit:cover}
+.gallery-thumb{aspect-ratio:1;overflow:hidden;background:var(--bg3);cursor:pointer}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease}
+.gallery-thumb:hover img{transform:scale(1.05)}
+.profile-body{padding:16px;max-width:640px;margin:0 auto}
+.profile-intro{display:flex;align-items:flex-start;gap:12px;margin-bottom:20px}
+.profile-avatar-lg{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--red);flex-shrink:0}
+.profile-intro-text h1{font-family:'Playfair Display',serif;font-size:22px;font-weight:700}
+.profile-intro-text .badges-row{display:flex;gap:6px;margin:6px 0;flex-wrap:wrap}
+.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.stat-card{background:var(--card);border-radius:var(--radius);padding:12px;text-align:center;border:1px solid var(--border)}
+.stat-value{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)}
+.stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
+.section-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px;color:var(--text)}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.about-text{color:var(--text2);line-height:1.8;font-size:14px;margin-bottom:20px}
+.tags-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.tag{background:var(--bg3);border:1px solid var(--border);border-radius:50px;padding:4px 12px;font-size:12px;color:var(--text2);font-weight:500}
+.tag-service{border-color:rgba(192,8,44,0.3);color:var(--red)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:20px}
+.service-item{background:var(--card);border:1px solid rgba(192,8,44,0.2);border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)}
+.service-item i{color:var(--red)}
+.rates-box{background:var(--card);border-radius:var(--radius);padding:16px;border:1px solid var(--border);margin-bottom:20px}
+.rate-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)}
+.rate-row:last-child{border-bottom:none}
+.rate-label{color:var(--text2);font-size:13px}
+.rate-value{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold)}
+.contact-buttons{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.btn-contact{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:var(--radius);font-weight:600;font-size:15px;transition:var(--transition)}
+.btn-whatsapp{background:#25D366;color:#fff}
+.btn-whatsapp:hover{background:#1aad52}
+.btn-telegram{background:#229ED9;color:#fff}
+.btn-telegram:hover{background:#1a7fb0}
+.btn-call{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff}
+.btn-call:hover{opacity:0.9}
+.socials-row{display:flex;gap:8px;margin-bottom:20px}
+.social-btn{width:42px;height:42px;border-radius:var(--radius);background:var(--bg3);display:flex;align-items:center;justify-content:center;color:var(--text2);border:1px solid var(--border);transition:var(--transition)}
+.social-btn:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.ratings-section{margin-bottom:20px}
+.rating-summary{display:flex;align-items:center;gap:16px;background:var(--card);border-radius:var(--radius);padding:16px;margin-bottom:12px;border:1px solid var(--border)}
+.big-rating{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:var(--gold);line-height:1}
+.stars-row{display:flex;gap:2px;margin:4px 0}
+.star{color:var(--gold)}
+.star.empty{color:var(--text3)}
+.rating-count{font-size:12px;color:var(--text3)}
+.review-card{background:var(--card);border-radius:var(--radius);padding:12px;margin-bottom:8px;border:1px solid var(--border)}
+.review-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.reviewer-name{font-weight:600;font-size:13px}
+.review-date{font-size:11px;color:var(--text3)}
+.review-text{font-size:13px;color:var(--text2);line-height:1.6}
+.disclaimer-box{background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.2);border-radius:var(--radius);padding:12px;margin-bottom:20px;font-size:11px;color:var(--text3);line-height:1.7}
+.disclaimer-box strong{color:var(--gold);display:block;margin-bottom:4px}
+
+/* ===== MODALS ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:300;display:flex;align-items:flex-end;justify-content:center;animation:fadeIn 0.2s ease}
+@media(min-width:640px){.modal-overlay{align-items:center}}
+.modal{background:var(--bg2);border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:20px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;animation:slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+@media(min-width:640px){.modal{border-radius:var(--radius-lg)}}
+.modal-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 20px;display:block}
+.modal-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:6px}
+.modal-subtitle{color:var(--text2);font-size:13px;margin-bottom:24px}
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.form-row input,.form-row select,.form-row textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:11px 14px;color:var(--text);outline:none;transition:var(--transition)}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--red)}
+.form-row textarea{resize:vertical;min-height:80px}
+.form-row select{-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236A638A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-hint{font-size:11px;color:var(--text3);margin-top:4px}
+.btn-primary{width:100%;background:linear-gradient(135deg,var(--red),var(--pink));color:#fff;border-radius:var(--radius);padding:14px;font-weight:700;font-size:15px;transition:var(--transition);margin-top:8px}
+.btn-primary:hover{opacity:0.9;transform:translateY(-1px)}
+.btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.btn-secondary{width:100%;background:var(--bg3);color:var(--text2);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-weight:500;font-size:14px;transition:var(--transition);margin-top:8px}
+.btn-secondary:hover{color:var(--text)}
+.toggle-form{text-align:center;margin-top:16px;font-size:13px;color:var(--text2)}
+.toggle-form button{color:var(--red);font-weight:600}
+.upload-box{border:2px dashed var(--border);border-radius:var(--radius);padding:20px;text-align:center;cursor:pointer;transition:var(--transition)}
+.upload-box:hover{border-color:var(--red);background:rgba(192,8,44,0.05)}
+.upload-box input{display:none}
+.upload-box p{font-size:13px;color:var(--text3);margin-top:6px}
+.upload-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.upload-preview img{aspect-ratio:1;object-fit:cover;border-radius:8px;width:100%}
+.upload-preview-item{position:relative}
+.remove-photo{position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff}
+.checkbox-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.checkbox-item{display:flex;align-items:center;gap:8px;cursor:pointer;padding:8px;border-radius:8px;border:1px solid var(--border);transition:var(--transition)}
+.checkbox-item:hover{border-color:var(--red)}
+.checkbox-item input[type=checkbox]{accent-color:var(--red);width:15px;height:15px}
+.checkbox-item span{font-size:13px;color:var(--text2)}
+.level-cards{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.level-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px;cursor:pointer;transition:var(--transition)}
+.level-card.selected{border-color:var(--red);background:rgba(192,8,44,0.08)}
+.level-card h4{font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px}
+.level-card p{font-size:12px;color:var(--text3);margin-top:3px}
+.steps-indicator{display:flex;gap:4px;margin-bottom:20px}
+.step-dot{flex:1;height:3px;border-radius:2px;background:var(--border)}
+.step-dot.active{background:var(--red)}
+.step-dot.done{background:var(--gold)}
+.msg-error{background:rgba(192,8,44,0.1);border:1px solid rgba(192,8,44,0.3);border-radius:8px;padding:10px 12px;font-size:13px;color:var(--red);margin-bottom:12px}
+.msg-success{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:8px;padding:10px 12px;font-size:13px;color:#22C55E;margin-bottom:12px}
+.msg-info{background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);border-radius:8px;padding:10px 12px;font-size:13px;color:var(--gold);margin-bottom:12px;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+
+/* ===== DASHBOARD ===== */
+#dashboard{display:none;min-height:100vh;padding:16px;max-width:640px;margin:0 auto}
+.dashboard-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-top:8px}
+.dashboard-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--red)}
+.dashboard-name h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700}
+.dashboard-name p{font-size:12px;color:var(--text3)}
+.level-badge-lg{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:50px;font-size:11px;font-weight:700}
+.level-1-badge{background:rgba(255,255,255,0.1);color:var(--text2)}
+.level-2-badge{background:linear-gradient(135deg,var(--red),var(--pink));color:#fff}
+.level-3-badge{background:linear-gradient(135deg,var(--gold),#FF8C00);color:#000}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.mini-stat{background:var(--card);border-radius:var(--radius);padding:12px;text-align:center;border:1px solid var(--border)}
+.mini-stat-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold)}
+.mini-stat-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
+.dash-section{background:var(--card);border-radius:var(--radius-lg);border:1px solid var(--border);margin-bottom:16px;overflow:hidden}
+.dash-section-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.dash-section-header h3{font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px}
+.dash-section-body{padding:16px}
+.pub-status{display:flex;align-items:center;gap:6px;font-size:12px;padding:4px 10px;border-radius:50px}
+.status-pending{background:rgba(255,215,0,0.1);color:var(--gold)}
+.status-active{background:rgba(34,197,94,0.1);color:#22C55E}
+.status-rejected{background:rgba(192,8,44,0.1);color:var(--red)}
+.btn-edit-pub{background:var(--bg3);color:var(--text2);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:500;transition:var(--transition)}
+.btn-edit-pub:hover{color:var(--text)}
+.btn-new-pub{background:linear-gradient(135deg,var(--red),var(--pink));color:#fff;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;transition:var(--transition)}
+.btn-new-pub:hover{opacity:0.9}
+.upgrade-banner{background:linear-gradient(135deg,rgba(192,8,44,0.2),rgba(255,45,107,0.1));border:1px solid rgba(192,8,44,0.3);border-radius:var(--radius);padding:14px;display:flex;align-items:center;gap:12px}
+.upgrade-banner-text h4{font-weight:700;font-size:13px;color:var(--gold)}
+.upgrade-banner-text p{font-size:11px;color:var(--text3);margin-top:2px}
+.btn-upgrade{background:linear-gradient(135deg,var(--gold),#FF8C00);color:#000;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;flex-shrink:0;transition:var(--transition)}
+.btn-upgrade:hover{opacity:0.9}
+.feature-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+.feature-row:last-child{border-bottom:none}
+.feature-label{font-size:13px;color:var(--text2);display:flex;align-items:center;gap:8px}
+.feature-value{font-size:13px;font-weight:600;color:var(--text)}
+.feat-check{color:#22C55E}
+.feat-cross{color:var(--text3)}
+
+/* ===== ADMIN PANEL ===== */
+#admin-panel{display:none;min-height:100vh;padding:16px;max-width:900px;margin:0 auto}
+.admin-tabs{display:flex;gap:6px;margin-bottom:20px;overflow-x:auto;scrollbar-width:none}
+.admin-tab{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text2);background:var(--card);border:1px solid var(--border);white-space:nowrap;transition:var(--transition)}
+.admin-tab.active{background:var(--red);color:#fff;border-color:var(--red)}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{text-align:left;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;padding:8px 12px;border-bottom:1px solid var(--border)}
+.admin-table td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);vertical-align:middle}
+.admin-table tr:last-child td{border-bottom:none}
+.admin-table tr:hover td{background:var(--bg3)}
+.btn-approve{background:rgba(34,197,94,0.1);color:#22C55E;border:1px solid rgba(34,197,94,0.3);border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;transition:var(--transition)}
+.btn-approve:hover{background:#22C55E;color:#000}
+.btn-reject{background:rgba(192,8,44,0.1);color:var(--red);border:1px solid rgba(192,8,44,0.3);border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;transition:var(--transition)}
+.btn-reject:hover{background:var(--red);color:#fff}
+.btn-promote{background:rgba(255,215,0,0.1);color:var(--gold);border:1px solid rgba(255,215,0,0.3);border-radius:6px;padding:4px 10px;font-size:12px;font-weight:600;transition:var(--transition)}
+.btn-promote:hover{background:var(--gold);color:#000}
+.admin-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+@media(min-width:640px){.admin-kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;text-align:center}
+.kpi-val{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--gold)}
+.kpi-lbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
+
+/* ===== FOOTER ===== */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 16px 20px;margin-top:40px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-brand{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:#fff;margin-bottom:6px}
+.footer-brand .d-letter{color:var(--gold)}
+.footer-tagline{font-size:13px;color:var(--text3);margin-bottom:20px}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+@media(min-width:640px){.footer-grid{grid-template-columns:repeat(4,1fr)}}
+.footer-col h4{font-weight:700;font-size:13px;color:var(--text);margin-bottom:10px}
+.footer-col a{display:block;font-size:13px;color:var(--text3);margin-bottom:6px;transition:var(--transition)}
+.footer-col a:hover{color:var(--red)}
+.footer-socials{display:flex;gap:8px;margin-bottom:20px}
+.footer-social{width:38px;height:38px;border-radius:10px;background:var(--bg3);display:flex;align-items:center;justify-content:center;color:var(--text2);border:1px solid var(--border);transition:var(--transition)}
+.footer-social:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:16px;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center}
+.footer-copy{font-size:12px;color:var(--text3)}
+.footer-legal{display:flex;gap:12px}
+.footer-legal a{font-size:12px;color:var(--text3);transition:var(--transition)}
+.footer-legal a:hover{color:var(--text)}
+.disclaimer-footer{background:rgba(255,215,0,0.05);border-top:1px solid rgba(255,215,0,0.15);padding:14px 16px;font-size:11px;color:var(--text3);line-height:1.7;text-align:center}
+
+/* ===== PAGES ===== */
+.page{display:none;padding:20px 16px;max-width:900px;margin:0 auto}
+.page.active{display:block}
+.page h1{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;margin-bottom:8px}
+.page h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin:20px 0 8px}
+.page p{color:var(--text2);line-height:1.8;margin-bottom:12px;font-size:14px}
+
+/* ===== TOAST ===== */
+#toast-container{position:fixed;top:70px;right:16px;z-index:999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;min-width:240px;max-width:320px;display:flex;align-items:center;gap:10px;font-size:13px;pointer-events:all;animation:slideInRight 0.3s ease;box-shadow:var(--shadow)}
+.toast-success{border-left:3px solid #22C55E}
+.toast-error{border-left:3px solid var(--red)}
+.toast-info{border-left:3px solid var(--gold)}
+
+/* ===== LOADING ===== */
+.loader{display:inline-block;width:20px;height:20px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite}
+.loading-screen{display:flex;align-items:center;justify-content:center;padding:60px;flex-direction:column;gap:16px;color:var(--text3)}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+
+/* ===== MISC ===== */
+.empty-state{text-align:center;padding:40px 20px;color:var(--text3)}
+.empty-state i{font-size:48px;margin-bottom:12px;display:block}
+.divider{border:none;border-top:1px solid var(--border);margin:16px 0}
+.alert-18{background:linear-gradient(135deg,rgba(192,8,44,0.1),rgba(255,45,107,0.05));border:1px solid rgba(192,8,44,0.2);border-radius:var(--radius);padding:10px 14px;font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:8px;margin-bottom:16px;line-height:1.6}
+.alert-18 strong{color:var(--red)}
+.no-results{text-align:center;padding:60px 20px;color:var(--text3);font-size:14px}
+
+/* ===== FRESH BADGE ===== */
+.badge-fresh{background:linear-gradient(135deg,#22C55E,#16A34A);color:#fff;animation:pulse 2s infinite}
+.badge-featured{background:linear-gradient(135deg,var(--gold),#FF8C00);color:#000}
+
+/* ===== FEATURED CARD ===== */
+.profile-card.featured{border-color:var(--gold);box-shadow:0 0 20px rgba(255,215,0,0.25)}
+.profile-card.featured::after{content:'⭐ DESTACADA';position:absolute;bottom:0;left:0;right:0;background:linear-gradient(135deg,var(--gold),#FF8C00);color:#000;font-size:9px;font-weight:800;text-align:center;padding:3px;letter-spacing:1px}
+
+/* ===== CARD LOCATION HIGHLIGHT ===== */
+.card-location-row{display:flex;align-items:center;gap:4px;margin-top:4px}
+.card-city-pill{background:rgba(192,8,44,0.15);border:1px solid rgba(192,8,44,0.3);border-radius:50px;padding:2px 8px;font-size:10px;color:var(--red);font-weight:600;display:flex;align-items:center;gap:3px}
+
+/* ===== ANONYMOUS BLUR ===== */
+.photo-blurred{filter:blur(12px);pointer-events:none}
+.blur-overlay{position:relative;overflow:hidden;border-radius:8px}
+.blur-overlay .blur-lock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);color:#fff;font-size:12px;font-weight:600;gap:6px;backdrop-filter:blur(2px)}
+
+/* ===== SUBSCRIPTION PAGE ===== */
+.sub-plans{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:480px){.sub-plans{grid-template-columns:1fr}}
+.sub-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;text-align:center;position:relative;transition:var(--transition)}
+.sub-card:hover{transform:translateY(-3px)}
+.sub-card.popular{border-color:var(--gold);box-shadow:0 0 24px rgba(255,215,0,0.2)}
+.sub-card .popular-tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),#FF8C00);color:#000;font-size:10px;font-weight:800;padding:3px 12px;border-radius:50px;white-space:nowrap}
+.sub-price{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--gold);margin:12px 0 4px}
+.sub-price span{font-size:14px;color:var(--text3);font-weight:400;font-family:'Outfit',sans-serif}
+.sub-feature-list{list-style:none;text-align:left;margin:16px 0;display:flex;flex-direction:column;gap:8px}
+.sub-feature-list li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)}
+.sub-feature-list li .feat-ico{color:#22C55E;flex-shrink:0}
+.sub-feature-list li .feat-ico.no{color:var(--text3)}
+.btn-subscribe{width:100%;background:linear-gradient(135deg,var(--red),var(--pink));color:#fff;border-radius:var(--radius);padding:12px;font-weight:700;font-size:14px;transition:var(--transition);margin-top:8px}
+.btn-subscribe:hover{opacity:0.9;transform:translateY(-1px)}
+.btn-subscribe.gold{background:linear-gradient(135deg,var(--gold),#FF8C00);color:#000}
+
+/* ===== PAY DESTACADO BUTTON ===== */
+.btn-destacar{background:linear-gradient(135deg,var(--gold),#FF8C00);color:#000;border-radius:10px;padding:8px 16px;font-size:12px;font-weight:800;display:flex;align-items:center;gap:6px;transition:var(--transition);margin-top:8px}
+.btn-destacar:hover{opacity:0.9;transform:translateY(-1px)}
+
+/* ===== PROMO BADGE ===== */
+.badge-promo{background:linear-gradient(135deg,#FF6B35,#FF2D6B);color:#fff;animation:pulse 1.5s infinite;font-size:9px;padding:2px 7px;border-radius:5px;font-weight:800;letter-spacing:0.5px}
+/* ===== BAN/PAUSE ===== */
+.status-banned{background:rgba(192,8,44,0.2);color:var(--red)}
+.status-paused{background:rgba(255,165,0,0.15);color:orange}
+.badge-banned{background:rgba(192,8,44,0.2);color:var(--red);border:1px solid rgba(192,8,44,0.4);border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700}
+/* ===== WA VERIFY BTN ===== */
+.btn-wa-verify{background:#25D366;color:#fff;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:5px;transition:var(--transition);text-decoration:none}
+.btn-wa-verify:hover{background:#1aad52}
+.btn-support-wa{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;border-radius:var(--radius);padding:14px;font-weight:700;font-size:15px;text-decoration:none;margin-bottom:20px;transition:var(--transition)}
+.btn-support-wa:hover{background:#1aad52;transform:translateY(-1px)}
+/* ===== PROFILE CONFIG ===== */
+#profile-config{display:none;min-height:100vh;padding:16px;max-width:640px;margin:0 auto}
+.config-section{background:var(--card);border-radius:var(--radius-lg);border:1px solid var(--border);margin-bottom:16px;overflow:hidden}
+.config-section-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.config-section-body{padding:16px}
+/* ===== DESTACAR BTN ===== */
+.btn-destacar{background:linear-gradient(135deg,var(--gold),#FF8C00);color:#000;border-radius:10px;padding:7px 14px;font-size:12px;font-weight:800;display:inline-flex;align-items:center;gap:6px;transition:var(--transition);margin-top:6px}
+.btn-destacar:hover{opacity:0.9;transform:translateY(-1px)}
+</style>
+</head>
+<body>
+
+<!-- AGE GATE -->
+<div id="age-gate">
+  <div class="age-gate-logo"><span class="d-letter" style="color:var(--gold)">D</span> <span style="color:#fff">CARACAS VIP</span></div>
+  <div class="age-gate-sub">Directorio Exclusivo para Adultos</div>
+  <div class="age-gate-warning">
+    <h2>Advertencia - Contenido para Adultos</h2>
+    <p>Este sitio contiene material de naturaleza sexual explícita exclusivamente para adultos. Al ingresar, confirmas tener 18 años o más, aceptas los Términos y Condiciones del sitio y que el acceso a este contenido es legal en tu jurisdicción.</p>
+  </div>
+  <div class="age-btn-group">
+    <button class="btn-age-yes" onclick="confirmAge()">Soy mayor de 18 años - Entrar</button>
+    <button class="btn-age-no" onclick="window.location.href='https://www.google.com'">Soy menor de edad - Salir</button>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" onclick="showHome()"><span class="d-letter">D</span> CARACAS VIP</a>
+    <div class="nav-actions">
+      <button class="nav-btn" id="theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
+        <i data-lucide="sun" size="17"></i>
+      </button>
+      <div id="nav-creator-actions" class="hidden" style="display:flex;gap:6px;align-items:center">
+        <button class="nav-btn" onclick="showDashboard()" title="Panel">
+          <i data-lucide="layout-dashboard" size="17"></i>
+        </button>
+        <button class="nav-btn" onclick="logout()" title="Salir">
+          <i data-lucide="log-out" size="17"></i>
+        </button>
+      </div>
+      <button id="nav-admin-btn" class="hidden nav-btn" onclick="showAdmin()" title="Admin">
+        <i data-lucide="shield" size="17"></i>
+      </button>
+      <button id="nav-login-btn" class="btn-login-nav" onclick="openLogin()">
+        <i data-lucide="user" size="15"></i>Entrar
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- SEARCH SECTION -->
+<div id="search-section">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <i class="s-icon" data-lucide="search" size="16"></i>
+      <input type="text" id="search-input" placeholder="Buscar por nombre, ciudad, servicio..." oninput="handleSearch()">
+    </div>
+    <button class="btn-filter-toggle" id="filter-toggle" onclick="toggleFilters()">
+      <i data-lucide="sliders-horizontal" size="16"></i>Filtros
+    </button>
+  </div>
+  <div id="filter-panel">
+    <div class="filter-group">
+      <label>Ciudad</label>
+      <select class="filter-select" id="f-city" onchange="applyFilters()">
+        <option value="">Todas</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Edad</label>
+      <select class="filter-select" id="f-age" onchange="applyFilters()">
+        <option value="">Todas</option>
+        <option value="18-25">18-25</option>
+        <option value="26-35">26-35</option>
+        <option value="36-45">36-45</option>
+        <option value="46+">46+</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Tipo</label>
+      <select class="filter-select" id="f-type" onchange="applyFilters()">
+        <option value="">Todos</option>
+        <option value="encuentros">Encuentros</option>
+        <option value="novia_virtual">Novia/Novio Virtual</option>
+        <option value="contenido">Solo Contenido</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Género</label>
+      <select class="filter-select" id="f-gender" onchange="applyFilters()">
+        <option value="">Todos</option>
+        <option value="mujer">Mujer</option>
+        <option value="hombre">Hombre</option>
+        <option value="trans_mujer">Mujer Trans</option>
+        <option value="trans_hombre">Hombre Trans</option>
+        <option value="no_binario">No Binario</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Etnia</label>
+      <select class="filter-select" id="f-ethnicity" onchange="applyFilters()">
+        <option value="">Todas</option>
+        <option value="mestiza">Mestiza/o</option>
+        <option value="blanca">Blanca/o</option>
+        <option value="morena">Morena/o</option>
+        <option value="latina">Latina/o</option>
+        <option value="afro">Afrodescendiente</option>
+        <option value="asiatica">Asiática/o</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Cabello</label>
+      <select class="filter-select" id="f-hair" onchange="applyFilters()">
+        <option value="">Todos</option>
+        <option value="rubia">Rubia/o</option>
+        <option value="morena_hair">Morena/o</option>
+        <option value="negra">Negra/o</option>
+        <option value="rojiza">Rojiza/o</option>
+        <option value="castaña">Castaña/o</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Cuerpo</label>
+      <select class="filter-select" id="f-body" onchange="applyFilters()">
+        <option value="">Todos</option>
+        <option value="delgada">Delgada/o</option>
+        <option value="atletica">Atletica/o</option>
+        <option value="curvy">Curvy</option>
+        <option value="plus">Plus Size</option>
+        <option value="musculosa">Musculosa/o</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Nivel</label>
+      <select class="filter-select" id="f-level" onchange="applyFilters()">
+        <option value="">Todos</option>
+        <option value="3">VIP</option>
+        <option value="2">Verificado</option>
+        <option value="1">Básico</option>
+      </select>
+    </div>
+    <div class="filter-actions">
+      <button class="btn-clear-filters" onclick="clearFilters()">Limpiar</button>
+      <button class="btn-apply-filters" onclick="applyFilters()">Aplicar</button>
+    </div>
+  </div>
+</div>
+
+<!-- CATALOG -->
+<div id="home-view">
+  <div style="padding:0 16px;max-width:1200px;margin:0 auto">
+    <div class="catalog-tabs" id="catalog-tabs">
+      <button class="tab-btn active" data-tab="all" onclick="switchTab(this,'all')">Todos</button>
+      <button class="tab-btn" data-tab="encuentros" onclick="switchTab(this,'encuentros')">Encuentros</button>
+      <button class="tab-btn" data-tab="novia_virtual" onclick="switchTab(this,'novia_virtual')">Virtual</button>
+      <button class="tab-btn" data-tab="contenido" onclick="switchTab(this,'contenido')">Contenido</button>
+      <button class="tab-btn" data-tab="mujer" onclick="switchTab(this,'mujer')">Mujeres</button>
+      <button class="tab-btn" data-tab="hombre" onclick="switchTab(this,'hombre')">Hombres</button>
+      <button class="tab-btn" data-tab="trans_mujer" onclick="switchTab(this,'trans_mujer')">Trans</button>
+    </div>
+  </div>
+  <div id="catalog">
+    <div class="catalog-header">
+      <h2>Mostrando <span id="results-count">0</span> perfiles</h2>
+    </div>
+    <div class="profile-grid" id="profile-grid">
+      <div class="loading-screen" style="grid-column:1/-1">
+        <div class="loader"></div>
+        <span>Cargando perfiles...</span>
+      </div>
+    </div>
+  </div>
+  <!-- ALERT 18+ -->
+  <div style="padding:0 16px 8px;max-width:1200px;margin:0 auto">
+    <div class="alert-18">
+      <i data-lucide="alert-triangle" size="16" style="color:var(--red);flex-shrink:0;margin-top:1px"></i>
+      <span><strong>Aviso Legal:</strong> D Caracas VIP es una plataforma de clasificados para adultos. No somos responsables de los actos o actividades que surjan entre anunciantes y usuarios. Todo acuerdo es responsabilidad exclusiva de las partes involucradas. El contenido es publicado por los propios anunciantes.</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE DETAIL VIEW -->
+<div id="view-profile">
+  <div class="profile-detail-header">
+    <button class="btn-back" onclick="closeProfile()"><i data-lucide="arrow-left" size="18"></i></button>
+    <span class="profile-name-hdr" id="detail-name">Perfil</span>
+    <button class="nav-btn" onclick="shareProfile()"><i data-lucide="share-2" size="17"></i></button>
+  </div>
+  <div id="profile-detail-content"></div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="dashboard-header">
+    <div id="dash-avatar-wrap" style="flex-shrink:0">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--bg3);border:2px solid var(--red);display:flex;align-items:center;justify-content:center">
+        <i data-lucide="user" size="24" style="color:var(--text3)"></i>
+      </div>
+    </div>
+    <div class="dashboard-name" style="flex:1">
+      <h2 id="dash-name">Usuario</h2>
+      <p id="dash-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b1e161a12173b1e031a160b171e55181416">[email&#160;protected]</a></p>
+    </div>
+    <div id="dash-level-badge"></div>
+  </div>
+  <div class="stats-row">
+    <div class="mini-stat"><div class="mini-stat-val" id="dash-views">0</div><div class="mini-stat-lbl">Visitas</div></div>
+    <div class="mini-stat"><div class="mini-stat-val" id="dash-rating">-</div><div class="mini-stat-lbl">Rating</div></div>
+    <div class="mini-stat"><div class="mini-stat-val" id="dash-contacts">0</div><div class="mini-stat-lbl">Contactos</div></div>
+  </div>
+  <div id="upgrade-banner-wrap"></div>
+  <div class="dash-section">
+    <div class="dash-section-header">
+      <h3><i data-lucide="file-text" size="15"></i> Mi Publicación</h3>
+      <button class="btn-new-pub" id="btn-pub-action" onclick="openPublicationForm()">
+        <i data-lucide="plus" size="14"></i> Nueva
+      </button>
+    </div>
+    <div class="dash-section-body" id="dash-pub-body">
+      <div class="empty-state">
+        <p>No tienes publicaciones activas</p>
+      </div>
+    </div>
+  </div>
+  <div class="dash-section">
+    <div class="dash-section-header">
+      <h3><i data-lucide="star" size="15"></i> Mis Características</h3>
+    </div>
+    <div class="dash-section-body" id="dash-features">
+    </div>
+  </div>
+  <div class="dash-section">
+    <div class="dash-section-header">
+      <h3><i data-lucide="settings" size="15"></i> Configuración</h3>
+    </div>
+    <div class="dash-section-body">
+      <button class="btn-secondary" onclick="showProfileConfig()" style="margin-bottom:8px;width:auto;padding:10px 20px">
+        <i data-lucide="user-cog" size="14"></i> Mi Perfil Base
+      </button>
+      <button class="btn-secondary" onclick="logout()" style="width:auto;padding:10px 20px">
+        <i data-lucide="log-out" size="14"></i> Cerrar sesión
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- PROFILE CONFIG -->
+<div id="profile-config">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-top:8px">
+    <button class="btn-back" onclick="showDashboard()"><i data-lucide="arrow-left" size="18"></i></button>
+    <h2 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700">Configuración de Perfil</h2>
+  </div>
+  <div class="msg-info" style="margin-bottom:16px"><i data-lucide="info" size="14" style="flex-shrink:0"></i>
+    Tu perfil base se usa para pre-completar tus publicaciones automáticamente.</div>
+  <div id="profile-config-content"></div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="admin-panel">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-top:8px">
+    <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--pink));display:flex;align-items:center;justify-content:center">
+      <i data-lucide="shield" size="20" style="color:#fff"></i>
+    </div>
+    <div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700">Panel de Administración</h2>
+      <p style="font-size:12px;color:var(--text3)">D Caracas VIP</p>
+    </div>
+    <button style="margin-left:auto" class="btn-secondary" onclick="showHome();logoutAdmin()" style="width:auto;padding:8px 16px">Salir</button>
+  </div>
+  <div class="admin-kpis" id="admin-kpis"></div>
+  <div class="admin-tabs">
+    <button class="admin-tab active" onclick="switchAdminTab(this,'verifications')">Verificaciones Pendientes</button>
+    <button class="admin-tab" onclick="switchAdminTab(this,'publications')">Publicaciones</button>
+    <button class="admin-tab" onclick="switchAdminTab(this,'users')">Usuarios</button>
+    <button class="admin-tab" onclick="switchAdminTab(this,'ratings')">Calificaciones</button>
+  </div>
+  <div id="admin-content"></div>
+</div>
+
+<!-- TERMS PAGE -->
+<div id="terms-page" class="page">
+  <h1>Términos y Condiciones</h1>
+  <p style="color:var(--text3);font-size:12px;margin-bottom:20px">Última actualización: Enero 2025</p>
+  <h2>1. Naturaleza del Servicio</h2>
+  <p>D Caracas VIP es una plataforma de clasificados en línea que permite a los anunciantes publicar avisos de servicios para adultos. La plataforma no interviene, media ni participa en ningún acuerdo entre anunciantes y usuarios.</p>
+  <h2>2. Responsabilidad del Anunciante</h2>
+  <p>Los anunciantes son los únicos responsables del contenido que publican, de la veracidad de la información proporcionada y de las actividades que puedan surgir de sus anuncios. D Caracas VIP no verifica ni garantiza la exactitud de la información publicada.</p>
+  <h2>3. Exención de Responsabilidad</h2>
+  <p>D Caracas VIP no se hace responsable por ningún acto, hecho, acuerdo o consecuencia que surja de la interacción entre anunciantes y usuarios fuera de la plataforma. Toda actividad fuera de la plataforma es responsabilidad exclusiva de las partes involucradas.</p>
+  <h2>4. Contenido Permitido</h2>
+  <p>Solo se permite contenido de adultos legal, con anunciantes mayores de 18 años debidamente verificados. Está estrictamente prohibido el contenido que involucre menores de edad, actividades ilegales o cualquier forma de trata de personas.</p>
+  <h2>5. Privacidad</h2>
+  <p>Los datos personales de los usuarios son tratados con confidencialidad. Los documentos de verificación son utilizados únicamente para validar la mayoría de edad y la identidad del anunciante.</p>
+  <h2>6. Niveles y Pagos</h2>
+  <p>Los niveles de membresía son acuerdos entre D Caracas VIP y el anunciante. Los pagos realizados no son reembolsables una vez procesados.</p>
+  <h2>7. Moderación</h2>
+  <p>D Caracas VIP se reserva el derecho de remover cualquier publicación que viole estos términos sin previo aviso y sin responsabilidad alguna.</p>
+</div>
+
+<!-- PRIVACY PAGE -->
+<div id="privacy-page" class="page">
+  <h1>Política de Privacidad</h1>
+  <h2>Datos Recopilados</h2>
+  <p>Recopilamos nombre, edad, número de teléfono, correo electrónico y documentos de identidad con el fin exclusivo de verificar la identidad y mayoría de edad de los anunciantes.</p>
+  <h2>Uso de Datos</h2>
+  <p>Los datos personales no son vendidos, cedidos ni compartidos con terceros. Son utilizados únicamente para el funcionamiento de la plataforma.</p>
+  <h2>Documentos de Identidad</h2>
+  <p>Las fotografías de documentos de identidad son revisadas únicamente por el equipo de administración y eliminadas una vez completada la verificación.</p>
+  <h2>Cookies</h2>
+  <p>Utilizamos almacenamiento local del navegador para mantener la sesión del usuario. No utilizamos cookies de rastreo de terceros.</p>
+</div>
+
+<!-- HOW TO PUBLISH PAGE -->
+<div id="how-to-publish-page" class="page">
+  <h1>¿Cómo Publicar?</h1>
+  <p style="color:var(--text3);font-size:13px;margin-bottom:20px">Guía paso a paso para crear tu anuncio en D Caracas VIP</p>
+  <h2>1. Regístrate</h2>
+  <p>Crea tu cuenta con tu nombre, correo, WhatsApp y una contraseña segura. Necesitarás subir una foto de tu cédula de identidad para verificar que eres mayor de 18 años.</p>
+  <h2>2. Espera la verificación</h2>
+  <p>Nuestro equipo revisará tu documentación en menos de 24 horas. Recibirás una notificación cuando tu cuenta esté activa.</p>
+  <h2>3. Crea tu publicación</h2>
+  <p>Una vez verificado/a, desde tu panel de control podrás crear tu anuncio. Completa todos los campos: descripción, servicios, tarifas, ciudad y <strong>al menos una fotografía</strong> (obligatoria para publicar).</p>
+  <h2>4. Revisión del anuncio</h2>
+  <p>Cada publicación pasa por revisión del administrador antes de aparecer en el catálogo. Generalmente se aprueba en pocas horas.</p>
+  <h2>5. Sube de nivel</h2>
+  <p>El Nivel 1 es gratuito pero tiene limitaciones. Suscribete al Nivel 2 ($11.99/mes) o Nivel 3 ($21.99/mes) para obtener más beneficios como modo anónimo, más fotos y prioridad en los resultados.</p>
+  <div style="margin-top:20px">
+    <button class="btn-primary" style="width:auto;padding:12px 28px" onclick="openLogin()">Registrarme ahora</button>
+  </div>
+</div>
+
+<!-- LEVELS PAGE -->
+<div id="levels-page" class="page">
+  <h1>Niveles y Beneficios</h1>
+  <p style="color:var(--text3);font-size:13px;margin-bottom:20px">Elige el plan que mejor se adapte a tus necesidades</p>
+  <div class="sub-plans" style="grid-template-columns:1fr 1fr 1fr">
+    <div class="sub-card">
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700">Nivel 1</h3>
+      <p style="font-size:12px;color:var(--text3);margin:4px 0 8px">Básico — Gratis</p>
+      <div class="sub-price">$0<span>/mes</span></div>
+      <ul class="sub-feature-list">
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> 1 publicación</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> 1 fotografía</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Nombre real</li>
+        <li><i data-lucide="x-circle" size="14" class="feat-ico no"></i> Sin modo anónimo</li>
+        <li><i data-lucide="x-circle" size="14" class="feat-ico no"></i> Sin seudónimo</li>
+        <li><i data-lucide="x-circle" size="14" class="feat-ico no"></i> Sin redes sociales</li>
+        <li><i data-lucide="x-circle" size="14" class="feat-ico no"></i> Última posición</li>
+      </ul>
+    </div>
+    <div class="sub-card popular">
+      <div class="popular-tag">MÁS POPULAR</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700">Nivel 2 · Elite</h3>
+      <p style="font-size:12px;color:var(--text3);margin:4px 0 8px">Verificado + Anónimo</p>
+      <div class="sub-price">$11.99<span>/mes</span></div>
+      <ul class="sub-feature-list">
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> 3 publicaciones</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Hasta 6 fotos</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Modo anónimo (foto blur)</li>
+        <li><i data-lucide="x-circle" size="14" class="feat-ico no"></i> Sin seudónimo</li>
+        <li><i data-lucide="x-circle" size="14" class="feat-ico no"></i> Sin redes sociales</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Badge Verificado</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Segunda posición</li>
+      </ul>
+      <button class="btn-subscribe" onclick="openSubscribePage(2)">💎 Suscribirme al Plan Elite</button>
+    </div>
+    <div class="sub-card" style="border-color:rgba(255,215,0,0.4)">
+      <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold)">Nivel 3 · Diamond</h3>
+      <p style="font-size:12px;color:var(--text3);margin:4px 0 8px">Todo incluido · Máxima visibilidad</p>
+      <div class="sub-price">$21.99<span>/mes</span></div>
+      <ul class="sub-feature-list">
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> 5 publicaciones</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Hasta 12 fotos</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Modo anónimo (foto blur)</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Seudónimo</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Redes sociales</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Badge Verificado</li>
+        <li><i data-lucide="check-circle" size="14" class="feat-ico"></i> Primera posición</li>
+      </ul>
+      <button class="btn-subscribe gold" onclick="openSubscribePage(3)">👑 Suscribirme al Plan Diamond</button>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--text3);margin-top:12px">* Los niveles 2 y 3 requieren pago mensual. El acceso se activa tras confirmación del administrador.</p>
+</div>
+
+<!-- FAQ PAGE -->
+<div id="faq-page" class="page">
+  <h1>Preguntas Frecuentes</h1>
+  <h2>¿Qué es D Caracas VIP?</h2>
+  <p>D Caracas VIP es un directorio clasificado para adultos mayores de 18 años en Venezuela. Conectamos a anunciantes verificados con su audiencia de forma discreta y segura.</p>
+  <h2>¿Cómo me verifico?</h2>
+  <p>Al registrarte debes subir una foto de tu cédula de identidad. Nuestro equipo la revisa y aprueba tu cuenta en menos de 24 horas. Una vez aprobada, podrás crear tu publicación.</p>
+  <h2>¿Mis datos personales son seguros?</h2>
+  <p>Sí. Los documentos de identidad son revisados únicamente por el equipo administrador y no son compartidos con nadie. La información personal no es vendida ni cedida a terceros.</p>
+  <h2>¿Qué incluye el modo anónimo?</h2>
+  <p>Disponible desde el Nivel 2, el modo anónimo permite que tu foto de perfil aparezca con desenfoque (blur) en el catálogo principal. Los usuarios con Nivel 3 pueden ver las fotos dentro del perfil.</p>
+  <h2>¿Cómo funciona el pago de suscripción?</h2>
+  <p>Los pagos se procesan directamente con el administrador vía WhatsApp. Una vez confirmado el pago, el administrador activará tu nivel en menos de 24 horas.</p>
+  <h2>¿Qué significa "Fresca"?</h2>
+  <p>Las publicaciones nuevas (menos de 48 horas) aparecen con una etiqueta "Fresca" para destacarlas en el catálogo.</p>
+  <h2>¿Qué es una publicación Destacada?</h2>
+  <p>Una publicación destacada aparece primero en el catálogo y tiene un borde especial. Puedes solicitar el destacado desde tu panel y el administrador lo activa tras confirmar el pago.</p>
+  <h2>¿Puedo tener varias publicaciones?</h2>
+  <p>Nivel 1: 1 publicación. Nivel 2: hasta 3 publicaciones. Nivel 3: hasta 5 publicaciones.</p>
+  <h2>¿Cómo dejo una calificación?</h2>
+  <p>Al entrar a un perfil verás el botón "Dejar calificación". Necesitas proporcionar tu número de WhatsApp para que el creador pueda verificar que realmente realizaste un contacto. Las calificaciones son revisadas por el administrador antes de publicarse.</p>
+</div>
+
+<!-- SUBSCRIPTION PAGE -->
+<div id="subscribe-page" class="page">
+  <h1>Suscribirte al Nivel <span id="sub-level-title">2</span></h1>
+  <p id="sub-level-desc" style="color:var(--text2);margin-bottom:20px"></p>
+  <div id="sub-page-content"></div>
+</div>
+
+<!-- MODALS CONTAINER -->
+<div id="modal-container"></div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
+<!-- FOOTER -->
+<footer id="main-footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="d-letter">D</span> CARACAS VIP</div>
+    <div class="footer-tagline">El directorio premium de Venezuela</div>
+    <div class="footer-socials">
+      <a href="https://instagram.com/dcaracasvip" target="_blank" class="footer-social" title="Instagram">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://tiktok.com/@dcaracasvip" target="_blank" class="footer-social" title="TikTok">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34l-.01-8.78a8.17 8.17 0 0 0 4.78 1.52V4.59a4.85 4.85 0 0 1-1-.1z"/></svg>
+      </a>
+      <a href="https://t.me/+9xGYQeHXFnQyNDE5" target="_blank" class="footer-social" title="Telegram">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.018 9.51c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.1 14.053l-2.954-.924c-.643-.204-.657-.643.136-.953l11.546-4.452c.535-.194 1.002.13.734.524z"/></svg>
+      </a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Plataforma</h4>
+        <a href="#" onclick="showHome()">Inicio</a>
+        <a href="#" onclick="openLogin()">Publicar Anuncio</a>
+        <a href="#" onclick="openLogin()">Registrarse</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#" onclick="showPage('terms-page')">Términos y Condiciones</a>
+        <a href="#" onclick="showPage('privacy-page')">Política de Privacidad</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="/cdn-cgi/l/email-protection#70131f1e041113041f3014131102111311030619005e131f1d"><span class="__cf_email__" data-cfemail="e5868a8b918486918aa58186849784868496938c95cb868a88">[email&#160;protected]</span></a>
+        <a href="#"><span class="__cf_email__" data-cfemail="5a29352a35282e3f1a3e393b283b393b292c332a74393537">[email&#160;protected]</span></a>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <a href="#" onclick="showPage('how-to-publish-page')">Cómo publicar</a>
+        <a href="#" onclick="showPage('levels-page')">Niveles y beneficios</a>
+        <a href="#" onclick="showPage('faq-page')">Preguntas frecuentes</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 D Caracas VIP. Todos los derechos reservados.</div>
+      <div class="footer-legal">
+        <a href="#" onclick="showPage('terms-page')">Términos</a>
+        <a href="#" onclick="showPage('privacy-page')">Privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="disclaimer-footer">
+  D Caracas VIP es una plataforma de clasificados. No mediamos entre anunciantes y usuarios. Todo acuerdo fuera de la plataforma es exclusiva responsabilidad de las partes. Contenido exclusivo para mayores de 18 años. Cumplimos con las leyes de la República Bolivariana de Venezuela.
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ===== CONFIGURATION =====
+const CONFIG = {
+  IMGBB_API_KEY: '7d6c9b06e2c1cd5f481a6388ffd1b9dd',
+  JSONBIN_API_KEY: '$2a$10$MnH6H.oMlYKxYlxYfxf.ueCXGfPc2MdGCrs/JLQZfxxbxsfEoPjPO',
+  JSONBIN_BIN_ID: '69c21a7db7ec241ddc98fca3',
+  ADMIN_USER: 'admin',
+  ADMIN_PASS: 'DcaracasVIP2025',
+  APP_VERSION: '1.0.0'
+};
+
+// ===== VENEZUELA DATA =====
+const VZ_LOCATIONS = {
+  'Distrito Capital': ['Caracas', 'Petare', 'Catia', 'El Valle', 'Chacao', 'Baruta', 'La Candelaria'],
+  'Miranda': ['Los Teques', 'Guarenas', 'Guatire', 'Charallave', 'Ocumare del Tuy', 'Santa Lucia', 'Cúa'],
+  'Zulia': ['Maracaibo', 'Cabimas', 'Ciudad Ojeda', 'Punto Fijo', 'San Carlos del Zulia', 'Villa del Rosario'],
+  'Carabobo': ['Valencia', 'Puerto Cabello', 'Guacara', 'Los Guayos', 'Mariara', 'San Joaquín'],
+  'Aragua': ['Maracay', 'La Victoria', 'Turmero', 'Cagua', 'Villa de Cura', 'El Limón'],
+  'Lara': ['Barquisimeto', 'Carora', 'Cabudare', 'El Tocuyo', 'Quibor'],
+  'Bolívar': ['Ciudad Bolívar', 'Puerto Ordaz', 'San Félix', 'Upata', 'Tumeremo', 'El Callao'],
+  'Anzoátegui': ['Barcelona', 'Puerto La Cruz', 'El Tigre', 'Anaco', 'Cantaura', 'Maturín'],
+  'Mérida': ['Mérida', 'El Vigía', 'Ejido', 'Lagunillas', 'Tovar'],
+  'Táchira': ['San Cristóbal', 'Táriba', 'La Fría', 'Rubio', 'San Antonio del Táchira'],
+  'Monagas': ['Maturín', 'Punta de Mata', 'Temblador', 'Barrancas'],
+  'Sucre': ['Cumaná', 'Carúpano', 'Güiria', 'Cumanacoa'],
+  'Nueva Esparta': ['Porlamar', 'La Asunción', 'Pampatar', 'El Valle del Espíritu Santo'],
+  'Yaracuy': ['San Felipe', 'Chivacoa', 'Yaritagua', 'Nirgua'],
+  'Portuguesa': ['Guanare', 'Acarigua', 'Araure', 'Piritu'],
+  'Barinas': ['Barinas', 'Barinitas', 'Santa Bárbara', 'Socopó'],
+  'Falcón': ['Coro', 'Punto Fijo', 'La Vela de Coro', 'Chichiriviche'],
+  'Trujillo': ['Trujillo', 'Valera', 'Boconó', 'Pampán'],
+  'Guárico': ['San Juan de los Morros', 'Valle de la Pascua', 'Calabozo', 'Zaraza'],
+  'Apure': ['San Fernando de Apure', 'Biruaca', 'Guasdualito'],
+  'Cojedes': ['San Carlos', 'Tinaquillo', 'El Pao'],
+  'Amazonas': ['Puerto Ayacucho', 'San Fernando de Atabapo'],
+  'Delta Amacuro': ['Tucupita', 'Pedernales']
+};
+
+const SERVICES_LIST = [
+  'Oral', 'Vaginal', 'Anal', 'Masaje Erótico', 'Masaje Tántrico',
+  'Eyaculación Corporal', 'Beso Francés', 'Juegos de Rol', 'Trío',
+  'BDSM', 'Fetiches', 'Lluvia Dorada', 'Dominación', 'Sumisión',
+  'Novia Experimental', 'Sexo por Video', 'Fotos Privadas', 'Striptease',
+  'Baile Sensual', 'Compañía', 'Cenas', 'Viajes', 'Eventos'
+];
+
+const PAYMENT_METHODS = ['Efectivo', 'Zinli', 'Pago Móvil', 'Zelle', 'Binance', 'PayPal'];
+
+const LEVEL_CONFIG = {
+  1: {
+    name: 'Starter',
+    label: 'starter',
+    photos: 1,
+    maxPubs: 1,
+    pseudonym: false,
+    privacy: false,
+    socials: false,
+    payments: ['Efectivo', 'Zinli', 'Pago Móvil'],
+    priority: 3,
+    color: '#6A638A',
+    badge: 'badge-basic',
+    icon: 'user',
+    price: 0,
+    promo: false
+  },
+  2: {
+    name: 'Elite',
+    label: 'elite',
+    photos: 6,
+    maxPubs: 3,
+    pseudonym: false,
+    privacy: true,
+    socials: false,
+    payments: ['Efectivo', 'Zinli', 'Pago Móvil', 'Zelle', 'Binance'],
+    priority: 2,
+    color: '#E8103A',
+    badge: 'badge-verified',
+    icon: 'badge-check',
+    price: 11.99,
+    promo: true
+  },
+  3: {
+    name: 'Premium',
+    label: 'premium',
+    photos: 12,
+    maxPubs: 5,
+    pseudonym: true,
+    privacy: true,
+    socials: true,
+    payments: PAYMENT_METHODS,
+    priority: 1,
+    color: '#FFD700',
+    badge: 'badge-verified',
+    icon: 'badge-check',
+    price: 21.99,
+    promo: true
+  }
+};
+
+// ===== APP STATE =====
+let appState = {
+  ageConfirmed: false,
+  currentUser: null,
+  isAdmin: false,
+  publications: [],
+  users: [],
+  ratings: [],
+  filters: {},
+  currentTab: 'all',
+  searchQuery: '',
+  currentProfileId: null,
+  filterOpen: false
+};
+
+// ===== DATA LAYER (LocalStorage + JSONBin) =====
+const DB = {
+  async load() {
+    try {
+      const local = localStorage.getItem('dcv_data');
+      if (local) {
+        const d = JSON.parse(local);
+        appState.publications = d.publications || [];
+        appState.users = d.users || [];
+        appState.ratings = d.ratings || [];
+      }
+      // Try to sync with JSONBin
+      await this.syncFromRemote();
+    } catch (e) {
+      console.error('Load error:', e);
+    }
+  },
+
+  async save() {
+    const data = {
+      publications: appState.publications,
+      users: appState.users,
+      ratings: appState.ratings,
+      updatedAt: new Date().toISOString()
+    };
+    localStorage.setItem('dcv_data', JSON.stringify(data));
+    try {
+        await fetch(`https://api.jsonbin.io/v3/b/${CONFIG.JSONBIN_BIN_ID}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Master-Key': CONFIG.JSONBIN_API_KEY
+          },
+          body: JSON.stringify(data)
+        });
+      } catch (e) { console.warn('JSONBin sync failed:', e); }
+  },
+
+  async syncFromRemote() {
+    try {
+      const res = await fetch(`https://api.jsonbin.io/v3/b/${CONFIG.JSONBIN_BIN_ID}/latest`, {
+        headers: { 'X-Master-Key': CONFIG.JSONBIN_API_KEY }
+      });
+      if (res.ok) {
+        const json = await res.json();
+        const data = json.record;
+        appState.publications = data.publications || [];
+        appState.users = data.users || [];
+        appState.ratings = data.ratings || [];
+        localStorage.setItem('dcv_data', JSON.stringify(data));
+      }
+    } catch (e) { console.warn('Remote sync failed:', e); }
+  }
+};
+
+// ===== IMAGE UPLOAD (ImgBB) =====
+async function uploadToImgBB(file) {
+  if (CONFIG.IMGBB_API_KEY === 'TU_IMGBB_API_KEY_AQUI') {
+    // Return placeholder for demo
+    return URL.createObjectURL(file);
+  }
+  const formData = new FormData();
+  formData.append('image', file);
+  const res = await fetch(`https://api.imgbb.com/1/upload?key=${CONFIG.IMGBB_API_KEY}`, {
+    method: 'POST',
+    body: formData
+  });
+  const json = await res.json();
+  if (json.success) return json.data.url;
+  throw new Error('ImgBB upload failed');
+}
+
+// ===== AGE GATE =====
+function confirmAge() {
+  appState.ageConfirmed = true;
+  sessionStorage.setItem('dcv_age', '1');
+  document.getElementById('age-gate').style.display = 'none';
+  initApp();
+}
+
+// ===== INIT =====
+async function initApp() {
+  populateCityFilter();
+  populateCitySelects();
+  await DB.load();
+
+  // Check session
+  const session = localStorage.getItem('dcv_session');
+  const adminSession = localStorage.getItem('dcv_admin');
+  if (session) {
+    const user = JSON.parse(session);
+    appState.currentUser = user;
+    updateNavForUser();
+  }
+  if (adminSession) {
+    appState.isAdmin = true;
+    document.getElementById('nav-admin-btn').classList.remove('hidden');
+  }
+
+  lucide.createIcons();
+  renderCatalog();
+
+  // Real-time polling every 15s: refresh session for logged-in users
+  setInterval(async () => {
+    if (appState.currentUser) {
+      try {
+        await DB.load();
+        const updated = appState.users.find(u => u.id === appState.currentUser.id);
+        if (updated && (updated.verified !== appState.currentUser.verified || updated.level !== appState.currentUser.level)) {
+          appState.currentUser = updated;
+          localStorage.setItem('dcv_session', JSON.stringify(updated));
+          showToast('success', updated.verified ? '✓ Tu cuenta ha sido verificada!' : 'Tu perfil ha sido actualizado');
+          if (document.getElementById('dashboard').style.display !== 'none') renderDashboard();
+        }
+      } catch(e) { /* silent */ }
+    }
+  }, 15000);
+}
+
+window.addEventListener('load', () => {
+  const ageConfirmed = sessionStorage.getItem('dcv_age');
+  if (ageConfirmed) {
+    document.getElementById('age-gate').style.display = 'none';
+    initApp();
+  }
+});
+
+// ===== CITY FILTER POPULATION =====
+function populateCityFilter() {
+  const sel = document.getElementById('f-city');
+  Object.entries(VZ_LOCATIONS).forEach(([state, cities]) => {
+    const optGroup = document.createElement('optgroup');
+    optGroup.label = state;
+    cities.forEach(city => {
+      const opt = document.createElement('option');
+      opt.value = city;
+      opt.textContent = city;
+      optGroup.appendChild(opt);
+    });
+    sel.appendChild(optGroup);
+  });
+}
+
+function populateCitySelects() {
+  const targets = ['pub-state', 'pub-city-parent'];
+  // Will be populated dynamically in forms
+}
+
+// ===== CATALOG =====
+function renderCatalog() {
+  const grid = document.getElementById('profile-grid');
+  let pubs = appState.publications.filter(p => p.status === 'active');
+
+  // Sort: featured first, then by level desc, then by date desc within same level
+  pubs.sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    const ua = appState.users.find(u => u.id === a.userId);
+    const ub = appState.users.find(u => u.id === b.userId);
+    const la = ua ? ua.level : 1;
+    const lb = ub ? ub.level : 1;
+    if (lb !== la) return lb - la;
+    // Same level: newer first
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+
+  // Apply tab filter
+  if (appState.currentTab !== 'all') {
+    const tab = appState.currentTab;
+    if (['mujer','hombre','trans_mujer','trans_hombre','no_binario'].includes(tab)) {
+      pubs = pubs.filter(p => p.gender === tab);
+    } else {
+      pubs = pubs.filter(p => p.pubType === tab);
+    }
+  }
+
+  // Apply search
+  if (appState.searchQuery) {
+    const q = appState.searchQuery.toLowerCase();
+    pubs = pubs.filter(p =>
+      (p.displayName || '').toLowerCase().includes(q) ||
+      (p.city || '').toLowerCase().includes(q) ||
+      (p.description || '').toLowerCase().includes(q) ||
+      (p.services || []).some(s => s.toLowerCase().includes(q))
+    );
+  }
+
+  // Apply filters
+  const f = appState.filters;
+  if (f.city) pubs = pubs.filter(p => p.city === f.city);
+  if (f.type) pubs = pubs.filter(p => p.pubType === f.type);
+  if (f.gender) pubs = pubs.filter(p => p.gender === f.gender);
+  if (f.ethnicity) pubs = pubs.filter(p => p.ethnicity === f.ethnicity);
+  if (f.hair) pubs = pubs.filter(p => p.hairColor === f.hair);
+  if (f.body) pubs = pubs.filter(p => p.bodyType === f.body);
+  if (f.level) pubs = pubs.filter(p => {
+    const u = appState.users.find(u => u.id === p.userId);
+    return u && u.level == f.level;
+  });
+  if (f.age) {
+    const [min, max] = f.age === '46+' ? [46, 200] : f.age.split('-').map(Number);
+    pubs = pubs.filter(p => {
+      const a = parseInt(p.age);
+      return max ? a >= min && a <= max : a >= min;
+    });
+  }
+
+  document.getElementById('results-count').textContent = pubs.length;
+
+  if (pubs.length === 0) {
+    grid.innerHTML = `<div class="no-results" style="grid-column:1/-1">
+      <i data-lucide="search-x" size="40" style="color:var(--text3);margin-bottom:12px;display:block"></i>
+      No se encontraron perfiles con estos criterios
+    </div>`;
+    lucide.createIcons();
+    return;
+  }
+
+  grid.innerHTML = pubs.map(p => renderCard(p)).join('');
+  lucide.createIcons();
+}
+
+function isFresh(pub) {
+  if (!pub.createdAt) return false;
+  const age = Date.now() - new Date(pub.createdAt).getTime();
+  return age < 48 * 60 * 60 * 1000;
+}
+
+function renderCard(pub) {
+  const user = appState.users.find(u => u.id === pub.userId) || {};
+  const level = user.level || 1;
+  const cfg = LEVEL_CONFIG[level];
+  const avgRating = getAvgRating(pub.id);
+  const mainPhoto = (pub.photos && pub.photos[0]) || '';
+  const isAnon = pub.anonymous && level >= 2;
+  const displayName = isAnon ? 'Anónima/o' : ((level >= 3 && pub.pseudonym) ? pub.pseudonym : pub.displayName || user.name || 'Anónimo/a');
+  const typeLabels = {encuentros:'Encuentros',novia_virtual:'Virtual',contenido:'Contenido'};
+  const fresh = isFresh(pub);
+  const featured = pub.featured === true;
+
+  const cityText = pub.city ? pub.city : '';
+  const stateText = pub.state && pub.state !== 'Distrito Capital' ? ` · ${pub.state}` : (pub.state === 'Distrito Capital' ? ' · Caracas' : '');
+
+  return `<div class="profile-card ${featured ? 'featured' : ''}" onclick="openProfile('${pub.id}')">
+    <div class="card-img-wrap">
+      ${mainPhoto
+        ? `<img src="${mainPhoto}" alt="${displayName}" loading="lazy" onerror="this.style.display='none'" style="${isAnon ? 'filter:blur(14px);transform:scale(1.1)' : ''}">`
+        : `<div class="card-img-placeholder"><i data-lucide="user" size="40"></i></div>`}
+      <div class="card-badge">
+        ${fresh ? `<span class="badge badge-fresh">🌟 Fresca</span>` : ''}
+        ${featured ? `<span class="badge badge-featured"><i data-lucide="star" size="8"></i> Destacada</span>` : ''}
+        ${level >= 2 ? `<span class="badge badge-verified"><i data-lucide="badge-check" size="8"></i> Verificada</span>` : ''}
+      </div>
+      <button class="card-heart" onclick="event.stopPropagation();toggleFavorite('${pub.id}')">
+        <i data-lucide="heart" size="14"></i>
+      </button>
+      <div class="card-online">
+        <div class="online-dot ${pub.online ? '' : 'offline'}"></div>
+        <span class="online-text">${pub.online ? 'En línea' : 'Offline'}</span>
+      </div>
+    </div>
+    <div class="card-info">
+      ${pub.title ? `<div style="font-size:10px;color:var(--gold);font-weight:600;padding:6px 10px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${pub.title}</div>` : ''}
+      <div class="card-name" style="${pub.title?'padding-top:2px':''}">${displayName}</div>
+      <div class="card-type">${typeLabels[pub.pubType] || ''}</div>
+      <div class="card-location-row">
+        ${cityText ? `<span class="card-city-pill"><i data-lucide="map-pin" size="9"></i>${cityText}${stateText}</span>` : ''}
+      </div>
+      <div class="card-meta" style="margin-top:4px">
+        <span class="card-age">${pub.age} años</span>
+      </div>
+      <div class="card-price">
+        <span class="price-tag">${pub.rateFrom ? `$${pub.rateFrom}` : 'Consultar'}</span>
+        ${avgRating ? `<span class="card-rating"><i data-lucide="star" size="11"></i>${avgRating}</span>` : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function getAvgRating(pubId) {
+  const rs = appState.ratings.filter(r => r.pubId === pubId && r.approved);
+  if (!rs.length) return null;
+  const avg = rs.reduce((a, b) => a + b.score, 0) / rs.length;
+  return avg.toFixed(1);
+}
+
+// ===== PROFILE DETAIL =====
+function openProfile(pubId) {
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!pub) return;
+  const user = appState.users.find(u => u.id === pub.userId) || {};
+  const level = user.level || 1;
+  const cfg = LEVEL_CONFIG[level];
+  const isAnon = pub.anonymous && level >= 2;
+  const canSeePhotos = !isAnon || (appState.currentUser && appState.currentUser.level >= 3);
+  const displayName = isAnon ? 'Anónima/o' : ((level >= 3 && pub.pseudonym) ? pub.pseudonym : pub.displayName || user.name || 'Anónimo/a');
+  const avgRating = getAvgRating(pubId);
+  const reviews = appState.ratings.filter(r => r.pubId === pubId && r.approved);
+  const typeLabels = {encuentros:'Encuentros',novia_virtual:'Novia/Novio Virtual',contenido:'Solo Contenido'};
+  const genderLabels = {mujer:'Mujer',hombre:'Hombre',trans_mujer:'Mujer Trans',trans_hombre:'Hombre Trans',no_binario:'No Binario',bigenero:'Bigénero',fluido:'Género Fluido'};
+  const photos = pub.photos || [];
+
+  // Increment view
+  pub.views = (pub.views || 0) + 1;
+  DB.save();
+
+  appState.currentProfileId = pubId;
+  document.getElementById('detail-name').textContent = pub.title ? pub.title : displayName;
+
+  const content = document.getElementById('profile-detail-content');
+  content.innerHTML = `
+    <div class="profile-gallery">
+      <div class="gallery-main" id="gallery-main">
+        ${photos[0] ? `<img src="${photos[0]}" alt="${displayName}" id="main-gallery-img" style="${!canSeePhotos ? 'filter:blur(18px);transform:scale(1.1)' : ''}">` :
+          `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg3)"><i data-lucide="image" size="60" style="color:var(--text3)"></i></div>`}
+        ${!canSeePhotos ? `<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;pointer-events:none">
+          <i data-lucide="eye-off" size="28" style="color:#fff;opacity:0.8"></i>
+          <span style="color:#fff;font-size:12px;font-weight:600;opacity:0.9;text-shadow:0 1px 4px rgba(0,0,0,0.8)">Fotos protegidas · Nivel 3 para ver</span>
+        </div>` : ''}
+      </div>
+      ${canSeePhotos ? photos.slice(1).map((p,i) => `<div class="gallery-thumb" onclick="switchGalleryPhoto('${p}')"><img src="${p}" alt="foto ${i+2}" loading="lazy"></div>`).join('') : ''}
+    </div>
+    <div class="profile-body">
+      <div class="profile-intro">
+        <div>
+          ${photos[0] ? `<img class="profile-avatar-lg" src="${photos[0]}" alt="${displayName}" style="${!canSeePhotos ? 'filter:blur(12px)' : ''}">` :
+            `<div style="width:80px;height:80px;border-radius:50%;background:var(--bg3);border:2px solid var(--red);display:flex;align-items:center;justify-content:center"><i data-lucide="user" size="30" style="color:var(--text3)"></i></div>`}
+        </div>
+        <div class="profile-intro-text">
+          ${pub.title ? `<p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:4px">${pub.title}</p>` : ''}
+          <h1>${displayName}</h1>
+          <div class="badges-row">
+            ${level >= 2 ? `<span class="badge badge-verified"><i data-lucide="badge-check" size="9"></i> Verificada</span>` : ''}
+            ${isFresh(pub) ? `<span class="badge badge-fresh">🌟 Fresca</span>` : ''}
+            ${pub.featured ? `<span class="badge badge-featured">⭐ Destacada</span>` : ''}
+            <span class="badge badge-basic">${typeLabels[pub.pubType] || ''}</span>
+            <span class="badge badge-basic">${genderLabels[pub.gender] || ''}</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap">
+            ${pub.city ? `<span class="card-city-pill"><i data-lucide="map-pin" size="10"></i>${pub.city}${pub.state && pub.state !== pub.city ? ' · ' + pub.state : ''}</span>` : ''}
+          </div>
+          ${avgRating ? `<div class="card-rating" style="font-size:14px;margin-top:6px"><i data-lucide="star" size="14"></i>${avgRating} (${reviews.length} calificación${reviews.length !== 1 ? 'es' : ''})</div>` : ''}
+        </div>
+      </div>
+
+      <div class="profile-stats">
+        <div class="stat-card"><div class="stat-value">${pub.age}</div><div class="stat-label">Años</div></div>
+        <div class="stat-card"><div class="stat-value">${pub.views || 1}</div><div class="stat-label">Visitas</div></div>
+        <div class="stat-card"><div class="stat-value">${reviews.length}</div><div class="stat-label">Reseñas</div></div>
+      </div>
+
+      <p class="section-title"><i data-lucide="user" size="14" style="color:var(--red)"></i> Sobre mi</p>
+      <p class="about-text">${pub.description || 'Sin descripción disponible.'}</p>
+
+      <p class="section-title"><i data-lucide="info" size="14" style="color:var(--red)"></i> Características</p>
+      <div class="tags-list">
+        ${pub.ethnicity ? `<span class="tag">Etnia: ${pub.ethnicity}</span>` : ''}
+        ${pub.hairColor ? `<span class="tag">Cabello: ${pub.hairColor}</span>` : ''}
+        ${pub.bodyType ? `<span class="tag">Cuerpo: ${pub.bodyType}</span>` : ''}
+        ${pub.orientation ? `<span class="tag">${pub.orientation}</span>` : ''}
+        ${pub.attendsTo ? pub.attendsTo.map(a=>`<span class="tag">${a}</span>`).join('') : ''}
+        ${pub.meetLocation ? pub.meetLocation.map(m=>`<span class="tag">${m}</span>`).join('') : ''}
+      </div>
+
+      ${(pub.services && pub.services.length) ? `
+        <p class="section-title"><i data-lucide="heart" size="14" style="color:var(--red)"></i> Servicios</p>
+        <div class="services-grid">
+          ${pub.services.map(s=>`<div class="service-item"><i data-lucide="check" size="14" style="color:var(--red)"></i>${s}</div>`).join('')}
+        </div>
+      ` : ''}
+
+      <p class="section-title"><i data-lucide="dollar-sign" size="14" style="color:var(--red)"></i> Tarifas</p>
+      <div class="rates-box">
+        ${pub.rateFrom ? `<div class="rate-row"><span class="rate-label">Desde</span><span class="rate-value">$${pub.rateFrom}</span></div>` : ''}
+        ${pub.rateHour ? `<div class="rate-row"><span class="rate-label">Por hora</span><span class="rate-value">$${pub.rateHour}</span></div>` : ''}
+        ${pub.rateNight ? `<div class="rate-row"><span class="rate-label">Noche completa</span><span class="rate-value">$${pub.rateNight}</span></div>` : ''}
+        ${pub.payments ? `<div class="rate-row"><span class="rate-label">Métodos de pago</span><span style="font-size:12px;color:var(--text2)">${pub.payments.join(', ')}</span></div>` : ''}
+      </div>
+
+      <p class="section-title"><i data-lucide="phone" size="14" style="color:var(--red)"></i> Contacto</p>
+      <div class="contact-buttons">
+        ${pub.whatsapp ? `<a class="btn-contact btn-whatsapp" href="https://wa.me/${pub.whatsapp.replace(/\D/g,'')}" target="_blank"><i data-lucide="message-circle" size="18"></i> WhatsApp</a>` : ''}
+        ${pub.telegram ? `<a class="btn-contact btn-telegram" href="https://t.me/${pub.telegram.replace('@','')}" target="_blank"><i data-lucide="send" size="18"></i> Telegram</a>` : ''}
+        ${pub.phone ? `<a class="btn-contact btn-call" href="tel:${pub.phone}"><i data-lucide="phone" size="18"></i> Llamar</a>` : ''}
+      </div>
+
+      ${(level >= 2 && pub.socialInstagram || pub.socialTwitter) ? `
+        <p class="section-title"><i data-lucide="share-2" size="14" style="color:var(--red)"></i> Redes Sociales</p>
+        <div class="socials-row">
+          ${pub.socialInstagram ? `<a class="social-btn" href="https://instagram.com/${pub.socialInstagram}" target="_blank" title="Instagram"><i data-lucide="instagram" size="18"></i></a>` : ''}
+          ${pub.socialTwitter ? `<a class="social-btn" href="https://twitter.com/${pub.socialTwitter}" target="_blank" title="Twitter"><i data-lucide="twitter" size="18"></i></a>` : ''}
+          ${pub.socialTelegram ? `<a class="social-btn" href="https://t.me/${pub.socialTelegram}" target="_blank" title="Telegram"><i data-lucide="send" size="18"></i></a>` : ''}
+        </div>
+      ` : ''}
+
+      <div class="ratings-section">
+        <p class="section-title"><i data-lucide="star" size="14" style="color:var(--red)"></i> Calificaciones</p>
+        ${reviews.length ? `
+          <div class="rating-summary">
+            <div class="big-rating">${avgRating}</div>
+            <div>
+              <div class="stars-row">${renderStars(parseFloat(avgRating))}</div>
+              <div class="rating-count">${reviews.length} calificación${reviews.length > 1 ? 'es' : ''}</div>
+            </div>
+          </div>
+          ${reviews.slice(0,3).map(r=>`
+            <div class="review-card">
+              <div class="review-header">
+                <span class="reviewer-name">${r.reviewerName || 'Cliente Verificado'}</span>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <div class="stars-row" style="font-size:12px">${renderStars(r.score)}</div>
+                  <span class="review-date">${new Date(r.createdAt).toLocaleDateString('es-VE')}</span>
+                </div>
+              </div>
+              <p class="review-text">${r.comment || ''}</p>
+            </div>
+          `).join('')}
+        ` : '<p style="color:var(--text3);font-size:13px">Sin calificaciones aún</p>'}
+        <button class="btn-secondary" style="width:auto;padding:10px 20px;margin-top:8px" onclick="openRatingModal('${pubId}')">
+          <i data-lucide="star" size="14"></i> Dejar calificación
+        </button>
+      </div>
+
+      ${user.verified ? `<a href="https://wa.me/584228745777?text=Hola%20soporte%20D%20Caracas%20VIP%2C%20soy%20creador%20verificado%20y%20necesito%20ayuda%20con%20mi%20perfil." target="_blank" class="btn-support-wa"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg> Soporte WhatsApp</a>` : ''}
+      <div class="disclaimer-box">
+        <strong>Aviso Legal Importante</strong>
+        D Caracas VIP no interviene ni es responsable de los actos, acuerdos o actividades entre anunciantes y usuarios fuera de esta plataforma. Todo contacto y acuerdo es responsabilidad exclusiva de las partes involucradas. El contenido de este anuncio ha sido publicado por el propio anunciante.
+      </div>
+
+      <div style="height:80px"></div>
+    </div>`;
+
+  document.getElementById('view-profile').style.display = 'block';
+  document.getElementById('home-view').style.display = 'none';
+  document.getElementById('search-section').style.display = 'none';
+  document.getElementById('main-footer').style.display = 'none';
+  lucide.createIcons();
+}
+
+function renderStars(rating) {
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    html += `<i data-lucide="star" size="12" class="star${i <= Math.round(rating) ? '' : ' empty'}"></i>`;
+  }
+  return html;
+}
+
+function switchGalleryPhoto(src) {
+  document.getElementById('main-gallery-img').src = src;
+}
+
+function closeProfile() {
+  document.getElementById('view-profile').style.display = 'none';
+  document.getElementById('home-view').style.display = 'block';
+  document.getElementById('search-section').style.display = 'block';
+  document.getElementById('main-footer').style.display = 'block';
+}
+
+// ===== NAVIGATION =====
+function showHome() {
+  ['home-view','search-section'].forEach(id=>document.getElementById(id).style.display='block');
+  ['view-profile','dashboard','admin-panel','profile-config'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none'});
+  document.getElementById('main-footer').style.display = 'block';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  lucide.createIcons();
+}
+
+function showPage(pageId) {
+  document.getElementById('home-view').style.display = 'none';
+  document.getElementById('view-profile').style.display = 'none';
+  document.getElementById('search-section').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'none';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const pg = document.getElementById(pageId);
+  if (pg) pg.classList.add('active');
+  document.getElementById('main-footer').style.display = 'block';
+  window.scrollTo(0, 0);
+  lucide.createIcons();
+}
+
+function showDashboard() {
+  if (!appState.currentUser) { openLogin(); return; }
+  ['home-view','search-section','view-profile','admin-panel','profile-config'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none'});
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('dashboard').style.display = 'block';
+  document.getElementById('main-footer').style.display = 'block';
+  renderDashboard();
+  lucide.createIcons();
+}
+
+function showAdmin() {
+  ['home-view','search-section','view-profile','dashboard','profile-config'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none'});
+  document.getElementById('admin-panel').style.display = 'block';
+  document.getElementById('main-footer').style.display = 'block';
+  renderAdmin();
+  lucide.createIcons();
+}
+
+// ===== SEARCH & FILTERS =====
+function handleSearch() {
+  appState.searchQuery = document.getElementById('search-input').value;
+  renderCatalog();
+}
+
+function toggleFilters() {
+  appState.filterOpen = !appState.filterOpen;
+  const panel = document.getElementById('filter-panel');
+  const btn = document.getElementById('filter-toggle');
+  if (appState.filterOpen) {
+    panel.classList.add('open');
+    btn.classList.add('active');
+  } else {
+    panel.classList.remove('open');
+    btn.classList.remove('active');
+  }
+}
+
+function applyFilters() {
+  appState.filters = {
+    city: document.getElementById('f-city').value,
+    age: document.getElementById('f-age').value,
+    type: document.getElementById('f-type').value,
+    gender: document.getElementById('f-gender').value,
+    ethnicity: document.getElementById('f-ethnicity').value,
+    hair: document.getElementById('f-hair').value,
+    body: document.getElementById('f-body').value,
+    level: document.getElementById('f-level').value
+  };
+  renderCatalog();
+}
+
+function clearFilters() {
+  document.querySelectorAll('#filter-panel select').forEach(s => s.value = '');
+  appState.filters = {};
+  document.getElementById('search-input').value = '';
+  appState.searchQuery = '';
+  renderCatalog();
+}
+
+function switchTab(btn, tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  appState.currentTab = tab;
+  renderCatalog();
+}
+
+// ===== AUTH =====
+let loginStep = 'login'; // 'login' | 'register'
+let registerStep = 1;
+let tempRegData = {};
+let tempPhotos = [];
+let idPhotoFile = null;
+
+function openLogin() {
+  loginStep = 'login';
+  showModal(buildLoginModal());
+}
+
+function buildLoginModal() {
+  return `<span class="modal-handle"></span>
+  <h2 class="modal-title">Bienvenida/o</h2>
+  <p class="modal-subtitle">Accede a tu cuenta o crea una nueva</p>
+  <div id="login-tabs" style="display:flex;gap:6px;margin-bottom:20px">
+    <button onclick="setLoginMode('login')" id="tab-login" class="tab-btn active" style="flex:1">Iniciar sesión</button>
+    <button onclick="setLoginMode('register')" id="tab-register" class="tab-btn" style="flex:1">Registrarse</button>
+  </div>
+  <div id="login-form-area">
+    ${buildLoginForm()}
+  </div>`;
+}
+
+function setLoginMode(mode) {
+  loginStep = mode;
+  document.getElementById('tab-login').className = 'tab-btn' + (mode === 'login' ? ' active' : '');
+  document.getElementById('tab-register').className = 'tab-btn' + (mode === 'register' ? ' active' : '');
+  document.getElementById('login-form-area').innerHTML = mode === 'login' ? buildLoginForm() : buildRegisterStep1();
+  lucide.createIcons();
+}
+
+function buildLoginForm() {
+  return `<div id="login-err"></div>
+  <div class="form-row"><label>Correo / Usuario</label><input type="email" id="li-email" placeholder="correo@ejemplo.com" autocomplete="email"></div>
+  <div class="form-row"><label>Contraseña</label>
+    <div style="position:relative">
+      <input type="password" id="li-pass" placeholder="Tu contraseña" style="padding-right:40px">
+      <button onclick="togglePass('li-pass')" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--text3)">
+        <i data-lucide="eye" size="16"></i>
+      </button>
+    </div>
+  </div>
+  <button class="btn-primary" onclick="doLogin()">Iniciar sesión</button>`;
+}
+
+function buildRegisterStep1() {
+  registerStep = 1;
+  return `<div class="steps-indicator">
+    <div class="step-dot active"></div><div class="step-dot"></div><div class="step-dot"></div><div class="step-dot"></div>
+  </div>
+  <div id="reg-err"></div>
+  <p style="font-size:12px;color:var(--text3);margin-bottom:16px">Paso 1/4: Información Personal</p>
+  <div class="form-2col">
+    <div class="form-row"><label>Nombre</label><input type="text" id="r-name" placeholder="Tu nombre" oninput="capitalizeInput(this)"></div>
+    <div class="form-row"><label>Apellido</label><input type="text" id="r-lastname" placeholder="Tu apellido" oninput="capitalizeInput(this)"></div>
+  </div>
+  <div class="form-row"><label>Edad</label><input type="number" id="r-age" min="18" max="80" placeholder="Ej: 25"></div>
+  <div class="form-row"><label>Correo electrónico</label><input type="email" id="r-email" placeholder="correo@ejemplo.com"></div>
+  <div class="form-row"><label>WhatsApp (con código de país)</label>
+    <input type="tel" id="r-whatsapp" placeholder="+58 412 1234567" oninput="formatPhone(this)" onblur="formatPhone(this)">
+    <p class="form-hint">Ej: 0412... → +58 412... · Col: 3XX → +57 · USA: 1... → +1</p>
+  </div>
+  <div class="form-row"><label>Contraseña</label><input type="password" id="r-pass" placeholder="Mínimo 8 caracteres"></div>
+  <div class="form-row"><label>Confirmar contraseña</label><input type="password" id="r-pass2" placeholder="Repite tu contraseña"></div>
+  <div class="form-row">
+    <label>Género</label>
+    <select id="r-gender">
+      <option value="">Seleccionar</option>
+      <option value="mujer">Mujer</option>
+      <option value="hombre">Hombre</option>
+      <option value="trans_mujer">Mujer Trans</option>
+      <option value="trans_hombre">Hombre Trans</option>
+      <option value="no_binario">No Binario</option>
+      <option value="bigenero">Bigénero</option>
+      <option value="fluido">Género Fluido</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label>Orientación sexual</label>
+    <select id="r-orientation">
+      <option value="">Seleccionar</option>
+      <option value="Heterosexual">Heterosexual</option>
+      <option value="Homosexual">Homosexual</option>
+      <option value="Bisexual">Bisexual</option>
+      <option value="Pansexual">Pansexual</option>
+    </select>
+  </div>
+  <button class="btn-primary" onclick="registerStep1()">Continuar</button>`;
+}
+
+function buildRegisterStep2() {
+  registerStep = 2;
+  return `<div class="steps-indicator">
+    <div class="step-dot done"></div><div class="step-dot active"></div><div class="step-dot"></div><div class="step-dot"></div>
+  </div>
+  <div id="reg-err"></div>
+  <p style="font-size:12px;color:var(--text3);margin-bottom:16px">Paso 2/4: Verificación de Identidad</p>
+  <div class="msg-info"><i data-lucide="shield" size="14" style="flex-shrink:0;margin-top:1px"></i>
+  Tu documento es revisado únicamente por el equipo admin para verificar tu identidad y mayoría de edad. No es compartido.</div>
+  <div class="form-row">
+    <label>Número de Cédula</label>
+    <input type="text" id="r-cedula" placeholder="V-12345678">
+  </div>
+  <div class="form-row">
+    <label>Foto de tu Cédula (ambos lados si es posible)</label>
+    <div class="upload-box" onclick="document.getElementById('id-photo-input').click()">
+      <i data-lucide="upload" size="24" style="color:var(--red);margin:0 auto"></i>
+      <p>Toca para subir foto de tu cédula</p>
+      <input type="file" id="id-photo-input" accept="image/*" onchange="previewIdPhoto(this)">
+    </div>
+    <div id="id-preview"></div>
+    <p class="form-hint">Formatos aceptados: JPG, PNG. Máx 5MB</p>
+  </div>
+  <button class="btn-primary" onclick="registerStep2()">Continuar</button>
+  <button class="btn-secondary" onclick="setLoginMode('register')">Volver</button>`;
+}
+
+function buildRegisterStep3() {
+  registerStep = 3;
+  const levelHTML = Object.entries(LEVEL_CONFIG).map(([lvl, cfg]) => `
+    <div class="level-card ${lvl == 1 ? 'selected' : ''}" id="lcard-${lvl}" onclick="selectLevel(${lvl})">
+      <h4><i data-lucide="${cfg.icon}" size="14" style="color:${cfg.color}"></i> Nivel ${lvl} - ${cfg.name}</h4>
+      <p>Hasta ${cfg.photos} fotos · ${cfg.pseudonym ? 'Seudónimo' : 'Nombre real'} · ${cfg.socials ? 'Redes sociales' : 'Sin redes'} · ${cfg.privacy ? 'Privacidad facial' : 'Rostro visible'}</p>
+    </div>`).join('');
+
+  return `<div class="steps-indicator">
+    <div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot active"></div><div class="step-dot"></div>
+  </div>
+  <div id="reg-err"></div>
+  <p style="font-size:12px;color:var(--text3);margin-bottom:16px">Paso 3/4: Elige tu Nivel</p>
+  <div class="level-cards">${levelHTML}</div>
+  <div class="msg-info" style="font-size:11px"><i data-lucide="info" size="12" style="flex-shrink:0;margin-top:1px"></i>
+  Los niveles 2 y 3 requieren aprobación adicional por parte del administrador. Contacta al soporte para upgrade.</div>
+  <button class="btn-primary" onclick="registerStep3()">Continuar</button>
+  <button class="btn-secondary" onclick="document.getElementById('modal-form-area').innerHTML = buildRegisterStep2();lucide.createIcons()">Volver</button>`;
+}
+
+function buildRegisterStep4() {
+  registerStep = 4;
+  return `<div class="steps-indicator">
+    <div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot done"></div><div class="step-dot active"></div>
+  </div>
+  <div id="reg-err"></div>
+  <p style="font-size:12px;color:var(--text3);margin-bottom:16px">Paso 4/4: Términos y Condiciones</p>
+  <div class="disclaimer-box" style="max-height:160px;overflow-y:auto;font-size:12px">
+    <strong>Resumen de Términos</strong>
+    Al registrarte confirmas: (1) Ser mayor de 18 años, (2) Que el contenido que publiques es legal, (3) Que eres el titular de las imágenes que publiques, (4) Que los acuerdos con clientes son de tu exclusiva responsabilidad, (5) No publicar contenido que involucre menores de edad, (6) Aceptar las políticas de moderación del sitio.
+  </div>
+  <div class="checkbox-item" style="margin:12px 0" onclick="this.querySelector('input').click()">
+    <input type="checkbox" id="r-terms">
+    <span>He leído y acepto los Términos y Condiciones y la Política de Privacidad</span>
+  </div>
+  <div class="checkbox-item" style="margin-bottom:12px" onclick="this.querySelector('input').click()">
+    <input type="checkbox" id="r-age-confirm">
+    <span>Confirmo que soy mayor de 18 años y que el contenido que publicaré es legal</span>
+  </div>
+  <button class="btn-primary" onclick="completeRegistration()">Crear mi cuenta</button>
+  <button class="btn-secondary" onclick="document.getElementById('modal-form-area').innerHTML = buildRegisterStep3();lucide.createIcons()">Volver</button>`;
+}
+
+let selectedLevel = 1;
+function selectLevel(lvl) {
+  selectedLevel = lvl;
+  document.querySelectorAll('.level-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById(`lcard-${lvl}`).classList.add('selected');
+}
+
+function capitalizeInput(el) {
+  const pos = el.selectionStart;
+  el.value = el.value.charAt(0).toUpperCase() + el.value.slice(1);
+  el.setSelectionRange(pos, pos);
+}
+
+function formatPhone(el) {
+  let v = el.value.trim().replace(/\s+/g, '');
+  if (!v) return;
+  // Already has + prefix — check and reformat
+  if (v.startsWith('+')) { el.value = v; return; }
+
+  // Venezuela: 04XX (mobile), 02XX (landline)
+  if (/^0(412|414|416|424|426|212|241|251|261|271|281|291|293|295)/.test(v)) {
+    const area = v.slice(1, 4);
+    const rest = v.slice(4);
+    el.value = `+58 ${area} ${rest}`;
+    return;
+  }
+  // Colombia: 3XX (10 digits)
+  if (/^3[0-9]{9}$/.test(v)) { el.value = `+57 ${v}`; return; }
+  // USA/Canada: 1XXXXXXXXXX
+  if (/^1[2-9][0-9]{9}$/.test(v)) { el.value = `+1 ${v.slice(1)}`; return; }
+  // Mexico: 52 or 044/045
+  if (/^(044|045)/.test(v)) { el.value = `+52 ${v.slice(3)}`; return; }
+  if (/^52[0-9]{10}$/.test(v)) { el.value = `+52 ${v.slice(2)}`; return; }
+  // Peru: 9XXXXXXXX (9 digits)
+  if (/^9[0-9]{8}$/.test(v)) { el.value = `+51 ${v}`; return; }
+  // Ecuador: 09XXXXXXXX
+  if (/^09[0-9]{8}$/.test(v)) { el.value = `+593 ${v.slice(1)}`; return; }
+  // Brazil: 55 or 0XX
+  if (/^55[1-9][0-9]{9}$/.test(v)) { el.value = `+55 ${v.slice(2)}`; return; }
+  // Spain: 6XX or 7XX (9 digits)
+  if (/^[67][0-9]{8}$/.test(v)) { el.value = `+34 ${v}`; return; }
+}
+
+function registerStep1() {
+  const name = document.getElementById('r-name').value.trim();
+  const lastname = document.getElementById('r-lastname').value.trim();
+  const age = parseInt(document.getElementById('r-age').value);
+  const email = document.getElementById('r-email').value.trim();
+  const wa = document.getElementById('r-whatsapp');
+  formatPhone(wa);
+  const whatsapp = wa.value.trim();
+  const pass = document.getElementById('r-pass').value;
+  const pass2 = document.getElementById('r-pass2').value;
+  const gender = document.getElementById('r-gender').value;
+
+  if (!name || !lastname || !age || !email || !whatsapp || !pass || !gender) return showRegErr('Todos los campos son obligatorios');
+  if (age < 18) return showRegErr('Debes ser mayor de 18 años para registrarte');
+  if (pass.length < 8) return showRegErr('La contraseña debe tener al menos 8 caracteres');
+  if (pass !== pass2) return showRegErr('Las contraseñas no coinciden');
+  if (appState.users.find(u => u.email === email)) return showRegErr('Este correo ya está registrado');
+
+  tempRegData = { name: `${name} ${lastname}`, firstName: name, lastName: lastname, age, email, whatsapp, pass, gender, orientation: document.getElementById('r-orientation').value };
+  document.getElementById('modal-form-area').innerHTML = buildRegisterStep2();
+  lucide.createIcons();
+}
+
+function previewIdPhoto(input) {
+  if (!input.files[0]) return;
+  idPhotoFile = input.files[0];
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('id-preview').innerHTML = `<img src="${e.target.result}" style="width:100%;border-radius:8px;margin-top:8px;max-height:150px;object-fit:contain">`;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function registerStep2() {
+  const cedula = document.getElementById('r-cedula').value.trim();
+  if (!cedula) return showRegErr('El número de cédula es obligatorio');
+  if (!idPhotoFile) return showRegErr('Debes subir la foto de tu cédula');
+  tempRegData.cedula = cedula;
+  document.getElementById('modal-form-area').innerHTML = buildRegisterStep3();
+  lucide.createIcons();
+}
+
+function registerStep3() {
+  tempRegData.level = selectedLevel;
+  document.getElementById('modal-form-area').innerHTML = buildRegisterStep4();
+  lucide.createIcons();
+}
+
+async function completeRegistration() {
+  const terms = document.getElementById('r-terms').checked;
+  const ageConfirm = document.getElementById('r-age-confirm').checked;
+  if (!terms || !ageConfirm) return showRegErr('Debes aceptar los términos y confirmar tu edad');
+
+  const btn = document.querySelector('#modal-form-area .btn-primary');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="loader"></div>';
+
+  // Upload ID photo
+  let idPhotoUrl = '';
+  try {
+    if (idPhotoFile && CONFIG.IMGBB_API_KEY !== 'TU_IMGBB_API_KEY_AQUI') {
+      idPhotoUrl = await uploadToImgBB(idPhotoFile);
+    }
+  } catch(e) { console.warn('ID photo upload failed'); }
+
+  const newUser = {
+    id: 'u_' + Date.now() + '_' + Math.random().toString(36).substr(2,5),
+    name: tempRegData.name,
+    age: tempRegData.age,
+    email: tempRegData.email,
+    whatsapp: tempRegData.whatsapp,
+    password: tempRegData.pass,
+    gender: tempRegData.gender,
+    orientation: tempRegData.orientation,
+    cedula: tempRegData.cedula,
+    idPhotoUrl: idPhotoUrl,
+    level: 1, // All start at 1 pending review
+    requestedLevel: tempRegData.level,
+    verified: false,
+    verificationStatus: 'pending',
+    createdAt: new Date().toISOString(),
+    views: 0,
+    contacts: 0
+  };
+
+  appState.users.push(newUser);
+  await DB.save();
+
+  closeModal();
+  showToast('success', 'Cuenta creada! El admin revisará tus documentos antes de que puedas publicar.');
+  
+  appState.currentUser = newUser;
+  localStorage.setItem('dcv_session', JSON.stringify(newUser));
+  updateNavForUser();
+  showDashboard();
+}
+
+async function doLogin() {
+  const email = document.getElementById('li-email').value.trim();
+  const pass = document.getElementById('li-pass').value;
+
+  // Admin check
+  if (email === CONFIG.ADMIN_USER && pass === CONFIG.ADMIN_PASS) {
+    appState.isAdmin = true;
+    localStorage.setItem('dcv_admin', '1');
+    document.getElementById('nav-admin-btn').classList.remove('hidden');
+    document.getElementById('nav-login-btn').classList.add('hidden');
+    closeModal();
+    showToast('success', 'Sesión de administrador iniciada');
+    showAdmin();
+    return;
+  }
+
+  const user = appState.users.find(u => u.email === email && u.password === pass);
+  if (!user) {
+    document.getElementById('login-err').innerHTML = '<div class="msg-error">Correo o contraseña incorrectos</div>';
+    return;
+  }
+
+  appState.currentUser = user;
+  localStorage.setItem('dcv_session', JSON.stringify(user));
+  updateNavForUser();
+  closeModal();
+  showToast('success', `Bienvenida/o, ${user.name}!`);
+  showDashboard();
+}
+
+function logout() {
+  appState.currentUser = null;
+  localStorage.removeItem('dcv_session');
+  updateNavForUser();
+  showHome();
+  showToast('info', 'Sesión cerrada');
+}
+
+function logoutAdmin() {
+  appState.isAdmin = false;
+  localStorage.removeItem('dcv_admin');
+  document.getElementById('nav-admin-btn').classList.add('hidden');
+}
+
+function updateNavForUser() {
+  const user = appState.currentUser;
+  const isAdmin = appState.isAdmin;
+  if (user || isAdmin) {
+    document.getElementById('nav-login-btn').classList.add('hidden');
+  } else {
+    document.getElementById('nav-login-btn').classList.remove('hidden');
+  }
+  if (user) {
+    document.getElementById('nav-creator-actions').classList.remove('hidden');
+    document.getElementById('nav-creator-actions').style.display = 'flex';
+  } else {
+    document.getElementById('nav-creator-actions').classList.add('hidden');
+  }
+}
+
+function showRegErr(msg) {
+  document.getElementById('reg-err').innerHTML = `<div class="msg-error">${msg}</div>`;
+}
+
+function togglePass(id) {
+  const inp = document.getElementById(id);
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+
+// ===== PUBLICATION FORM =====
+let pubPhotos = [];
+let pubPhotoFiles = [];
+
+function openPublicationForm(editId = null) {
+  const user = appState.currentUser;
+  if (!user) return;
+  if (!user.verified && user.verificationStatus !== 'approved') {
+    showModal(`<span class="modal-handle"></span>
+      <h2 class="modal-title">Verificación Pendiente</h2>
+      <div class="msg-info"><i data-lucide="clock" size="16" style="flex-shrink:0"></i>Tu cuenta está siendo revisada por nuestro equipo. Te notificaremos cuando sea aprobada.</div>
+      <button class="btn-primary" onclick="closeModal()">Entendido</button>`);
+    return;
+  }
+
+  pubPhotos = [];
+  pubPhotoFiles = [];
+  const level = user.level || 1;
+  const cfg = LEVEL_CONFIG[level] || LEVEL_CONFIG[1];
+  const existingPub = editId ? appState.publications.find(p => p.id === editId) : null;
+  const base = user.baseProfile || {};
+
+  // Pre-fill from base profile or existing pub
+  const defOrientation = existingPub?.orientation || base.orientation || '';
+  const defEthnicity   = existingPub?.ethnicity   || base.ethnicity   || '';
+  const defHair        = existingPub?.hairColor    || base.hairColor   || '';
+  const defBody        = existingPub?.bodyType     || base.bodyType    || '';
+  const defState       = existingPub?.state        || base.state       || '';
+  const defCity        = existingPub?.city         || base.city        || '';
+  const defTelegram    = existingPub?.telegram     || base.telegram    || '';
+  const defPhone       = existingPub?.phone        || base.phone       || '';
+  const defWa          = user.whatsapp             || '';
+  const hasBaseProfile = !!(base.ethnicity || base.hairColor || base.bodyType);
+
+  const stateOptions = Object.keys(VZ_LOCATIONS).map(s => `<option value="${s}" ${defState===s?'selected':''}>` + s + '</option>').join('');
+  const serviceCheckboxes = SERVICES_LIST.map(s => `
+    <div class="checkbox-item" onclick="event.stopPropagation();this.querySelector('input').click()">
+      <input type="checkbox" name="services" value="${s}" ${existingPub?.services?.includes(s) ? 'checked' : ''}>
+      <span>${s}</span>
+    </div>`).join('');
+  const paymentCheckboxes = cfg.payments.map(p => `
+    <div class="checkbox-item" onclick="event.stopPropagation();this.querySelector('input').click()">
+      <input type="checkbox" name="payments" value="${p}" ${existingPub?.payments?.includes(p) ? 'checked' : ''}>
+      <span>${p}</span>
+    </div>`).join('');
+
+  showModal(`<span class="modal-handle"></span>
+  <h2 class="modal-title">${editId ? 'Editar' : 'Nueva'} Publicación</h2>
+  <p class="modal-subtitle">Nivel ${level} - ${cfg.name} · Hasta ${cfg.photos} foto${cfg.photos > 1 ? 's' : ''} · Hasta ${cfg.maxPubs} publicación${cfg.maxPubs > 1 ? 'es' : ''}</p>
+  <div id="pub-err"></div>
+
+  <div class="form-row"><label>Nombre en publicación</label>
+    <input type="text" id="pub-displayname" value="${existingPub?.displayName || user.name}" placeholder="Como te mostrarás">
+  </div>
+
+  ${level >= 3 ? `<div class="form-row"><label>Seudónimo (opcional)</label>
+    <input type="text" id="pub-pseudonym" value="${existingPub?.pseudonym || ''}" placeholder="Tu nombre artístico">
+    <p class="form-hint">Solo visible si activas el modo anónimo</p>
+  </div>` : ''}
+
+  ${level >= 2 ? `<div class="form-row">
+    <label>Opciones de privacidad</label>
+    <div class="checkbox-item" onclick="event.stopPropagation();this.querySelector('input').click()">
+      <input type="checkbox" id="pub-anon" ${existingPub?.anonymous ? 'checked' : ''} onchange="toggleAnonymousMode(this)">
+      <span>🔒 Modo anónimo — foto aparece con blur en el catálogo${level >= 3 ? ' (visitantes Nivel 3 pueden ver las fotos)' : ''}</span>
+    </div>
+  </div>` : ''}
+
+  <div class="form-row"><label>Tipo de publicación</label>
+    <select id="pub-type">
+      <option value="encuentros" ${existingPub?.pubType === 'encuentros' ? 'selected' : ''}>Encuentros</option>
+      <option value="novia_virtual" ${existingPub?.pubType === 'novia_virtual' ? 'selected' : ''}>Novia/Novio Virtual</option>
+      <option value="contenido" ${existingPub?.pubType === 'contenido' ? 'selected' : ''}>Solo Contenido</option>
+    </select>
+  </div>
+
+  <div class="form-row"><label>Descripción / Sobre mi</label>
+    <textarea id="pub-desc" placeholder="Describe tus servicios, personalidad y lo que ofreces...">${existingPub?.description || ''}</textarea>
+  </div>
+
+  <div class="form-2col">
+    <div class="form-row"><label>Edad en publicación</label>
+      <div style="display:flex;gap:6px;align-items:center">
+        <input type="number" id="pub-age" value="${existingPub?.age || user.age}" min="18" max="80" style="flex:1" readonly>
+        <button type="button" onclick="requestAgeChange()" class="btn-secondary" style="width:auto;padding:6px 10px;font-size:11px;white-space:nowrap;flex-shrink:0">✏️ Cambiar</button>
+      </div>
+      <p class="form-hint">Solo modificable con aprobación del admin</p>
+    </div>
+    <div class="form-row"><label>Orientación</label>
+      <select id="pub-orientation">
+        <option value="">Seleccionar</option>
+        <option value="Heterosexual" ${existingPub?.orientation === 'Heterosexual' ? 'selected' : ''}>Heterosexual</option>
+        <option value="Homosexual" ${existingPub?.orientation === 'Homosexual' ? 'selected' : ''}>Homosexual</option>
+        <option value="Bisexual" ${existingPub?.orientation === 'Bisexual' ? 'selected' : ''}>Bisexual</option>
+        <option value="Pansexual" ${existingPub?.orientation === 'Pansexual' ? 'selected' : ''}>Pansexual</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-2col">
+    <div class="form-row"><label>Etnia</label>
+      <select id="pub-ethnicity">
+        <option value="">Seleccionar</option>
+        <option value="mestiza" ${defEthnicity==='mestiza'?'selected':''}>Mestiza/o</option>
+        <option value="blanca" ${defEthnicity==='blanca'?'selected':''}>Blanca/o</option>
+        <option value="morena" ${defEthnicity==='morena'?'selected':''}>Morena/o</option>
+        <option value="latina" ${defEthnicity==='latina'?'selected':''}>Latina/o</option>
+        <option value="afro" ${defEthnicity==='afro'?'selected':''}>Afrodescendiente</option>
+        <option value="asiatica" ${defEthnicity==='asiatica'?'selected':''}>Asiática/o</option>
+      </select>
+    </div>
+    <div class="form-row"><label>Color de Cabello</label>
+      <select id="pub-hair">
+        <option value="">Seleccionar</option>
+        <option value="rubia">Rubia/o</option>
+        <option value="morena_hair">Morena/o</option>
+        <option value="negra">Negra/o</option>
+        <option value="rojiza">Rojiza/o</option>
+        <option value="castaña">Castaña/o</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-2col">
+    <div class="form-row"><label>Tipo de cuerpo</label>
+      <select id="pub-body">
+        <option value="">Seleccionar</option>
+        <option value="delgada">Delgada/o</option>
+        <option value="atletica">Atlética/o</option>
+        <option value="curvy">Curvy</option>
+        <option value="plus">Plus Size</option>
+        <option value="musculosa">Musculosa/o</option>
+      </select>
+    </div>
+    <div class="form-row"><label>Estado</label>
+      <select id="pub-state" onchange="updateCities(this.value)">
+        <option value="">Seleccionar</option>
+        ${stateOptions}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row"><label>Ciudad</label>
+    <select id="pub-city"></select>
+  </div>
+
+  <div class="form-row"><label>Atiende a</label>
+    <div class="checkbox-grid">
+      ${['Hombres','Mujeres','Parejas','Todos'].map(a=>`
+        <div class="checkbox-item" onclick="event.stopPropagation();this.querySelector('input').click()">
+          <input type="checkbox" name="attends" value="${a}" ${existingPub?.attendsTo?.includes(a) ? 'checked' : ''}>
+          <span>${a}</span>
+        </div>`).join('')}
+    </div>
+  </div>
+
+  <div class="form-row"><label>Lugar de encuentro</label>
+    <div class="checkbox-grid">
+      ${['Hotel/Motel','A domicilio','En mi lugar','Eventos'].map(m=>`
+        <div class="checkbox-item" onclick="event.stopPropagation();this.querySelector('input').click()">
+          <input type="checkbox" name="meetloc" value="${m}" ${existingPub?.meetLocation?.includes(m) ? 'checked' : ''}>
+          <span>${m}</span>
+        </div>`).join('')}
+    </div>
+  </div>
+
+  <div class="form-row"><label>Servicios</label>
+    <div class="checkbox-grid">${serviceCheckboxes}</div>
+  </div>
+
+  <p class="section-title" style="margin:16px 0 8px"><i data-lucide="dollar-sign" size="14" style="color:var(--red)"></i> Tarifas</p>
+  <div class="form-2col">
+    <div class="form-row"><label>Precio desde (USD)</label><input type="number" id="pub-rate-from" value="${existingPub?.rateFrom || ''}" placeholder="25"></div>
+    <div class="form-row"><label>Por hora (USD)</label><input type="number" id="pub-rate-hour" value="${existingPub?.rateHour || ''}" placeholder="50"></div>
+  </div>
+  <div class="form-row"><label>Noche completa (USD)</label><input type="number" id="pub-rate-night" value="${existingPub?.rateNight || ''}" placeholder="150"></div>
+
+  <div class="form-row"><label>Métodos de pago</label>
+    <div class="checkbox-grid">${paymentCheckboxes}</div>
+  </div>
+
+  <p class="section-title" style="margin:16px 0 8px"><i data-lucide="phone" size="14" style="color:var(--red)"></i> Contacto</p>
+  <div class="form-row"><label>WhatsApp (de tu cuenta)</label>
+    <div style="display:flex;gap:6px;align-items:center">
+      <input type="tel" id="pub-wa" value="${defWa}" style="flex:1;background:var(--bg3);opacity:0.8" readonly>
+      <button type="button" onclick="requestWaChange()" class="btn-secondary" style="width:auto;padding:6px 10px;font-size:11px;white-space:nowrap;flex-shrink:0">✏️ Cambiar</button>
+    </div>
+    <p class="form-hint">Solicita cambio al admin para actualizar tu WA</p>
+  </div>
+  <div class="form-row"><label>Teléfono adicional (opcional)</label><input type="tel" id="pub-phone" value="${defPhone}" placeholder="+58 412..." oninput="formatPhone(this)" onblur="formatPhone(this)"></div>
+  <div class="form-row"><label>Telegram (opcional)</label><input type="text" id="pub-telegram" value="${defTelegram}" placeholder="@usuario"></div>
+
+  ${level >= 3 ? `
+  <p class="section-title" style="margin:16px 0 8px"><i data-lucide="share-2" size="14" style="color:var(--red)"></i> Redes Sociales</p>
+  <div class="form-row"><label>Instagram</label><input type="text" id="pub-ig" value="${existingPub?.socialInstagram || ''}" placeholder="@usuario"></div>
+  <div class="form-row"><label>Twitter/X</label><input type="text" id="pub-tw" value="${existingPub?.socialTwitter || ''}" placeholder="@usuario"></div>
+  ` : ''}
+
+  <p class="section-title" style="margin:16px 0 8px"><i data-lucide="camera" size="14" style="color:var(--red)"></i> Fotos (máx ${cfg.photos}) <span style="color:var(--red);font-size:11px">*Obligatorio</span></p>
+  ${level >= 2 ? `<div class="msg-info" style="font-size:11px"><i data-lucide="eye-off" size="12" style="flex-shrink:0;margin-top:1px"></i> Tienes habilitado el modo privacidad. Puedes publicar fotos sin mostrar el rostro (sujeto a revisión del admin).</div>` : ''}
+  <div class="upload-box" onclick="document.getElementById('pub-photos-input').click()" style="${pubPhotoFiles.length === 0 ? 'border-color:rgba(192,8,44,0.4)' : ''}">
+    <i data-lucide="image-plus" size="24" style="color:var(--red);margin:0 auto"></i>
+    <p>Toca para agregar fotos (mínimo 1 requerida)</p>
+    <input type="file" id="pub-photos-input" accept="image/*" multiple onchange="handlePubPhotos(this,${cfg.photos})">
+  </div>
+  <div id="pub-photos-preview" class="upload-preview" style="margin-top:10px"></div>
+
+  <button class="btn-primary" onclick="submitPublication('${editId || ''}')" style="margin-top:16px">
+    ${editId ? 'Guardar cambios' : 'Enviar para revisión'}
+  </button>`);
+
+  // Populate existing cities
+  if (existingPub?.state) {
+    document.getElementById('pub-state').value = existingPub.state;
+    updateCities(existingPub.state, existingPub.city);
+  }
+  if (existingPub?.ethnicity) document.getElementById('pub-ethnicity').value = existingPub.ethnicity;
+  if (existingPub?.hairColor) document.getElementById('pub-hair').value = existingPub.hairColor;
+  if (existingPub?.bodyType) document.getElementById('pub-body').value = existingPub.bodyType;
+  if (existingPub?.orientation) document.getElementById('pub-orientation').value = existingPub.orientation;
+
+  lucide.createIcons();
+}
+
+function updateCities(state, selectedCity = '') {
+  const sel = document.getElementById('pub-city');
+  if (!sel) return;
+  const cities = VZ_LOCATIONS[state] || [];
+  sel.innerHTML = '<option value="">Seleccionar ciudad</option>' + cities.map(c => `<option value="${c}" ${c === selectedCity ? 'selected' : ''}>${c}</option>`).join('');
+}
+
+function handlePubPhotos(input, maxPhotos) {
+  const files = Array.from(input.files).slice(0, maxPhotos - pubPhotoFiles.length);
+  files.forEach(file => {
+    if (pubPhotoFiles.length >= maxPhotos) return;
+    pubPhotoFiles.push(file);
+    const reader = new FileReader();
+    reader.onload = e => {
+      pubPhotos.push(e.target.result); // data URL for preview
+      renderPubPhotoPreviews();
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function renderPubPhotoPreviews() {
+  const wrap = document.getElementById('pub-photos-preview');
+  if (!wrap) return;
+  wrap.innerHTML = pubPhotos.map((src, i) => `
+    <div class="upload-preview-item">
+      <img src="${src}" alt="foto ${i+1}">
+      <button class="remove-photo" onclick="removePubPhoto(${i})"><i data-lucide="x" size="10"></i></button>
+    </div>`).join('');
+  lucide.createIcons();
+}
+
+function removePubPhoto(i) {
+  pubPhotos.splice(i, 1);
+  pubPhotoFiles.splice(i, 1);
+  renderPubPhotoPreviews();
+}
+
+async function submitPublication(editId) {
+  const user = appState.currentUser;
+  if (!user) return;
+
+  const level = user.level || 1;
+  const cfg = LEVEL_CONFIG[level];
+
+  // Check publication limit
+  if (!editId) {
+    const existingCount = getUserPubCount(user.id);
+    if (existingCount >= cfg.maxPubs) {
+      document.getElementById('pub-err').innerHTML = `<div class="msg-error">Tu nivel permite máximo ${cfg.maxPubs} publicación${cfg.maxPubs > 1 ? 'es' : ''}. ${level < 3 ? 'Sube de nivel para publicar más.' : ''}</div>`;
+      return;
+    }
+  }
+
+  const displayName = document.getElementById('pub-displayname').value.trim();
+  const desc = document.getElementById('pub-desc').value.trim();
+  const state = document.getElementById('pub-state').value;
+  const city = document.getElementById('pub-city').value;
+  const wa = user.whatsapp || document.getElementById('pub-wa')?.value.trim() || '';
+
+  if (!displayName || !desc || !city || !wa) {
+    document.getElementById('pub-err').innerHTML = '<div class="msg-error">Nombre, descripción, ciudad y WhatsApp son obligatorios</div>';
+    return;
+  }
+
+  // Mandatory photo for new publications
+  const existingPubForEdit = editId ? appState.publications.find(p => p.id === editId) : null;
+  const hasExistingPhotos = existingPubForEdit && existingPubForEdit.photos && existingPubForEdit.photos.length > 0;
+  if (!editId && pubPhotoFiles.length === 0) {
+    document.getElementById('pub-err').innerHTML = '<div class="msg-error">Debes subir al menos una fotografía para publicar</div>';
+    return;
+  }
+
+  const isAnon = document.getElementById('pub-anon')?.checked && level >= 2;
+
+  const btn = document.querySelector('#modal-container .btn-primary:last-of-type');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<div class="loader"></div> Enviando...'; }
+
+  // Upload photos
+  let uploadedPhotos = [];
+  try {
+    for (const file of pubPhotoFiles) {
+      const url = await uploadToImgBB(file);
+      uploadedPhotos.push(url);
+    }
+  } catch(e) { console.warn('Photo upload failed', e); }
+
+  // If editing, keep existing photos not replaced
+  if (editId) {
+    const existing = appState.publications.find(p => p.id === editId);
+    if (existing && uploadedPhotos.length === 0) uploadedPhotos = existing.photos || [];
+  }
+
+  const getChecked = (name) => Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(i => i.value);
+
+  const pubData = {
+    id: editId || 'p_' + Date.now() + '_' + Math.random().toString(36).substr(2,5),
+    userId: user.id,
+    title: document.getElementById('pub-title')?.value.trim() || '',
+    displayName,
+    pseudonym: level >= 3 ? (document.getElementById('pub-pseudonym')?.value.trim() || '') : '',
+    anonymous: isAnon,
+    pubType: document.getElementById('pub-type').value,
+    description: desc,
+    age: document.getElementById('pub-age').value,
+    gender: user.gender,
+    orientation: document.getElementById('pub-orientation').value,
+    ethnicity: document.getElementById('pub-ethnicity').value,
+    hairColor: document.getElementById('pub-hair').value,
+    bodyType: document.getElementById('pub-body').value,
+    state,
+    city,
+    attendsTo: getChecked('attends'),
+    meetLocation: getChecked('meetloc'),
+    services: getChecked('services'),
+    rateFrom: document.getElementById('pub-rate-from').value,
+    rateHour: document.getElementById('pub-rate-hour').value,
+    rateNight: document.getElementById('pub-rate-night').value,
+    payments: getChecked('payments'),
+    whatsapp: user.whatsapp || wa,
+    phone: document.getElementById('pub-phone').value.trim(),
+    telegram: document.getElementById('pub-telegram').value.trim(),
+    socialInstagram: level >= 3 ? (document.getElementById('pub-ig')?.value.trim() || '') : '',
+    socialTwitter: level >= 3 ? (document.getElementById('pub-tw')?.value.trim() || '') : '',
+    photos: uploadedPhotos,
+    status: 'pending',
+    online: true,
+    views: 0,
+    createdAt: editId ? undefined : new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+
+  if (editId) {
+    const idx = appState.publications.findIndex(p => p.id === editId);
+    if (idx >= 0) { Object.assign(appState.publications[idx], pubData); appState.publications[idx].createdAt = appState.publications[idx].createdAt || pubData.createdAt; }
+  } else {
+    appState.publications.push(pubData);
+  }
+
+  await DB.save();
+  closeModal();
+  showToast('success', 'Publicación enviada para revisión del administrador');
+  renderDashboard();
+}
+
+// ===== DASHBOARD =====
+function renderDashboard() {
+  const user = appState.currentUser;
+  if (!user) return;
+  const level = user.level || 1;
+  const cfg = LEVEL_CONFIG[level];
+
+  document.getElementById('dash-name').textContent = user.name;
+  document.getElementById('dash-email').textContent = user.email;
+
+  const levelBadge = document.getElementById('dash-level-badge');
+  levelBadge.innerHTML = `<span class="level-badge-lg level-${level}-badge"><i data-lucide="${cfg.icon}" size="11"></i> Nivel ${level} - ${cfg.name}</span>`;
+
+  const userPubs = appState.publications.filter(p => p.userId === user.id);
+  const totalViews = userPubs.reduce((s, p) => s + (p.views || 0), 0);
+  const contacts = user.contacts || 0;
+  const firstActivePub = userPubs.find(p => p.status === 'active');
+  const avgRating = firstActivePub ? getAvgRating(firstActivePub.id) : null;
+
+  document.getElementById('dash-views').textContent = totalViews;
+  document.getElementById('dash-rating').textContent = avgRating || '-';
+  document.getElementById('dash-contacts').textContent = contacts;
+
+  // Upgrade banner
+  const upgradeBanner = document.getElementById('upgrade-banner-wrap');
+  if (level < 3) {
+    upgradeBanner.innerHTML = `<div class="upgrade-banner" style="margin-bottom:16px">
+      <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--gold),#FF8C00);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <i data-lucide="badge-check" size="18" style="color:#000"></i>
+      </div>
+      <div class="upgrade-banner-text">
+        <h4>Sube al Nivel ${level + 1} - ${LEVEL_CONFIG[level+1].name} · $${LEVEL_CONFIG[level+1].price}/mes</h4>
+        <p>${LEVEL_CONFIG[level+1].maxPubs} pubs · ${LEVEL_CONFIG[level+1].photos} fotos${LEVEL_CONFIG[level+1].privacy ? ' · Anónimo' : ''}${LEVEL_CONFIG[level+1].pseudonym ? ' · Seudónimo' : ''}${LEVEL_CONFIG[level+1].socials ? ' · Redes' : ''}</p>
+      </div>
+      <button class="btn-upgrade" onclick="contactUpgrade()">Subir</button>
+    </div>`;
+  } else {
+    upgradeBanner.innerHTML = '';
+  }
+
+  // Publications list
+  const pubBody = document.getElementById('dash-pub-body');
+  const pubAction = document.getElementById('btn-pub-action');
+  const canAddMore = userPubs.filter(p => p.status !== 'rejected').length < cfg.maxPubs;
+
+  pubAction.innerHTML = canAddMore ? '<i data-lucide="plus" size="14"></i> Nueva' : `<span style="font-size:11px;color:var(--text3)">${cfg.maxPubs}/${cfg.maxPubs}</span>`;
+  pubAction.onclick = canAddMore ? () => openPublicationForm() : null;
+
+  if (userPubs.length > 0) {
+    const statusMap = {pending:'status-pending',active:'status-active',rejected:'status-rejected'};
+    const statusLabel = {pending:'Pendiente revisión',active:'Activa',rejected:'Rechazada'};
+    pubBody.innerHTML = userPubs.map(pub => `
+      <div style="border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:10px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <div>
+            <p style="font-weight:600;font-size:14px">${pub.displayName}</p>
+            <p style="font-size:12px;color:var(--text3)">${pub.city || ''} · ${pub.pubType}</p>
+          </div>
+          <span class="pub-status ${statusMap[pub.status] || 'status-pending'}">${statusLabel[pub.status] || 'Pendiente'}</span>
+        </div>
+        ${pub.status === 'rejected' ? `<div class="msg-error" style="margin-top:8px;font-size:12px">${pub.rejectReason || 'Rechazada. Edítala y vuelve a enviar.'}</div>` : ''}
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+          <button class="btn-edit-pub" onclick="openPublicationForm('${pub.id}')"><i data-lucide="edit" size="12"></i> Editar</button>
+          ${pub.status === 'active' ? `
+            <button class="btn-edit-pub" onclick="openProfile('${pub.id}')"><i data-lucide="eye" size="12"></i> Ver</button>
+            <button class="btn-destacar" style="padding:6px 12px;font-size:11px" onclick="requestDestacado('${pub.id}')">
+              <i data-lucide="star" size="12"></i> ${pub.featured ? 'Destacada ✓' : 'Destacar'}
+            </button>` : ''}
+        </div>
+      </div>`).join('');
+    if (!user.verified) {
+      pubBody.innerHTML += `<div class="msg-info" style="margin-top:8px;font-size:12px"><i data-lucide="clock" size="12" style="flex-shrink:0"></i> Tu cuenta está siendo revisada. Las publicaciones se activarán cuando seas aprobado/a.</div>`;
+    }
+  } else {
+    pubBody.innerHTML = `<div class="empty-state"><p>No tienes publicaciones aún.</p></div>`;
+    if (!user.verified) {
+      pubBody.innerHTML += `<div class="msg-info" style="margin-top:8px;font-size:12px"><i data-lucide="clock" size="12" style="flex-shrink:0"></i> Tu cuenta está siendo revisada. Una vez aprobada podrás publicar.</div>`;
+    }
+  }
+
+  // Features
+  const featBody = document.getElementById('dash-features');
+  featBody.innerHTML = `
+    <div class="feature-row"><span class="feature-label"><i data-lucide="file-text" size="14"></i> Publicaciones</span><span class="feature-value">${userPubs.filter(p=>p.status!=='rejected').length} / ${cfg.maxPubs}</span></div>
+    <div class="feature-row"><span class="feature-label"><i data-lucide="image" size="14"></i> Fotos por publicación</span><span class="feature-value">${cfg.photos}</span></div>
+    <div class="feature-row"><span class="feature-label"><i data-lucide="at-sign" size="14"></i> Seudónimo</span><span class="feature-value ${cfg.pseudonym ? 'feat-check' : 'feat-cross'}">${cfg.pseudonym ? 'Habilitado' : 'No disponible'}</span></div>
+    <div class="feature-row"><span class="feature-label"><i data-lucide="eye-off" size="14"></i> Modo anónimo</span><span class="feature-value ${cfg.privacy ? 'feat-check' : 'feat-cross'}">${cfg.privacy ? 'Habilitado' : 'No disponible'}</span></div>
+    <div class="feature-row"><span class="feature-label"><i data-lucide="share-2" size="14"></i> Redes sociales</span><span class="feature-value ${cfg.socials ? 'feat-check' : 'feat-cross'}">${cfg.socials ? 'Habilitado' : 'No disponible'}</span></div>
+    <div class="feature-row"><span class="feature-label"><i data-lucide="search" size="14"></i> Posición en búsqueda</span><span class="feature-value">${level === 3 ? '🥇 Primero' : level === 2 ? '🥈 Segundo' : '🥉 Último'}</span></div>
+  `;
+  lucide.createIcons();
+}
+
+// ===== RATING MODAL =====
+let selectedRating = 5;
+function openRatingModal(pubId) {
+  selectedRating = 5;
+  showModal(`<span class="modal-handle"></span>
+    <h2 class="modal-title">Dejar Calificación</h2>
+    <div id="rating-err"></div>
+    <div class="msg-info" style="font-size:11px;margin-bottom:12px"><i data-lucide="shield" size="12" style="flex-shrink:0;margin-top:1px"></i>
+    Para verificar tu calificación necesitamos tu WhatsApp. El creador confirmará que fue un contacto real.</div>
+    <div class="form-row"><label>Tu Puntuación</label>
+      <div style="display:flex;gap:8px;justify-content:center;margin:12px 0">
+        ${[1,2,3,4,5].map(n=>`<button onclick="setRatingStar(${n})" id="rstar-${n}" style="font-size:30px;transition:transform 0.1s" class="star-btn">
+          <i data-lucide="star" size="28" style="color:${n<=selectedRating?'var(--gold)':'var(--text3)'};fill:${n<=selectedRating?'var(--gold)':'none'}"></i>
+        </button>`).join('')}
+      </div>
+    </div>
+    <div class="form-row"><label>Tu WhatsApp (para verificación)</label>
+      <input type="tel" id="r-reviewer-wa" placeholder="+58 412 1234567" oninput="formatPhone(this)" onblur="formatPhone(this)">
+      <p class="form-hint">Necesario para que el creador confirme la calificación</p>
+    </div>
+    <div class="msg-info" style="font-size:11px"><i data-lucide="clock" size="12" style="flex-shrink:0;margin-top:1px"></i>Tu calificación quedará pendiente hasta que el creador la confirme y el admin la active.</div>
+    <button class="btn-primary" onclick="submitRating('${pubId}')">Enviar calificación</button>`);
+  lucide.createIcons();
+}
+
+function setRatingStar(n) {
+  selectedRating = n;
+  for (let i = 1; i <= 5; i++) {
+    const btn = document.getElementById(`rstar-${i}`);
+    if (btn) btn.style.transform = i <= n ? 'scale(1.15)' : 'scale(1)';
+    const icon = btn?.querySelector('[data-lucide]');
+    if (icon) {
+      icon.style.color = i <= n ? 'var(--gold)' : 'var(--text3)';
+    }
+  }
+}
+
+async function submitRating(pubId) {
+  const reviewerWa = document.getElementById('r-reviewer-wa')?.value.trim() || '';
+  if (!reviewerWa) {
+    document.getElementById('rating-err').innerHTML = '<div class="msg-error">Debes ingresar tu WhatsApp para verificar la calificación</div>';
+    return;
+  }
+
+  const pub = appState.publications.find(p => p.id === pubId);
+  const rating = {
+    id: 'r_' + Date.now(),
+    pubId,
+    score: selectedRating,
+    reviewerWa,
+    reviewerName: 'Cliente Verificado',
+    approved: false,
+    createdAt: new Date().toISOString()
+  };
+  appState.ratings.push(rating);
+  await DB.save();
+  closeModal();
+  showToast('success', 'Calificación enviada. Quedará pendiente hasta que el creador la confirme.');
+}
+
+// ===== ADMIN PANEL =====
+function renderAdmin() {
+  // KPIs
+  const totalUsers = appState.users.length;
+  const pendingVerif = appState.users.filter(u => u.verificationStatus === 'pending').length;
+  const activePubs = appState.publications.filter(p => p.status === 'active').length;
+  const pendingPubs = appState.publications.filter(p => p.status === 'pending').length;
+
+  document.getElementById('admin-kpis').innerHTML = `
+    <div class="kpi-card"><div class="kpi-val">${totalUsers}</div><div class="kpi-lbl">Usuarios</div></div>
+    <div class="kpi-card"><div class="kpi-val" style="color:var(--gold)">${pendingVerif}</div><div class="kpi-lbl">Pendientes</div></div>
+    <div class="kpi-card"><div class="kpi-val" style="color:#22C55E">${activePubs}</div><div class="kpi-lbl">Publicaciones Activas</div></div>
+    <div class="kpi-card"><div class="kpi-val" style="color:var(--pink)">${pendingPubs}</div><div class="kpi-lbl">En Revisión</div></div>`;
+
+  renderAdminTab('verifications');
+}
+
+function switchAdminTab(btn, tab) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderAdminTab(tab);
+}
+
+function checkAutoPause() {
+  let changed = false;
+  appState.publications.forEach(p => {
+    if (p.status !== 'active') return;
+    const u = appState.users.find(u => u.id === p.userId);
+    if (!u || u.level < 2 || !p.lastPaymentConfirmed) return;
+    if (Math.floor((Date.now() - new Date(p.lastPaymentConfirmed)) / 86400000) >= 30) {
+      p.status = 'paused'; changed = true;
+    }
+  });
+  if (changed) DB.save();
+}
+
+function renderAdminTab(tab) {
+  const content = document.getElementById('admin-content');
+  checkAutoPause();
+
+  if (tab === 'verifications') {
+    const pending = appState.users.filter(u => u.verificationStatus === 'pending');
+    const waReqs = appState.users.filter(u => u.pendingWaChange);
+    const ageReqs = appState.users.filter(u => u.pendingAgeChange);
+    content.innerHTML = `
+    <div class="dash-section">
+      <div class="dash-section-header"><h3><i data-lucide="user-check" size="15"></i> Verificaciones Pendientes (${pending.length})</h3></div>
+      <div style="overflow-x:auto"><table class="admin-table">
+        <thead><tr><th>Nombre</th><th>Cédula</th><th>WhatsApp</th><th>Nivel</th><th>Fecha</th><th>Acciones</th></tr></thead>
+        <tbody>${pending.length ? pending.map(u => {
+          const waClean=(u.whatsapp||'').replace(/\D/g,'');
+          const verMsg=encodeURIComponent('Hola '+u.name+', tu cuenta en D Caracas VIP está siendo revisada. Responde SI para confirmar tu número.');
+          return `<tr>
+            <td><strong>${u.name}</strong><br><span style="font-size:11px;color:var(--text3)">${u.email}</span></td>
+            <td>${u.cedula}</td>
+            <td><a href="https://wa.me/${waClean}" target="_blank" style="color:#25D366">${u.whatsapp}</a></td>
+            <td>Nv${u.requestedLevel||1}</td>
+            <td>${new Date(u.createdAt).toLocaleDateString('es-VE')}</td>
+            <td style="display:flex;gap:4px;flex-wrap:wrap">
+              ${u.idPhotoUrl?`<a href="${u.idPhotoUrl}" target="_blank" class="btn-promote" style="text-decoration:none;font-size:11px;padding:3px 8px">📄 Doc</a>`:''}
+              <a href="https://wa.me/${waClean}?text=${verMsg}" target="_blank" class="btn-wa-verify">📲 WA</a>
+              <button class="btn-approve" onclick="approveUser('${u.id}')">✓ Aprobar</button>
+              <button class="btn-reject" onclick="rejectUser('${u.id}')">✗</button>
+            </td>
+          </tr>`;
+        }).join(''):'<tr><td colspan="6" style="text-align:center;color:var(--text3);padding:20px">No hay verificaciones pendientes</td></tr>'}
+        </tbody>
+      </table></div>
+    </div>
+    ${waReqs.length?`<div class="dash-section" style="margin-top:12px">
+      <div class="dash-section-header"><h3>📱 Cambios de WhatsApp (${waReqs.length})</h3></div>
+      <div style="overflow-x:auto"><table class="admin-table">
+        <thead><tr><th>Creador</th><th>WA Actual</th><th>WA Nuevo</th><th>Acciones</th></tr></thead>
+        <tbody>${waReqs.map(u=>`<tr>
+          <td><strong>${u.name}</strong></td>
+          <td>${u.whatsapp}</td>
+          <td style="color:var(--gold)">${u.pendingWaChange}</td>
+          <td style="display:flex;gap:6px">
+            <button class="btn-approve" onclick="approveWaChange('${u.id}')">✓ Aprobar</button>
+            <button class="btn-reject" onclick="rejectWaChange('${u.id}')">✗</button>
+          </td>
+        </tr>`).join('')}
+        </tbody>
+      </table></div>
+    </div>`:''}
+    ${ageReqs.length?`<div class="dash-section" style="margin-top:12px">
+      <div class="dash-section-header"><h3>🎂 Cambios de Edad (${ageReqs.length})</h3></div>
+      <div style="overflow-x:auto"><table class="admin-table">
+        <thead><tr><th>Creador</th><th>Edad Actual</th><th>Edad Nueva</th><th>Motivo</th><th>Acciones</th></tr></thead>
+        <tbody>${ageReqs.map(u=>`<tr>
+          <td><strong>${u.name}</strong></td>
+          <td>${u.age}</td>
+          <td style="color:var(--gold)">${u.pendingAgeChange?.age}</td>
+          <td style="font-size:11px">${u.pendingAgeChange?.reason||''}</td>
+          <td style="display:flex;gap:6px">
+            <button class="btn-approve" onclick="approveAgeChange('${u.id}')">✓ Aprobar</button>
+            <button class="btn-reject" onclick="rejectAgeChange('${u.id}')">✗</button>
+          </td>
+        </tr>`).join('')}
+        </tbody>
+      </table></div>
+    </div>`:''}`;
+
+  } else if (tab === 'publications') {
+    const pubs = appState.publications;
+    content.innerHTML = `<div class="dash-section">
+      <div class="dash-section-header" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+        <h3><i data-lucide="file-text" size="15"></i> Publicaciones (${pubs.length})</h3>
+        <button class="btn-approve" style="font-size:11px;padding:4px 10px" onclick="confirmAllPayments()">💳 Confirmar Todos los Pagos</button>
+      </div>
+      <div style="overflow-x:auto"><table class="admin-table">
+        <thead><tr><th>Título / Creador</th><th>Ciudad</th><th>Estado</th><th>Pago</th><th>Acciones</th></tr></thead>
+        <tbody>${pubs.length ? pubs.map(p => {
+          const u=appState.users.find(u=>u.id===p.userId);
+          const daysSince=p.lastPaymentConfirmed?Math.floor((Date.now()-new Date(p.lastPaymentConfirmed))/86400000):null;
+          const warn=daysSince!==null&&daysSince>25;
+          return `<tr style="${p.status==='paused'?'opacity:0.6':''}">
+            <td><strong>${p.title||p.displayName}</strong><br><span style="font-size:11px;color:var(--text3)">${u?.name||'?'} · Nv${u?.level||1}</span></td>
+            <td>${p.city||'-'}</td>
+            <td><span class="pub-status ${p.status==='active'?'status-active':p.status==='paused'?'status-paused':p.status==='rejected'?'status-rejected':'status-pending'}">${p.status}</span></td>
+            <td style="font-size:11px;color:${warn?'orange':'var(--text3)'}">
+              ${daysSince!==null?daysSince+'d '+(warn?'⚠️':''):'—'}
+            </td>
+            <td style="display:flex;gap:4px;flex-wrap:wrap">
+              ${p.status!=='active'&&p.status!=='paused'?`<button class="btn-approve" onclick="approvePub('${p.id}')">✓</button>`:''}
+              ${p.status==='active'?`<button class="btn-reject" onclick="deactivatePub('${p.id}')">⏸</button>`:''}
+              ${p.status==='paused'?`<button class="btn-approve" onclick="resumePub('${p.id}')">▶</button>`:''}
+              <button class="btn-reject" style="font-size:11px" onclick="rejectPub('${p.id}')">✗</button>
+              ${p.status==='active'?`<button class="btn-promote" onclick="toggleFeatured('${p.id}')">${p.featured?'★':'⭐'}</button>`:''}
+              <button class="btn-approve" style="font-size:10px;padding:3px 7px" onclick="confirmPayment('${p.id}')">💳</button>
+            </td>
+          </tr>`;
+        }).join(''):'<tr><td colspan="5" style="text-align:center;color:var(--text3);padding:20px">No hay publicaciones</td></tr>'}
+        </tbody>
+      </table></div>
+    </div>`;
+
+  } else if (tab === 'users') {
+    content.innerHTML = `<div class="dash-section">
+      <div class="dash-section-header"><h3><i data-lucide="users" size="15"></i> Usuarios (${appState.users.length})</h3></div>
+      <div style="overflow-x:auto"><table class="admin-table">
+        <thead><tr><th>Nombre / WA</th><th>Email</th><th>Nivel</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody>${appState.users.map(u => {
+          const isBanned=u.banned;
+          const isPaused=!isBanned&&u.pausedUntil&&new Date(u.pausedUntil)>new Date();
+          const sc=isBanned?'status-banned':isPaused?'status-paused':u.verified?'status-active':'status-pending';
+          const st=isBanned?'🚫 Baneado':isPaused?'⏸ Pausado':u.verified?'Verificado':'Pendiente';
+          return `<tr>
+            <td><strong>${u.name}</strong><br><a href="https://wa.me/${(u.whatsapp||'').replace(/\D/g,'')}" target="_blank" style="font-size:11px;color:#25D366">${u.whatsapp}</a></td>
+            <td style="font-size:12px">${u.email}</td>
+            <td>Nv${u.level} ${LEVEL_CONFIG[u.level]?.name||''}</td>
+            <td><span class="pub-status ${sc}" style="font-size:11px">${st}</span></td>
+            <td style="display:flex;gap:4px;flex-wrap:wrap">
+              ${u.level<3?`<button class="btn-promote" style="font-size:11px" onclick="promoteUser('${u.id}')">↑</button>`:''}
+              ${u.level>1?`<button class="btn-reject" style="font-size:11px" onclick="demoteUser('${u.id}')">↓</button>`:''}
+              ${!isBanned?`<button onclick="banUser('${u.id}','temp')" style="background:rgba(255,165,0,0.15);color:orange;border:1px solid rgba(255,165,0,0.3);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:600">⏱7d</button>`:''}
+              ${!isBanned?`<button class="btn-reject" style="font-size:11px" onclick="banUser('${u.id}','perm')">🚫</button>`:
+                `<button class="btn-approve" style="font-size:11px" onclick="unbanUser('${u.id}')">✓ Desbanear</button>`}
+              <button class="btn-reject" style="font-size:11px" onclick="deleteUser('${u.id}')">🗑</button>
+            </td>
+          </tr>`;
+        }).join('')}
+        </tbody>
+      </table></div>
+    </div>`;
+
+  } else if (tab === 'ratings') {
+    const pending = appState.ratings.filter(r => !r.approved);
+    content.innerHTML = `<div class="dash-section">
+      <div class="dash-section-header"><h3><i data-lucide="star" size="15"></i> Calificaciones Pendientes (${pending.length})</h3></div>
+      <div style="overflow-x:auto"><table class="admin-table">
+        <thead><tr><th>Publicación</th><th>WA Calificador</th><th>⭐</th><th>Acciones</th></tr></thead>
+        <tbody>${pending.length ? pending.map(r => {
+          const pub=appState.publications.find(p=>p.id===r.pubId);
+          const creator=pub?appState.users.find(u=>u.id===pub.userId):null;
+          const cWa=(creator?.whatsapp||'').replace(/\D/g,'');
+          const waMsg=encodeURIComponent('Hola '+(creator?.name||'')+', tienes una calificación de '+r.score+'⭐ de '+r.reviewerWa+'. ¿Confirmas este contacto? Responde SI para activar.');
+          return `<tr>
+            <td><strong>${pub?.title||pub?.displayName||r.pubId}</strong><br><span style="font-size:11px;color:var(--text3)">${creator?.name||''}</span></td>
+            <td><a href="https://wa.me/${(r.reviewerWa||'').replace(/\D/g,'')}" target="_blank" style="color:#25D366;font-size:12px">${r.reviewerWa||'-'}</a></td>
+            <td>${'★'.repeat(r.score)}${'☆'.repeat(5-r.score)}</td>
+            <td style="display:flex;gap:4px;flex-wrap:wrap">
+              ${cWa?`<a href="https://wa.me/${cWa}?text=${waMsg}" target="_blank" class="btn-wa-verify">📲 Notificar</a>`:''}
+              <button class="btn-approve" onclick="approveRating('${r.id}')">✓ Activar</button>
+              <button class="btn-reject" onclick="deleteRating('${r.id}')">✗</button>
+            </td>
+          </tr>`;
+        }).join(''):'<tr><td colspan="4" style="text-align:center;color:var(--text3);padding:20px">No hay calificaciones pendientes</td></tr>'}
+        </tbody>
+      </table></div>
+    </div>`;
+  }
+  lucide.createIcons();
+}
+
+async function approveUser(userId) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user) return;
+  user.verified = true;
+  user.verificationStatus = 'approved';
+  user.level = user.requestedLevel || 1;
+  await DB.save();
+  showToast('success', `${user.name} verificado/a correctamente`);
+  renderAdmin();
+}
+
+async function rejectUser(userId) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user) return;
+  user.verificationStatus = 'rejected';
+  await DB.save();
+  showToast('info', `Solicitud de ${user.name} rechazada`);
+  renderAdmin();
+}
+
+async function approvePub(pubId) {
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!pub) return;
+  pub.status = 'active';
+  await DB.save();
+  showToast('success', 'Publicación aprobada');
+  renderAdmin();
+  renderCatalog();
+}
+
+async function rejectPub(pubId) {
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!pub) return;
+  const reason = prompt('Motivo del rechazo (opcional):') || 'No cumple con los estándares de la plataforma';
+  pub.status = 'rejected';
+  pub.rejectReason = reason;
+  await DB.save();
+  showToast('info', 'Publicación rechazada');
+  renderAdmin();
+  renderCatalog();
+}
+
+async function deactivatePub(pubId) {
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!pub) return;
+  pub.status = 'pending';
+  await DB.save();
+  showToast('info', 'Publicación desactivada');
+  renderAdmin();
+  renderCatalog();
+}
+
+async function promoteUser(userId) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user || user.level >= 3) return;
+  user.level++;
+  await DB.save();
+  showToast('success', `${user.name} subido a Nivel ${user.level}`);
+  renderAdmin();
+}
+
+async function demoteUser(userId) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user || user.level <= 1) return;
+  user.level--;
+  await DB.save();
+  showToast('info', `${user.name} bajado a Nivel ${user.level}`);
+  renderAdmin();
+}
+
+async function deleteUser(userId) {
+  if (!confirm('¿Eliminar este usuario? Esta acción no se puede deshacer.')) return;
+  appState.users = appState.users.filter(u => u.id !== userId);
+  appState.publications = appState.publications.filter(p => p.userId !== userId);
+  await DB.save();
+  showToast('info', 'Usuario eliminado');
+  renderAdmin();
+  renderCatalog();
+}
+
+async function approveRating(ratingId) {
+  const r = appState.ratings.find(r => r.id === ratingId);
+  if (!r) return;
+  r.approved = true;
+  await DB.save();
+  showToast('success', 'Calificación aprobada');
+  renderAdmin();
+}
+
+async function deleteRating(ratingId) {
+  appState.ratings = appState.ratings.filter(r => r.id !== ratingId);
+  await DB.save();
+  showToast('info', 'Calificación eliminada');
+  renderAdmin();
+}
+
+// ===== THEME =====
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('dcv_theme', next);
+  const btn = document.getElementById('theme-toggle');
+  btn.innerHTML = next === 'dark' ? '<i data-lucide="sun" size="17"></i>' : '<i data-lucide="moon" size="17"></i>';
+  lucide.createIcons();
+}
+
+// ===== MODAL SYSTEM =====
+function showModal(html) {
+  const container = document.getElementById('modal-container');
+  container.innerHTML = `<div class="modal-overlay" onclick="handleOverlayClick(event)">
+    <div class="modal" id="modal-box" onclick="event.stopPropagation()">
+      <div id="modal-form-area">${html}</div>
+    </div>
+  </div>`;
+  lucide.createIcons();
+}
+
+function handleOverlayClick(e) {
+  if (e.target === e.currentTarget && e.target.classList.contains('modal-overlay')) closeModal();
+}
+
+function closeModal() {
+  document.getElementById('modal-container').innerHTML = '';
+}
+
+// ===== TOAST =====
+function showToast(type, msg) {
+  const container = document.getElementById('toast-container');
+  const id = 'toast_' + Date.now();
+  const icons = {success:'check-circle',error:'x-circle',info:'info'};
+  const colors = {success:'#22C55E',error:'var(--red)',info:'var(--gold)'};
+  container.innerHTML += `<div class="toast toast-${type}" id="${id}">
+    <i data-lucide="${icons[type]}" size="16" style="color:${colors[type]};flex-shrink:0"></i>
+    <span>${msg}</span>
+  </div>`;
+  lucide.createIcons();
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) { el.style.opacity='0'; el.style.transform='translateX(20px)'; el.style.transition='all 0.3s'; setTimeout(()=>el.remove(), 300); }
+  }, 4000);
+}
+
+// ===== MISC =====
+function toggleFavorite(pubId) {
+  showToast('info', 'Favoritos disponibles próximamente');
+}
+
+function shareProfile() {
+  if (navigator.share) {
+    navigator.share({ title: 'D Caracas VIP', url: window.location.href });
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    showToast('success', 'Enlace copiado');
+  }
+}
+
+function openEditProfile() {
+  showToast('info', 'Editar perfil disponible próximamente');
+}
+
+// ===== LOAD SAVED THEME =====
+const savedTheme = localStorage.getItem('dcv_theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  if (savedTheme === 'light') {
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.innerHTML = '<i data-lucide="moon" size="17"></i>';
+    });
+  }
+}
+
+// Init icons on load
+document.addEventListener('DOMContentLoaded', () => {
+  lucide.createIcons();
+});
+
+// DEMO DATA (remove in production)
+function loadDemoData() {
+  if (appState.users.length > 0) return;
+  const demoUsers = [
+    {id:'u_demo1',name:'Valentina G.',email:'val@demo.com',whatsapp:'+58 412 1111111',password:'demo123',gender:'mujer',age:24,cedula:'V-12345678',level:3,verified:true,verificationStatus:'approved',createdAt:new Date().toISOString()},
+    {id:'u_demo2',name:'Camila R.',email:'cam@demo.com',whatsapp:'+58 414 2222222',password:'demo123',gender:'mujer',age:22,cedula:'V-23456789',level:2,verified:true,verificationStatus:'approved',createdAt:new Date().toISOString()},
+    {id:'u_demo3',name:'Diego M.',email:'dieg@demo.com',whatsapp:'+58 416 3333333',password:'demo123',gender:'hombre',age:28,cedula:'V-34567890',level:1,verified:true,verificationStatus:'approved',createdAt:new Date().toISOString()},
+  ];
+  const demoPubs = [
+    {id:'p_demo1',userId:'u_demo1',displayName:'Valentina',pseudonym:'Venus',pubType:'encuentros',description:'Soy muy complaciente, cariñosa y discreta. Ofrezco encuentros de máximo placer. Muy morbosa y traviesa. Encuentros full placer.',age:24,gender:'mujer',orientation:'Bisexual',ethnicity:'mestiza',hairColor:'morena_hair',bodyType:'curvy',state:'Distrito Capital',city:'Caracas',attendsTo:['Hombres','Parejas'],meetLocation:['Hotel/Motel','A domicilio'],services:['Oral','Vaginal','Masaje Erótico','Beso Francés','Juegos de Rol'],rateFrom:25,rateHour:50,rateNight:150,payments:['Efectivo','Zinli','Binance','PayPal'],whatsapp:'+58412000001',telegram:'@venus_vip',phone:'',socialInstagram:'',socialTwitter:'',photos:[],status:'active',online:true,views:247,createdAt:new Date().toISOString()},
+    {id:'p_demo2',userId:'u_demo2',displayName:'Camila',pseudonym:'Luna',pubType:'contenido',description:'Creo contenido exclusivo para adultos. Fotos y videos muy ricos. Suscríbete a mi contenido y disfruta de todo.',age:22,gender:'mujer',orientation:'Heterosexual',ethnicity:'blanca',hairColor:'rubia',bodyType:'delgada',state:'Miranda',city:'Los Teques',attendsTo:['Hombres'],meetLocation:[],services:['Fotos Privadas','Sexo por Video'],rateFrom:15,rateHour:0,rateNight:0,payments:['Zinli','Binance'],whatsapp:'+58414000002',telegram:'@luna_content',phone:'',socialInstagram:'luna.content',socialTwitter:'',photos:[],status:'active',online:false,views:183,createdAt:new Date().toISOString()},
+    {id:'p_demo3',userId:'u_demo3',displayName:'Diego',pseudonym:'',pubType:'novia_virtual',description:'Novio virtual para ti. Conversaciones, llamadas, y mucho cariño. Soy tierno, divertido y muy detallista.',age:28,gender:'hombre',orientation:'Heterosexual',ethnicity:'mestiza',hairColor:'negra',bodyType:'atletica',state:'Carabobo',city:'Valencia',attendsTo:['Mujeres'],meetLocation:[],services:['Compañía'],rateFrom:10,rateHour:20,rateNight:0,payments:['Efectivo','Pago Móvil'],whatsapp:'+58416000003',telegram:'',phone:'',socialInstagram:'',socialTwitter:'',photos:[],status:'active',online:true,views:94,createdAt:new Date().toISOString()},
+  ];
+  const demoRatings = [
+    {id:'r_d1',pubId:'p_demo1',score:5,comment:'Excelente experiencia, muy complaciente y discreta.',reviewerName:'Cliente Verificado',approved:true,createdAt:new Date().toISOString()},
+    {id:'r_d2',pubId:'p_demo1',score:4,comment:'Muy buena, la recomiendo.',reviewerName:'Usuario Feliz',approved:true,createdAt:new Date().toISOString()},
+   ];
+  appState.users = demoUsers;
+  appState.publications = demoPubs;
+  appState.ratings = demoRatings;
+  DB.save();
+}
+
+// ===== TOGGLE FEATURED (admin) =====
+async function toggleFeatured(pubId) {
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!pub) return;
+  pub.featured = !pub.featured;
+  await DB.save();
+  showToast('success', pub.featured ? '⭐ Publicación destacada activada' : 'Destacado desactivado');
+  renderAdmin();
+  renderCatalog();
+}
+
+// ===== REQUEST DESTACADO (creator) =====
+function requestDestacado(pubId) {
+  const user = appState.currentUser;
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!user || !pub) return;
+  const adminWa = '584120000000';
+  const msg = encodeURIComponent(`Hola, soy ${user.name}, quiero solicitar DESTACADO para mi publicación "${pub.displayName}" (ID: ${pubId}). Por favor confirmar precio y activar.`);
+  showModal(`<span class="modal-handle"></span>
+    <h2 class="modal-title">⭐ Solicitar Destacado</h2>
+    <p class="modal-subtitle">Tu publicación aparecerá de primero en el catálogo con borde dorado</p>
+    <div class="msg-info"><i data-lucide="info" size="14" style="flex-shrink:0;margin-top:1px"></i>
+    Contacta al administrador para solicitar el destacado. Una vez confirmado el pago, el admin lo activará desde el panel.</div>
+    <a href="https://wa.me/${adminWa}?text=${msg}" target="_blank" class="btn-primary" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;text-decoration:none;background:#25D366;color:#fff">
+      <i data-lucide="message-circle" size="16"></i> Solicitar por WhatsApp
+    </a>
+    <button class="btn-secondary" onclick="closeModal()">Cerrar</button>`);
+  lucide.createIcons();
+}
+
+// ===== SUBSCRIPTION PAGE =====
+function openSubscribePage(level) {
+  const user = appState.currentUser;
+  if (!user) { openLogin(); return; }
+  const prices = {2: 11.99, 3: 21.99};
+  const names = {2: 'Verificado', 3: 'Premium'};
+  const adminWa = '584120000000';
+  const msg = encodeURIComponent(`Hola, soy ${user.name} (${user.email}), quiero suscribirme al Nivel ${level} (${names[level]}) de D Caracas VIP por $${prices[level]}/mes. Mi ID: ${user.id}`);
+  document.getElementById('sub-level-title').textContent = level;
+  document.getElementById('sub-level-desc').textContent = `Plan ${names[level]} — $${prices[level]} USD / mes`;
+  document.getElementById('sub-page-content').innerHTML = `
+    <div class="sub-card" style="max-width:420px;margin:0 auto">
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:8px">Nivel ${level} — ${names[level]}</h3>
+      <div class="sub-price">$${prices[level]}<span>/mes</span></div>
+      <div class="msg-info" style="margin:16px 0;text-align:left"><i data-lucide="info" size="14" style="flex-shrink:0;margin-top:1px"></i>
+        Contacta al administrador por WhatsApp. Una vez confirmado el pago, tu nivel se activará en menos de 24 horas.</div>
+      <a href="https://wa.me/${adminWa}?text=${msg}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#25D366;color:#fff;border-radius:var(--radius);padding:14px;font-weight:700;font-size:15px;margin-top:12px">
+        <i data-lucide="message-circle" size="18"></i> Solicitar Nivel ${level} por WhatsApp
+      </a>
+      <button class="btn-secondary" onclick="showPage('levels-page')" style="margin-top:8px">Ver todos los planes</button>
+    </div>`;
+  showPage('subscribe-page');
+  lucide.createIcons();
+}
+
+// ===== SUBSCRIPTION UPGRADE from dashboard =====
+function contactUpgrade() {
+  const user = appState.currentUser;
+  if (!user) return;
+  const nextLevel = (user.level || 1) + 1;
+  if (nextLevel > 3) return;
+  openSubscribePage(nextLevel);
+}
+
+// ===== PUBLICATION LIMIT HELPER =====
+function getUserPubCount(userId) {
+  return appState.publications.filter(p => p.userId === userId && p.status !== 'rejected').length;
+}
+
+// ===== ANONYMOUS MODE TOGGLE =====
+function toggleAnonymousMode(checkbox) {
+  const level = appState.currentUser?.level || 1;
+  if (level < 2) {
+    checkbox.checked = false;
+    showToast('info', 'El modo anónimo requiere Nivel 2 o superior');
+  }
+}
+
+// ===== BAN / UNBAN =====
+async function banUser(userId, type) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user) return;
+  if (!confirm((type==='perm'?'¿Banear permanentemente':'¿Pausar 7 días') + ' a ' + user.name + '?')) return;
+  if (type === 'perm') {
+    user.banned = true; user.bannedAt = new Date().toISOString();
+  } else {
+    const until = new Date(); until.setDate(until.getDate() + 7);
+    user.pausedUntil = until.toISOString(); user.banned = false;
+  }
+  appState.publications.filter(p => p.userId === userId && p.status === 'active').forEach(p => p.status = 'paused');
+  await DB.save();
+  showToast('info', type === 'perm' ? user.name + ' baneado/a permanentemente' : user.name + ' pausado/a 7 días');
+  renderAdmin(); renderCatalog();
+}
+
+async function unbanUser(userId) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user) return;
+  user.banned = false; user.pausedUntil = null;
+  appState.publications.filter(p => p.userId === userId && p.status === 'paused').forEach(p => p.status = 'active');
+  await DB.save();
+  showToast('success', user.name + ' desbaneado/a');
+  renderAdmin(); renderCatalog();
+}
+
+// ===== PAYMENT CONFIRMATION =====
+async function confirmPayment(pubId) {
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!pub) return;
+  pub.lastPaymentConfirmed = new Date().toISOString();
+  if (pub.status === 'paused') pub.status = 'active';
+  await DB.save();
+  showToast('success', '💳 Pago confirmado');
+  renderAdmin(); renderCatalog();
+}
+
+async function confirmAllPayments() {
+  const now = new Date().toISOString();
+  appState.publications.filter(p => p.status === 'active' || p.status === 'paused').forEach(p => {
+    p.lastPaymentConfirmed = now;
+    if (p.status === 'paused') p.status = 'active';
+  });
+  await DB.save();
+  showToast('success', '✓ Todos los pagos confirmados');
+  renderAdmin(); renderCatalog();
+}
+
+// ===== RESUME PUBLICATION =====
+async function resumePub(pubId) {
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!pub) return;
+  pub.status = 'active'; pub.lastPaymentConfirmed = new Date().toISOString();
+  await DB.save();
+  showToast('success', 'Publicación reactivada');
+  renderAdmin(); renderCatalog();
+}
+
+// ===== WA CHANGE REQUEST =====
+async function approveWaChange(userId) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user || !user.pendingWaChange) return;
+  user.whatsapp = user.pendingWaChange; user.pendingWaChange = null;
+  appState.publications.filter(p => p.userId === userId).forEach(p => { p.whatsapp = user.whatsapp; });
+  await DB.save();
+  showToast('success', 'WhatsApp actualizado para ' + user.name);
+  renderAdmin();
+}
+
+async function rejectWaChange(userId) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user) return;
+  user.pendingWaChange = null;
+  await DB.save();
+  showToast('info', 'Solicitud de cambio de WA rechazada');
+  renderAdmin();
+}
+
+function requestWaChange() {
+  showModal(`<span class="modal-handle"></span>
+    <h2 class="modal-title">Cambiar WhatsApp</h2>
+    <p class="modal-subtitle">El administrador revisará y aprobará el cambio</p>
+    <div id="wa-err"></div>
+    <div class="form-row"><label>Nuevo número de WhatsApp</label>
+      <input type="tel" id="new-wa" placeholder="+58 412 1234567" oninput="formatPhone(this)" onblur="formatPhone(this)">
+    </div>
+    <button class="btn-primary" onclick="submitWaChange()">Solicitar Cambio</button>
+    <button class="btn-secondary" onclick="closeModal()" style="margin-top:8px">Cancelar</button>`);
+  lucide.createIcons();
+}
+
+async function submitWaChange() {
+  const newWa = document.getElementById('new-wa')?.value.trim();
+  if (!newWa || newWa.length < 8) {
+    document.getElementById('wa-err').innerHTML = '<div class="msg-error">Ingresa un número válido</div>'; return;
+  }
+  const userObj = appState.users.find(u => u.id === appState.currentUser.id);
+  if (!userObj) return;
+  userObj.pendingWaChange = newWa;
+  await DB.save();
+  closeModal();
+  showToast('success', 'Solicitud enviada. El admin revisará tu cambio de WhatsApp en breve.');
+}
+
+// ===== AGE CHANGE REQUEST =====
+async function approveAgeChange(userId) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user || !user.pendingAgeChange) return;
+  user.age = user.pendingAgeChange.age;
+  appState.publications.filter(p => p.userId === userId).forEach(p => { p.age = user.age; });
+  user.pendingAgeChange = null;
+  await DB.save();
+  showToast('success', 'Edad actualizada para ' + user.name);
+  renderAdmin();
+}
+
+async function rejectAgeChange(userId) {
+  const user = appState.users.find(u => u.id === userId);
+  if (!user) return;
+  user.pendingAgeChange = null;
+  await DB.save();
+  showToast('info', 'Solicitud de cambio de edad rechazada');
+  renderAdmin();
+}
+
+function requestAgeChange() {
+  showModal(`<span class="modal-handle"></span>
+    <h2 class="modal-title">Cambiar Edad</h2>
+    <p class="modal-subtitle">El administrador revisará y aprobará el cambio</p>
+    <div id="age-req-err"></div>
+    <div class="form-row"><label>Nueva edad</label>
+      <input type="number" id="new-age" min="18" max="80" placeholder="Ej: 26">
+    </div>
+    <div class="form-row"><label>Motivo</label>
+      <input type="text" id="age-reason" placeholder="Ej: Error al registrarme">
+    </div>
+    <button class="btn-primary" onclick="submitAgeChange()">Solicitar Cambio</button>
+    <button class="btn-secondary" onclick="closeModal()" style="margin-top:8px">Cancelar</button>`);
+  lucide.createIcons();
+}
+
+async function submitAgeChange() {
+  const newAge = parseInt(document.getElementById('new-age')?.value);
+  if (!newAge || newAge < 18 || newAge > 80) {
+    document.getElementById('age-req-err').innerHTML = '<div class="msg-error">Ingresa una edad válida (18-80)</div>'; return;
+  }
+  const userObj = appState.users.find(u => u.id === appState.currentUser.id);
+  if (!userObj) return;
+  userObj.pendingAgeChange = { age: newAge, reason: document.getElementById('age-reason')?.value.trim() || 'Sin motivo' };
+  await DB.save();
+  closeModal();
+  showToast('success', 'Solicitud enviada. El admin revisará tu cambio de edad.');
+}
+
+// ===== PROFILE BASE CONFIG =====
+function showProfileConfig() {
+  const user = appState.currentUser;
+  if (!user) return;
+  const userObj = appState.users.find(u => u.id === user.id) || user;
+  const profile = userObj.baseProfile || {};
+
+  ['home-view','search-section','view-profile','dashboard','admin-panel'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none'});
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('profile-config').style.display = 'block';
+  document.getElementById('main-footer').style.display = 'block';
+
+  const stateOptions = Object.keys(VZ_LOCATIONS).map(s=>`<option value="${s}" ${profile.state===s?'selected':''}>${s}</option>`).join('');
+
+  document.getElementById('profile-config-content').innerHTML = `
+    <div class="config-section">
+      <div class="config-section-header"><i data-lucide="lock" size="15" style="color:var(--red)"></i> Datos de Cuenta (bloqueados)</div>
+      <div class="config-section-body">
+        <div class="form-row"><label>Edad</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input type="number" value="${userObj.age||''}" style="flex:1" readonly>
+            <button onclick="requestAgeChange()" class="btn-secondary" style="width:auto;padding:8px 12px;font-size:12px;white-space:nowrap">✏️ Solicitar cambio</button>
+          </div>
+          ${userObj.pendingAgeChange?`<div class="msg-info" style="margin-top:6px;font-size:11px"><i data-lucide="clock" size="11" style="flex-shrink:0"></i> Cambio pendiente: ${userObj.pendingAgeChange.age} años</div>`:''}
+        </div>
+        <div class="form-row"><label>WhatsApp de Contacto</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input type="tel" value="${userObj.whatsapp||''}" style="flex:1" readonly>
+            <button onclick="requestWaChange()" class="btn-secondary" style="width:auto;padding:8px 12px;font-size:12px;white-space:nowrap">✏️ Solicitar cambio</button>
+          </div>
+          ${userObj.pendingWaChange?`<div class="msg-info" style="margin-top:6px;font-size:11px"><i data-lucide="clock" size="11" style="flex-shrink:0"></i> Cambio pendiente: ${userObj.pendingWaChange}</div>`:''}
+        </div>
+      </div>
+    </div>
+    <div class="config-section">
+      <div class="config-section-header"><i data-lucide="sparkles" size="15" style="color:var(--red)"></i> Características Físicas</div>
+      <div class="config-section-body">
+        <div class="form-2col">
+          <div class="form-row"><label>Orientación Sexual</label>
+            <select id="cfg-orientation">
+              <option value="">Seleccionar</option>
+              ${['Heterosexual','Homosexual','Bisexual','Pansexual'].map(o=>`<option value="${o}" ${profile.orientation===o?'selected':''}>${o}</option>`).join('')}
+            </select>
+          </div>
+          <div class="form-row"><label>Etnia</label>
+            <select id="cfg-ethnicity">
+              <option value="">Seleccionar</option>
+              ${[['mestiza','Mestiza/o'],['blanca','Blanca/o'],['morena','Morena/o'],['latina','Latina/o'],['afro','Afrodescendiente'],['asiatica','Asiática/o']].map(([v,l])=>`<option value="${v}" ${profile.ethnicity===v?'selected':''}>${l}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+        <div class="form-2col">
+          <div class="form-row"><label>Color de Cabello</label>
+            <select id="cfg-hair">
+              <option value="">Seleccionar</option>
+              ${[['rubia','Rubia/o'],['morena_hair','Morena/o'],['negra','Negra/o'],['rojiza','Rojiza/o'],['castaña','Castaña/o']].map(([v,l])=>`<option value="${v}" ${profile.hairColor===v?'selected':''}>${l}</option>`).join('')}
+            </select>
+          </div>
+          <div class="form-row"><label>Tipo de Cuerpo</label>
+            <select id="cfg-body">
+              <option value="">Seleccionar</option>
+              ${[['delgada','Delgada/o'],['atletica','Atlética/o'],['curvy','Curvy'],['plus','Plus Size'],['musculosa','Musculosa/o']].map(([v,l])=>`<option value="${v}" ${profile.bodyType===v?'selected':''}>${l}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="config-section">
+      <div class="config-section-header"><i data-lucide="map-pin" size="15" style="color:var(--red)"></i> Ubicación Habitual</div>
+      <div class="config-section-body">
+        <div class="form-2col">
+          <div class="form-row"><label>Estado</label>
+            <select id="cfg-state" onchange="updateConfigCities(this.value)">
+              <option value="">Seleccionar</option>${stateOptions}
+            </select>
+          </div>
+          <div class="form-row"><label>Ciudad</label><select id="cfg-city"></select></div>
+        </div>
+      </div>
+    </div>
+    <div class="config-section">
+      <div class="config-section-header"><i data-lucide="phone" size="15" style="color:var(--red)"></i> Contacto Adicional</div>
+      <div class="config-section-body">
+        <div class="form-row"><label>Telegram (opcional)</label>
+          <input type="text" id="cfg-telegram" value="${profile.telegram||''}" placeholder="@usuario">
+        </div>
+        <div class="form-row"><label>Teléfono adicional (opcional)</label>
+          <input type="tel" id="cfg-phone" value="${profile.phone||''}" placeholder="+58 412..." oninput="formatPhone(this)" onblur="formatPhone(this)">
+        </div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="saveProfileConfig()">💾 Guardar Perfil Base</button>
+    <button class="btn-secondary" onclick="showDashboard()" style="margin-top:8px">← Volver al Panel</button>
+  `;
+  if (profile.state) { document.getElementById('cfg-state').value = profile.state; updateConfigCities(profile.state, profile.city); }
+  lucide.createIcons();
+}
+
+function updateConfigCities(state, selectedCity='') {
+  const sel = document.getElementById('cfg-city');
+  if (!sel) return;
+  const cities = VZ_LOCATIONS[state] || [];
+  sel.innerHTML = '<option value="">Seleccionar</option>' + cities.map(c=>`<option value="${c}" ${c===selectedCity?'selected':''}>${c}</option>`).join('');
+}
+
+async function saveProfileConfig() {
+  const user = appState.currentUser;
+  if (!user) return;
+  const userObj = appState.users.find(u => u.id === user.id);
+  if (!userObj) return;
+  userObj.baseProfile = {
+    orientation: document.getElementById('cfg-orientation').value,
+    ethnicity:   document.getElementById('cfg-ethnicity').value,
+    hairColor:   document.getElementById('cfg-hair').value,
+    bodyType:    document.getElementById('cfg-body').value,
+    state:       document.getElementById('cfg-state').value,
+    city:        document.getElementById('cfg-city').value,
+    telegram:    document.getElementById('cfg-telegram').value.trim(),
+    phone:       document.getElementById('cfg-phone').value.trim()
+  };
+  appState.currentUser = userObj;
+  localStorage.setItem('dcv_session', JSON.stringify(userObj));
+  await DB.save();
+  showToast('success', '✓ Perfil base guardado');
+  showDashboard();
+}
+
+// ===== TOGGLE FEATURED =====
+async function toggleFeatured(pubId) {
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!pub) return;
+  pub.featured = !pub.featured;
+  await DB.save();
+  showToast('success', pub.featured ? '⭐ Destacado activado' : 'Destacado desactivado');
+  renderAdmin(); renderCatalog();
+}
+
+// ===== REQUEST DESTACADO (creator) =====
+function requestDestacado(pubId) {
+  const user = appState.currentUser;
+  const pub = appState.publications.find(p => p.id === pubId);
+  if (!user || !pub) return;
+  const msg = encodeURIComponent('Hola, soy ' + user.name + ', quiero solicitar DESTACADO para mi publicación "' + (pub.title||pub.displayName) + '" (ID: ' + pubId + '). Por favor confirmar precio y activar.');
+  showModal(`<span class="modal-handle"></span>
+    <h2 class="modal-title">⭐ Solicitar Destacado</h2>
+    <p class="modal-subtitle">Tu publicación aparecerá primero en el catálogo con borde dorado</p>
+    <div class="msg-info"><i data-lucide="info" size="14" style="flex-shrink:0"></i> Contacta al admin para solicitar el destacado.</div>
+    <a href="https://wa.me/584228745777?text=${msg}" target="_blank" class="btn-primary" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;text-decoration:none;background:#25D366;color:#fff">
+      <i data-lucide="message-circle" size="16"></i> Solicitar por WhatsApp
+    </a>
+    <button class="btn-secondary" onclick="closeModal()">Cerrar</button>`);
+  lucide.createIcons();
+}
+
+// ===== SUBSCRIPTION PAGE =====
+function openSubscribePage(level) {
+  const user = appState.currentUser;
+  if (!user) { openLogin(); return; }
+  const prices = {2: 11.99, 3: 21.99};
+  const names = {2: 'Elite', 3: 'Diamond'};
+  const msg = encodeURIComponent('Hola, soy ' + user.name + ' (' + user.email + '), quiero suscribirme al Nivel ' + level + ' (' + names[level] + ') de D Caracas VIP por $' + prices[level] + '/mes. Mi ID: ' + user.id);
+  document.getElementById('sub-level-title').textContent = level;
+  document.getElementById('sub-level-desc').textContent = 'Plan ' + names[level] + ' — $' + prices[level] + ' USD / mes';
+  document.getElementById('sub-page-content').innerHTML = `
+    <div class="sub-card" style="max-width:420px;margin:0 auto">
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:8px">Nivel ${level} — ${names[level]}</h3>
+      <div class="sub-price">$${prices[level]}<span>/mes</span></div>
+      <div class="msg-info" style="margin:16px 0"><i data-lucide="info" size="14" style="flex-shrink:0"></i> Contacta al admin por WhatsApp. Una vez confirmado el pago, tu nivel se activará en menos de 24 horas.</div>
+      <a href="https://wa.me/584228745777?text=${msg}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:#25D366;color:#fff;border-radius:var(--radius);padding:14px;font-weight:700;font-size:15px;margin-top:12px">
+        <i data-lucide="message-circle" size="18"></i> Solicitar Nivel ${level} por WhatsApp
+      </a>
+      <button class="btn-secondary" onclick="showPage('levels-page')" style="margin-top:8px">Ver todos los planes</button>
+    </div>`;
+  showPage('subscribe-page');
+  lucide.createIcons();
+}
+
+function contactUpgrade() {
+  const user = appState.currentUser;
+  if (!user) return;
+  const next = (user.level || 1) + 1;
+  if (next > 3) return;
+  openSubscribePage(next);
+}
+
+function getUserPubCount(userId) {
+  return appState.publications.filter(p => p.userId === userId && p.status !== 'rejected').length;
+}
+
+function toggleAnonymousMode(checkbox) {
+  if ((appState.currentUser?.level || 1) < 2) {
+    checkbox.checked = false;
+    showToast('info', 'El modo anónimo requiere Nivel 2 o superior');
+  }
+}
+
+function isFresh(pub) {
+  return pub.createdAt && Date.now() - new Date(pub.createdAt).getTime() < 48*60*60*1000;
+}
+
+
+</script>
+</body>
+</html>
