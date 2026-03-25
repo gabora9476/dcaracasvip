@@ -1278,8 +1278,7 @@ function renderCard(pub) {
       </div>
     </div>
     <div class="card-info">
-      ${pub.title ? `<div style="font-size:10px;color:var(--gold);font-weight:600;padding:6px 10px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${pub.title}</div>` : ''}
-      <div class="card-name" style="${pub.title?'padding-top:2px':''}">${displayName}</div>
+      <div class="card-name">${pub.title || displayName}</div>
       <div class="card-type">${typeLabels[pub.pubType] || ''}</div>
       <div class="card-location-row">
         ${cityText ? `<span class="card-city-pill"><i data-lucide="map-pin" size="9"></i>${cityText}${stateText}</span>` : ''}
@@ -1323,7 +1322,7 @@ function openProfile(pubId) {
   DB.save();
 
   appState.currentProfileId = pubId;
-  document.getElementById('detail-name').textContent = pub.title ? pub.title : displayName;
+  document.getElementById('detail-name').textContent = pub.title || displayName;
 
   const content = document.getElementById('profile-detail-content');
   content.innerHTML = `
@@ -1345,7 +1344,7 @@ function openProfile(pubId) {
             `<div style="width:80px;height:80px;border-radius:50%;background:var(--bg3);border:2px solid var(--red);display:flex;align-items:center;justify-content:center"><i data-lucide="user" size="30" style="color:var(--text3)"></i></div>`}
         </div>
         <div class="profile-intro-text">
-          ${pub.title ? `<p style="font-size:12px;color:var(--gold);font-weight:600;margin-bottom:4px">${pub.title}</p>` : ''}
+          ${pub.title ? `<p style="font-size:11px;color:var(--gold);font-weight:600;margin-bottom:2px;letter-spacing:0.3px">${pub.title}</p>` : ''}
           <h1>${displayName}</h1>
           <div class="badges-row">
             ${level >= 2 ? `<span class="badge badge-verified"><i data-lucide="badge-check" size="9"></i> Verificada</span>` : ''}
@@ -1392,7 +1391,7 @@ function openProfile(pubId) {
         ${pub.rateFrom ? `<div class="rate-row"><span class="rate-label">Desde</span><span class="rate-value">$${pub.rateFrom}</span></div>` : ''}
         ${pub.rateHour ? `<div class="rate-row"><span class="rate-label">Por hora</span><span class="rate-value">$${pub.rateHour}</span></div>` : ''}
         ${pub.rateNight ? `<div class="rate-row"><span class="rate-label">Noche completa</span><span class="rate-value">$${pub.rateNight}</span></div>` : ''}
-        ${pub.payments ? `<div class="rate-row"><span class="rate-label">Métodos de pago</span><span style="font-size:12px;color:var(--text2)">${pub.payments.join(', ')}</span></div>` : ''}
+        ${(pub.payments && pub.payments.length) ? `<div class="rate-row"><span class="rate-label">Métodos de pago</span><span style="font-size:12px;color:var(--text2)">${pub.payments.join(' · ')}</span></div>` : (user.baseProfile?.payments?.length ? `<div class="rate-row"><span class="rate-label">Métodos de pago</span><span style="font-size:12px;color:var(--text2)">${user.baseProfile.payments.join(' · ')}</span></div>` : '')}
       </div>
 
       <p class="section-title"><i data-lucide="phone" size="14" style="color:var(--red)"></i> Contacto</p>
@@ -1985,8 +1984,17 @@ function openPublicationForm(editId = null) {
   <p class="modal-subtitle">Nivel ${level} - ${cfg.name} · Hasta ${cfg.photos} foto${cfg.photos > 1 ? 's' : ''} · Hasta ${cfg.maxPubs} publicación${cfg.maxPubs > 1 ? 'es' : ''}</p>
   <div id="pub-err"></div>
 
+  ${!hasBaseProfile && !editId ? `<div class="msg-info" style="margin-bottom:12px"><i data-lucide="info" size="14" style="flex-shrink:0"></i> Completa tu <strong>perfil base</strong> antes de publicar para que tus características personales aparezcan correctamente. <button onclick="closeModal();openProfileConfig()" class="btn-secondary" style="display:inline;padding:4px 10px;font-size:11px;margin-left:6px">Ir al perfil →</button></div>` : ''}
+
+  <p class="section-title" style="margin:0 0 10px"><i data-lucide="sparkles" size="14" style="color:var(--red)"></i> Identidad del Anuncio</p>
+
+  <div class="form-row"><label>Título del anuncio <span style="color:var(--red)">*</span></label>
+    <input type="text" id="pub-title" value="${existingPub?.title || ''}" placeholder="Ej: Tu compañía perfecta en Caracas">
+    <p class="form-hint">Este título aparece en la tarjeta del catálogo. Hazlo atractivo y descriptivo.</p>
+  </div>
+
   <div class="form-row"><label>Nombre en publicación</label>
-    <input type="text" id="pub-displayname" value="${existingPub?.displayName || user.name}" placeholder="Como te mostrarás">
+    <input type="text" id="pub-displayname" value="${existingPub?.displayName || base.displayName || user.name}" placeholder="Como te mostrarás dentro del perfil">
   </div>
 
   ${level >= 3 ? `<div class="form-row"><label>Seudónimo (opcional)</label>
@@ -2014,70 +2022,25 @@ function openPublicationForm(editId = null) {
     <textarea id="pub-desc" placeholder="Describe tus servicios, personalidad y lo que ofreces...">${existingPub?.description || ''}</textarea>
   </div>
 
-  <div class="form-2col">
-    <div class="form-row"><label>Edad en publicación</label>
-      <div style="display:flex;gap:6px;align-items:center">
-        <input type="number" id="pub-age" value="${existingPub?.age || user.age}" min="18" max="80" style="flex:1" readonly>
-        <button type="button" onclick="requestAgeChange()" class="btn-secondary" style="width:auto;padding:6px 10px;font-size:11px;white-space:nowrap;flex-shrink:0">✏️ Cambiar</button>
-      </div>
-      <p class="form-hint">Solo modificable con aprobación del admin</p>
+  <div class="form-row"><label>Edad en publicación</label>
+    <div style="display:flex;gap:6px;align-items:center">
+      <input type="number" id="pub-age" value="${existingPub?.age || user.age}" min="18" max="80" style="flex:1" readonly>
+      <button type="button" onclick="requestAgeChange()" class="btn-secondary" style="width:auto;padding:6px 10px;font-size:11px;white-space:nowrap;flex-shrink:0">✏️ Cambiar</button>
     </div>
-    <div class="form-row"><label>Orientación</label>
-      <select id="pub-orientation">
-        <option value="">Seleccionar</option>
-        <option value="Heterosexual" ${existingPub?.orientation === 'Heterosexual' ? 'selected' : ''}>Heterosexual</option>
-        <option value="Homosexual" ${existingPub?.orientation === 'Homosexual' ? 'selected' : ''}>Homosexual</option>
-        <option value="Bisexual" ${existingPub?.orientation === 'Bisexual' ? 'selected' : ''}>Bisexual</option>
-        <option value="Pansexual" ${existingPub?.orientation === 'Pansexual' ? 'selected' : ''}>Pansexual</option>
-      </select>
-    </div>
+    <p class="form-hint">Solo modificable con aprobación del admin</p>
   </div>
 
+  <p class="section-title" style="margin:16px 0 8px"><i data-lucide="map-pin" size="14" style="color:var(--red)"></i> Ubicación del servicio</p>
   <div class="form-2col">
-    <div class="form-row"><label>Etnia</label>
-      <select id="pub-ethnicity">
-        <option value="">Seleccionar</option>
-        <option value="mestiza" ${defEthnicity==='mestiza'?'selected':''}>Mestiza/o</option>
-        <option value="blanca" ${defEthnicity==='blanca'?'selected':''}>Blanca/o</option>
-        <option value="morena" ${defEthnicity==='morena'?'selected':''}>Morena/o</option>
-        <option value="latina" ${defEthnicity==='latina'?'selected':''}>Latina/o</option>
-        <option value="afro" ${defEthnicity==='afro'?'selected':''}>Afrodescendiente</option>
-        <option value="asiatica" ${defEthnicity==='asiatica'?'selected':''}>Asiática/o</option>
-      </select>
-    </div>
-    <div class="form-row"><label>Color de Cabello</label>
-      <select id="pub-hair">
-        <option value="">Seleccionar</option>
-        <option value="rubia">Rubia/o</option>
-        <option value="morena_hair">Morena/o</option>
-        <option value="negra">Negra/o</option>
-        <option value="rojiza">Rojiza/o</option>
-        <option value="castaña">Castaña/o</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-2col">
-    <div class="form-row"><label>Tipo de cuerpo</label>
-      <select id="pub-body">
-        <option value="">Seleccionar</option>
-        <option value="delgada">Delgada/o</option>
-        <option value="atletica">Atlética/o</option>
-        <option value="curvy">Curvy</option>
-        <option value="plus">Plus Size</option>
-        <option value="musculosa">Musculosa/o</option>
-      </select>
-    </div>
     <div class="form-row"><label>Estado</label>
       <select id="pub-state" onchange="updateCities(this.value)">
         <option value="">Seleccionar</option>
         ${stateOptions}
       </select>
     </div>
-  </div>
-
-  <div class="form-row"><label>Ciudad</label>
-    <select id="pub-city"></select>
+    <div class="form-row"><label>Ciudad</label>
+      <select id="pub-city"></select>
+    </div>
   </div>
 
   <div class="form-row"><label>Atiende a</label>
@@ -2100,7 +2063,8 @@ function openPublicationForm(editId = null) {
     </div>
   </div>
 
-  <div class="form-row"><label>Servicios</label>
+  <p class="section-title" style="margin:16px 0 8px"><i data-lucide="heart" size="14" style="color:var(--red)"></i> Servicios</p>
+  <div class="form-row">
     <div class="checkbox-grid">${serviceCheckboxes}</div>
   </div>
 
@@ -2110,10 +2074,7 @@ function openPublicationForm(editId = null) {
     <div class="form-row"><label>Por hora (USD)</label><input type="number" id="pub-rate-hour" value="${existingPub?.rateHour || ''}" placeholder="50"></div>
   </div>
   <div class="form-row"><label>Noche completa (USD)</label><input type="number" id="pub-rate-night" value="${existingPub?.rateNight || ''}" placeholder="150"></div>
-
-  <div class="form-row"><label>Métodos de pago</label>
-    <div class="checkbox-grid">${paymentCheckboxes}</div>
-  </div>
+  <div class="msg-info" style="font-size:11px;margin-top:4px"><i data-lucide="credit-card" size="12" style="flex-shrink:0"></i> Los métodos de pago se configuran en tu <button onclick="closeModal();openProfileConfig()" class="btn-secondary" style="display:inline;padding:2px 8px;font-size:11px">Perfil Base →</button></div>
 
   <p class="section-title" style="margin:16px 0 8px"><i data-lucide="phone" size="14" style="color:var(--red)"></i> Contacto</p>
   <div class="form-row"><label>WhatsApp (de tu cuenta)</label>
@@ -2123,8 +2084,7 @@ function openPublicationForm(editId = null) {
     </div>
     <p class="form-hint">Solicita cambio al admin para actualizar tu WA</p>
   </div>
-  <div class="form-row"><label>Teléfono adicional (opcional)</label><input type="tel" id="pub-phone" value="${defPhone}" placeholder="+58 412..." oninput="formatPhone(this)" onblur="formatPhone(this)"></div>
-  <div class="form-row"><label>Telegram (opcional)</label><input type="text" id="pub-telegram" value="${defTelegram}" placeholder="@usuario"></div>
+  <div class="msg-info" style="font-size:11px;margin-top:4px"><i data-lucide="info" size="12" style="flex-shrink:0"></i> Telegram y teléfono adicional se configuran en tu <button onclick="closeModal();openProfileConfig()" class="btn-secondary" style="display:inline;padding:2px 8px;font-size:11px">Perfil Base →</button></div>
 
   ${level >= 3 ? `
   <p class="section-title" style="margin:16px 0 8px"><i data-lucide="share-2" size="14" style="color:var(--red)"></i> Redes Sociales</p>
@@ -2145,15 +2105,14 @@ function openPublicationForm(editId = null) {
     ${editId ? 'Guardar cambios' : 'Enviar para revisión'}
   </button>`);
 
-  // Populate existing cities
+  // Populate existing city/state
   if (existingPub?.state) {
     document.getElementById('pub-state').value = existingPub.state;
     updateCities(existingPub.state, existingPub.city);
+  } else if (defState) {
+    document.getElementById('pub-state').value = defState;
+    updateCities(defState, defCity);
   }
-  if (existingPub?.ethnicity) document.getElementById('pub-ethnicity').value = existingPub.ethnicity;
-  if (existingPub?.hairColor) document.getElementById('pub-hair').value = existingPub.hairColor;
-  if (existingPub?.bodyType) document.getElementById('pub-body').value = existingPub.bodyType;
-  if (existingPub?.orientation) document.getElementById('pub-orientation').value = existingPub.orientation;
 
   lucide.createIcons();
 }
@@ -2212,12 +2171,18 @@ async function submitPublication(editId) {
     }
   }
 
+  const base = user.baseProfile || {};
+  const title = document.getElementById('pub-title')?.value.trim() || '';
   const displayName = document.getElementById('pub-displayname').value.trim();
   const desc = document.getElementById('pub-desc').value.trim();
   const state = document.getElementById('pub-state').value;
   const city = document.getElementById('pub-city').value;
   const wa = user.whatsapp || document.getElementById('pub-wa')?.value.trim() || '';
 
+  if (!title) {
+    document.getElementById('pub-err').innerHTML = '<div class="msg-error">El título del anuncio es obligatorio</div>';
+    return;
+  }
   if (!displayName || !desc || !city || !wa) {
     document.getElementById('pub-err').innerHTML = '<div class="msg-error">Nombre, descripción, ciudad y WhatsApp son obligatorios</div>';
     return;
@@ -2256,7 +2221,7 @@ async function submitPublication(editId) {
   const pubData = {
     id: editId || 'p_' + Date.now() + '_' + Math.random().toString(36).substr(2,5),
     userId: user.id,
-    title: document.getElementById('pub-title')?.value.trim() || '',
+    title,
     displayName,
     pseudonym: level >= 3 ? (document.getElementById('pub-pseudonym')?.value.trim() || '') : '',
     anonymous: isAnon,
@@ -2264,10 +2229,10 @@ async function submitPublication(editId) {
     description: desc,
     age: document.getElementById('pub-age').value,
     gender: user.gender,
-    orientation: document.getElementById('pub-orientation').value,
-    ethnicity: document.getElementById('pub-ethnicity').value,
-    hairColor: document.getElementById('pub-hair').value,
-    bodyType: document.getElementById('pub-body').value,
+    orientation: base.orientation || '',
+    ethnicity: base.ethnicity || '',
+    hairColor: base.hairColor || '',
+    bodyType: base.bodyType || '',
     state,
     city,
     attendsTo: getChecked('attends'),
@@ -2276,16 +2241,16 @@ async function submitPublication(editId) {
     rateFrom: document.getElementById('pub-rate-from').value,
     rateHour: document.getElementById('pub-rate-hour').value,
     rateNight: document.getElementById('pub-rate-night').value,
-    payments: getChecked('payments'),
+    payments: base.payments || [],
     whatsapp: user.whatsapp || wa,
-    phone: document.getElementById('pub-phone').value.trim(),
-    telegram: document.getElementById('pub-telegram').value.trim(),
+    phone: base.phone || '',
+    telegram: base.telegram || '',
     socialInstagram: level >= 3 ? (document.getElementById('pub-ig')?.value.trim() || '') : '',
     socialTwitter: level >= 3 ? (document.getElementById('pub-tw')?.value.trim() || '') : '',
     photos: uploadedPhotos,
     status: 'pending',
     online: true,
-    views: 0,
+    views: editId ? (appState.publications.find(p=>p.id===editId)?.views || 0) : 0,
     createdAt: editId ? undefined : new Date().toISOString(),
     updatedAt: new Date().toISOString()
   };
@@ -2299,8 +2264,9 @@ async function submitPublication(editId) {
 
   await DB.save();
   closeModal();
-  showToast('success', 'Publicación enviada para revisión del administrador');
+  showToast('success', editId ? '✓ Publicación actualizada' : '✓ Publicación enviada para revisión del administrador');
   renderDashboard();
+  renderCatalog();
 }
 
 // ===== DASHBOARD =====
@@ -2358,8 +2324,8 @@ function renderDashboard() {
       <div style="border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:10px">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
           <div>
-            <p style="font-weight:600;font-size:14px">${pub.displayName}</p>
-            <p style="font-size:12px;color:var(--text3)">${pub.city || ''} · ${pub.pubType}</p>
+            <p style="font-weight:600;font-size:14px">${pub.title || pub.displayName}</p>
+            <p style="font-size:12px;color:var(--text3)">${pub.displayName} · ${pub.city || ''} · ${pub.pubType}</p>
           </div>
           <span class="pub-status ${statusMap[pub.status] || 'status-pending'}">${statusLabel[pub.status] || 'Pendiente'}</span>
         </div>
@@ -3103,6 +3069,17 @@ function showProfileConfig() {
     <div class="config-section">
       <div class="config-section-header"><i data-lucide="lock" size="15" style="color:var(--red)"></i> Datos de Cuenta (bloqueados)</div>
       <div class="config-section-body">
+        <div class="form-2col">
+          <div class="form-row"><label>Nombre</label>
+            <input type="text" value="${userObj.name||''}" style="flex:1" readonly>
+          </div>
+          <div class="form-row"><label>Género</label>
+            <input type="text" value="${userObj.gender||''}" style="flex:1" readonly>
+          </div>
+        </div>
+        <div class="form-row"><label>Correo electrónico</label>
+          <input type="email" value="${userObj.email||''}" style="flex:1" readonly>
+        </div>
         <div class="form-row"><label>Edad</label>
           <div style="display:flex;gap:8px;align-items:center">
             <input type="number" value="${userObj.age||''}" style="flex:1" readonly>
@@ -3116,6 +3093,15 @@ function showProfileConfig() {
             <button onclick="requestWaChange()" class="btn-secondary" style="width:auto;padding:8px 12px;font-size:12px;white-space:nowrap">✏️ Solicitar cambio</button>
           </div>
           ${userObj.pendingWaChange?`<div class="msg-info" style="margin-top:6px;font-size:11px"><i data-lucide="clock" size="11" style="flex-shrink:0"></i> Cambio pendiente: ${userObj.pendingWaChange}</div>`:''}
+        </div>
+      </div>
+    </div>
+    <div class="config-section">
+      <div class="config-section-header"><i data-lucide="sparkles" size="15" style="color:var(--red)"></i> Identidad en Anuncios</div>
+      <div class="config-section-body">
+        <div class="form-row"><label>Nombre en publicación (por defecto)</label>
+          <input type="text" id="cfg-displayname" value="${profile.displayName||userObj.name||''}" placeholder="Como aparecerás en tus anuncios">
+          <p class="form-hint">Este nombre se usará por defecto en tus publicaciones. Puedes cambiarlo en cada anuncio individual.</p>
         </div>
       </div>
     </div>
@@ -3166,6 +3152,18 @@ function showProfileConfig() {
       </div>
     </div>
     <div class="config-section">
+      <div class="config-section-header"><i data-lucide="credit-card" size="15" style="color:var(--red)"></i> Métodos de Pago Aceptados</div>
+      <div class="config-section-body">
+        <div class="checkbox-grid">
+          ${PAYMENT_METHODS.map(p=>`
+            <div class="checkbox-item" onclick="event.stopPropagation();this.querySelector('input').click()">
+              <input type="checkbox" name="cfg-payments" value="${p}" ${(profile.payments||[]).includes(p)?'checked':''}>
+              <span>${p}</span>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="config-section">
       <div class="config-section-header"><i data-lucide="phone" size="15" style="color:var(--red)"></i> Contacto Adicional</div>
       <div class="config-section-body">
         <div class="form-row"><label>Telegram (opcional)</label>
@@ -3196,6 +3194,7 @@ async function saveProfileConfig() {
   const userObj = appState.users.find(u => u.id === user.id);
   if (!userObj) return;
   userObj.baseProfile = {
+    displayName: document.getElementById('cfg-displayname').value.trim(),
     orientation: document.getElementById('cfg-orientation').value,
     ethnicity:   document.getElementById('cfg-ethnicity').value,
     hairColor:   document.getElementById('cfg-hair').value,
@@ -3203,7 +3202,8 @@ async function saveProfileConfig() {
     state:       document.getElementById('cfg-state').value,
     city:        document.getElementById('cfg-city').value,
     telegram:    document.getElementById('cfg-telegram').value.trim(),
-    phone:       document.getElementById('cfg-phone').value.trim()
+    phone:       document.getElementById('cfg-phone').value.trim(),
+    payments:    Array.from(document.querySelectorAll('input[name="cfg-payments"]:checked')).map(i=>i.value)
   };
   appState.currentUser = userObj;
   localStorage.setItem('dcv_session', JSON.stringify(userObj));
@@ -3227,7 +3227,7 @@ function requestDestacado(pubId) {
   const user = appState.currentUser;
   const pub = appState.publications.find(p => p.id === pubId);
   if (!user || !pub) return;
-  const msg = encodeURIComponent('Hola, soy ' + user.name + ', quiero solicitar DESTACADO para mi publicación "' + (pub.title||pub.displayName) + '" (ID: ' + pubId + '). Por favor confirmar precio y activar.');
+  const msg = encodeURIComponent('Hola, soy ' + user.name + ', quiero solicitar DESTACADO para mi publicación "' + (pub.title || pub.displayName) + '" (ID: ' + pubId + '). Por favor confirmar precio y activar.');
   showModal(`<span class="modal-handle"></span>
     <h2 class="modal-title">⭐ Solicitar Destacado</h2>
     <p class="modal-subtitle">Tu publicación aparecerá primero en el catálogo con borde dorado</p>
