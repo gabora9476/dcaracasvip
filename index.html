@@ -559,6 +559,59 @@ button:active{scale:.97}
   .hero-mark{opacity:.7;right:-14%}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.hero h1 .ln>span{transform:none}}
+
+/* ===== Ajustes: móvil sin desbordes, título adaptable, ficha en tarjeta ===== */
+body::before{inset:0;animation:aurora2 24s ease-in-out infinite alternate}
+@keyframes aurora2{from{transform:scale(1.15)}to{transform:translate3d(3%,2%,0) rotate(5deg) scale(1.35)}}
+img,video,svg,canvas{max-width:100%}
+button{touch-action:manipulation}
+.hero{overflow-x:clip;padding:clamp(28px,6vw,64px) 4px clamp(22px,4vw,40px)}
+.hero h1{font-size:clamp(30px,5.4vw,64px);line-height:1.04;letter-spacing:-.03em;text-wrap:balance;margin:16px 0 14px}
+.hero .lead{font-size:clamp(14.5px,1.7vw,17px)}
+.hero-mark{font-size:clamp(170px,26vw,360px)}
+.nav-logo{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#dashboard,#admin-panel,#profile-config{overflow-x:clip}
+#admin-panel table{display:block;max-width:100%;overflow-x:auto}
+.profile-grid>*,.catalog-header{min-width:0}
+.dock [data-d=panel]{display:none}
+.dock.logged [data-d=panel]{display:flex}
+@media(max-width:768px){
+  #theme-toggle,#nav-creator-actions .nav-btn:first-child{display:none}
+  .nav-inner{gap:8px;padding:0 8px 0 14px}
+  .hero-btn{flex:1 1 150px;justify-content:center}
+  .hero-mark{right:-8%}
+}
+
+/* Ficha de perfil: pantalla de app en móvil, tarjeta centrada en escritorio */
+#view-profile{background:rgba(6,4,12,.74);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overscroll-behavior:contain}
+.pv-sheet{min-height:100dvh;background:var(--bg2);position:relative}
+.pv-sheet .profile-detail-header{padding:max(12px,env(safe-area-inset-top)) 16px 12px}
+.pg{position:relative;background:var(--bg);overflow:hidden}
+.pg-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;height:min(72dvh,128vw)}
+.pg-track::-webkit-scrollbar{display:none}
+.pg-slide{flex:0 0 100%;height:100%;scroll-snap-align:center;position:relative;overflow:hidden}
+.pg-bg{position:absolute;inset:-8%;width:116%;height:116%;max-width:none;object-fit:cover;filter:blur(32px) saturate(1.3) brightness(.55);pointer-events:none}
+.pg-img{position:relative;width:100%;height:100%;object-fit:contain}
+.pg-empty{display:grid;place-items:center;color:var(--text3)}
+.pg-lock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#fff;font-size:12px;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,.8);pointer-events:none}
+.pg-nav{position:absolute;top:50%;translate:0 -50%;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;background:rgba(10,8,20,.5);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);z-index:2;transition:background .3s}
+.pg-nav:hover{background:var(--red)}
+.pg-nav.prev{left:12px}.pg-nav.next{right:12px}
+.pg-count{position:absolute;top:12px;right:12px;z-index:2;padding:4px 11px;border-radius:99px;font-size:12px;color:#fff;background:rgba(10,8,20,.55);backdrop-filter:blur(10px)}
+.pg-dots{position:absolute;bottom:38px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:2}
+.pg-dots button{width:7px;height:7px;border-radius:99px;background:rgba(255,255,255,.45);transition:all .4s var(--ease)}
+.pg-dots button.on{width:22px;background:var(--gold)}
+.pv-sheet .profile-body{max-width:none;padding:22px 18px 28px;position:relative;background:var(--bg2);border-radius:26px 26px 0 0;margin-top:-24px}
+@media(hover:none){.pg-nav{display:none}}
+@media(min-width:900px){
+  #view-profile{padding:clamp(20px,4vh,48px) 24px}
+  .pv-sheet{min-height:0;max-width:1060px;margin:0 auto;border-radius:28px;border:1px solid var(--glass-b);box-shadow:0 40px 120px -30px rgba(0,0,0,.8);overflow:clip}
+  .pv-sheet #profile-detail-content{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+  .pg{position:sticky;top:62px}
+  .pg-track{height:min(78dvh,760px)}
+  .pg-dots{bottom:16px}
+  .pv-sheet .profile-body{margin-top:0;border-radius:0;padding:28px 32px}
+}
 </style>
 </head>
 <body>
@@ -750,13 +803,15 @@ button:active{scale:.97}
 </div>
 
 <!-- PROFILE DETAIL VIEW -->
-<div id="view-profile">
+<div id="view-profile" onclick="if(event.target===this)closeProfile()">
+ <div class="pv-sheet">
   <div class="profile-detail-header">
     <button class="btn-back" onclick="closeProfile()"><i data-lucide="arrow-left" size="18"></i></button>
     <span class="profile-name-hdr" id="detail-name">Perfil</span>
     <button class="nav-btn" onclick="shareProfile()"><i data-lucide="share-2" size="17"></i></button>
   </div>
   <div id="profile-detail-content"></div>
+ </div>
 </div>
 
 <!-- DASHBOARD -->
@@ -1467,17 +1522,10 @@ function openProfile(pubId) {
 
   const content = document.getElementById('profile-detail-content');
   content.innerHTML = `
-    <div class="profile-gallery">
-      <div class="gallery-main" id="gallery-main">
-        ${photos[0] ? `<img src="${photos[0]}" alt="${displayName}" id="main-gallery-img" style="${!canSeePhotos ? 'filter:blur(18px);transform:scale(1.1)' : ''}">` :
-          `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--bg3)"><i data-lucide="image" size="60" style="color:var(--text3)"></i></div>`}
-        ${!canSeePhotos ? `<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;pointer-events:none">
-          <i data-lucide="eye-off" size="28" style="color:#fff;opacity:0.8"></i>
-          <span style="color:#fff;font-size:12px;font-weight:600;opacity:0.9;text-shadow:0 1px 4px rgba(0,0,0,0.8)">Fotos protegidas · Nivel 3 para ver</span>
-        </div>` : ''}
-      </div>
-      ${canSeePhotos ? photos.slice(1).map((p,i) => `<div class="gallery-thumb" onclick="switchGalleryPhoto('${p}')"><img src="${p}" alt="foto ${i+2}" loading="lazy"></div>`).join('') : ''}
-    </div>
+    ${(()=>{const sl=canSeePhotos?photos:photos.slice(0,1);const bl=!canSeePhotos?'filter:blur(18px)':'';
+      return `<div class="pg"><div class="pg-track" id="pg-track" onscroll="pgSync()">${sl.length?sl.map((p,i)=>`<div class="pg-slide"><img class="pg-bg" src="${p}" alt="" aria-hidden="true"><img class="pg-img" src="${p}" alt="${displayName} ${i+1}" style="${bl}" ${i?'loading="lazy"':''}></div>`).join(''):`<div class="pg-slide pg-empty"><i data-lucide="image" size="56"></i></div>`}</div>
+      ${!canSeePhotos?`<div class="pg-lock"><i data-lucide="eye-off" size="28"></i><span>Fotos protegidas · Nivel 3 para ver</span></div>`:''}
+      ${sl.length>1?`<button class="pg-nav prev" onclick="pgGo(-1)" aria-label="Foto anterior"><i data-lucide="chevron-left" size="20"></i></button><button class="pg-nav next" onclick="pgGo(1)" aria-label="Foto siguiente"><i data-lucide="chevron-right" size="20"></i></button><span class="pg-count" id="pg-count">1 / ${sl.length}</span><div class="pg-dots" id="pg-dots">${sl.map((_,i)=>`<button class="${i?'':'on'}" onclick="pgTo(${i})" aria-label="Foto ${i+1}"></button>`).join('')}</div>`:''}</div>`})()}
     <div class="profile-body">
       <div class="profile-intro">
         <div>
@@ -3432,7 +3480,7 @@ function isFresh(pub) {
 <nav class="dock" aria-label="Navegación principal">
   <button class="on" data-d="home" onclick="showHome();scrollTo({top:0,behavior:'smooth'})"><i data-lucide="home" size="20"></i>Inicio</button>
   <button data-d="search" onclick="showHome();document.getElementById('search-input').focus()"><i data-lucide="search" size="20"></i>Buscar</button>
-  <button data-d="panel" onclick="heroPublish()"><i data-lucide="layout-dashboard" size="20"></i>Panel</button>
+  <button data-d="panel" onclick="dockPanel()"><i data-lucide="layout-dashboard" size="20"></i>Panel</button>
   <button data-d="theme" onclick="toggleTheme()"><i data-lucide="moon" size="20"></i>Tema</button>
 </nav>
 
@@ -3457,6 +3505,17 @@ grid.addEventListener('pointerout',e=>{const c=e.target.closest('.profile-card')
 const hero=$('#hero');addEventListener('pointermove',e=>{hero.style.setProperty('--px',(e.clientX/innerWidth-.5).toFixed(3));hero.style.setProperty('--py',(e.clientY/innerHeight-.5).toFixed(3))},{passive:true})}
 // estado activo del dock
 document.querySelectorAll('.dock button').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.d==='theme')return;document.querySelectorAll('.dock button').forEach(x=>x.classList.toggle('on',x===b))}));
+
+window.pgSync=()=>{const t=$('#pg-track');if(!t)return;const i=Math.round(t.scrollLeft/t.clientWidth),c=$('#pg-count');if(c)c.textContent=(i+1)+' / '+t.children.length;document.querySelectorAll('#pg-dots button').forEach((d,k)=>d.classList.toggle('on',k===i))};
+window.pgTo=i=>{const t=$('#pg-track');t.scrollTo({left:i*t.clientWidth,behavior:reduce?'auto':'smooth'})};
+window.pgGo=d=>{const t=$('#pg-track');pgTo(Math.max(0,Math.min(t.children.length-1,Math.round(t.scrollLeft/t.clientWidth)+d)))};
+addEventListener('keydown',e=>{const v=$('#view-profile');if(!v||v.style.display!=='block')return;if(e.key==='Escape')closeProfile();if(e.key==='ArrowRight')pgGo(1);if(e.key==='ArrowLeft')pgGo(-1)});
+const _op=window.openProfile;window.openProfile=function(id){_op(id);$('#view-profile').scrollTop=0};
+// el botón Panel del dock solo existe con sesión iniciada
+const dock=$('.dock'),cr=$('#nav-creator-actions'),ad=$('#nav-admin-btn');
+const syncDock=()=>dock.classList.toggle('logged',!cr.classList.contains('hidden')||!ad.classList.contains('hidden'));
+[cr,ad].forEach(el=>new MutationObserver(syncDock).observe(el,{attributes:true,attributeFilter:['class']}));syncDock();
+window.dockPanel=()=>{cr.classList.contains('hidden')?showAdmin():showDashboard()};
 lucide.createIcons();
 })();
 </script>
