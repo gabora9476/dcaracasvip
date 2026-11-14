@@ -670,17 +670,13 @@ html[data-theme=dark] :is(.toggle-form button,.tag-service,.catalog-header span,
 .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.4);transform:scale(0);animation:rip .65s ease-out forwards;pointer-events:none}
 @keyframes rip{to{transform:scale(1);opacity:0}}
 .hero-btn{transition:transform .4s var(--ease),translate .25s ease-out}
-.wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:120;width:56px;height:56px;border-radius:50%;background:#128C7E;color:#fff;display:grid;place-items:center;box-shadow:0 14px 34px -10px rgba(18,140,126,.8);transition:transform .4s var(--ease)}
-.wa-float:hover{transform:scale(1.08) rotate(-6deg)}
-.wa-float::before{content:'';position:absolute;inset:0;border-radius:50%;background:#128C7E;z-index:-1;animation:waPing 2.4s infinite}
-@keyframes waPing{from{transform:scale(1);opacity:.5}to{transform:scale(1.7);opacity:0}}
 .ck{position:fixed;z-index:410;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));translate:-50% 0;width:min(560px,calc(100vw - 24px));padding:18px;border-radius:22px;background:color-mix(in srgb,var(--bg2) 92%,transparent);backdrop-filter:blur(24px);border:1px solid var(--glass-b);box-shadow:0 30px 80px -20px rgba(0,0,0,.8);font-size:13px;line-height:1.6;color:var(--text2);animation:fade .7s var(--ease) both}
 .ck[hidden]{display:none}.ck strong{color:var(--text)}.ck a{color:var(--rose);text-decoration:underline}
 .ck-opt{display:flex;align-items:center;gap:8px;margin:10px 0 12px;color:var(--text);cursor:pointer}.ck-opt input{accent-color:var(--pink);width:16px;height:16px}
 .ck-btns{display:flex;gap:8px;flex-wrap:wrap}.ck-btns button{flex:1 1 130px;height:42px;border-radius:12px;background:var(--bg3);color:var(--text);border:1px solid var(--glass-b);font-weight:600}
 .ck-btns .ck-main{background:linear-gradient(135deg,var(--red),var(--pink));border-color:transparent;color:#fff}
 #main-footer{content-visibility:auto;contain-intrinsic-size:auto 420px}
-@media(max-width:768px){.wa-float{bottom:calc(92px + env(safe-area-inset-bottom));right:14px;width:50px;height:50px}.ck{bottom:calc(88px + env(safe-area-inset-bottom))}}
+@media(max-width:768px){.ck{bottom:calc(88px + env(safe-area-inset-bottom))}}
 </style>
 </head>
 <body>
@@ -1156,6 +1152,7 @@ html[data-theme=dark] :is(.toggle-form button,.tag-service,.catalog-header span,
         <a href="#" onclick="showPage('how-to-publish-page')">Cómo publicar</a>
         <a href="#" onclick="showPage('levels-page')">Niveles y beneficios</a>
         <a href="#" onclick="showPage('faq-page')">Preguntas frecuentes</a>
+        <a href="https://wa.me/584228745777?text=Hola%20DamasVIP%2C%20necesito%20ayuda" target="_blank" rel="noopener noreferrer">Pedir ayuda</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -3607,7 +3604,6 @@ lucide.createIcons();
 })();
 </script>
 
-<a class="wa-float" href="https://wa.me/584228745777?text=Hola%20DamasVIP%2C%20necesito%20ayuda" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp" title="WhatsApp"><i data-lucide="message-circle" size="26"></i></a>
 <div id="ck" class="ck" role="dialog" aria-label="Aviso de cookies" hidden>
   <p><strong>Cookies en DamasVIP.</strong> Las necesarias mantienen tu sesión y tu tema. Las de analítica nos ayudan a mejorar el sitio y solo se activan si las aceptas. Más detalles en la <a href="#" onclick="DV.ck.hide();showPage('privacy-page')">Política de privacidad</a>.</p>
   <label class="ck-opt"><input type="checkbox" id="ck-an"> Permitir analítica</label>
